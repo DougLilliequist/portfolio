@@ -1,0 +1,213 @@
+.Scroll {
+    
+    position: absolute;
+
+    color: #ffffff;
+
+    font-style: italic;
+
+    letter-spacing: 0.05em;
+
+    z-index: 2;
+
+    right: 12.5%;
+
+    top: 75%;
+
+    -moz-transform: rotate(90deg);
+    
+    -webkit-transform: rotate(90deg);
+    
+    transform: rotate(90deg);
+
+}
+
+.Scroll .ScrollHint {
+
+    margin-left: 10px;
+    
+    margin-bottom: 10px;
+
+}
+
+.Scroll .Line {
+
+    stroke: rgb(255, 255, 255);
+
+    stroke-width: 3.5px;
+
+    stroke-dasharray: 180;
+    
+    stroke-dashoffset: 180;
+
+}
+
+.ProjectScroll {
+
+    position: absolute;
+
+    color: #ffffff;
+
+    font-style: italic;
+
+    letter-spacing: 0.05em;
+
+    z-index: 2;
+
+    top: 85%;
+
+    left: -5.25em;
+
+    -moz-transform: rotate(90deg);
+    
+    -webkit-transform: rotate(90deg);
+    
+    transform: rotate(90deg);
+}
+
+.ProjectScroll .Line {
+
+    stroke: rgb(255, 255, 255);
+
+    stroke-width: 3.5px;
+
+    stroke-dasharray: 40;
+    
+    stroke-dashoffset: 40;
+
+}
+
+.ViewIndicator {
+
+    position: fixed;
+    color: #000000;
+    font-style: italic;
+    font-size: -webkit-calc(10px + (15 - 10)*(100vw - 900px) / (1440 - 900));
+    font-size: calc(10px + (15 - 10)*(100vw - 900px) / (1440 - 900));
+    letter-spacing: 0.08em;
+    z-index: 2;
+    width: 150px;
+    height: 50px;
+    letter-spacing: 0.1em;
+    user-select: none;
+    -moz-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg) translate(4.25em, 0.5em);
+
+}
+
+.ViewIndicator .CurrentView {
+
+    position: absolute;
+    
+    top: 25%;
+    
+    left: 35px;
+
+    opacity: 0.8;
+
+}
+
+.ViewIndicator .Line {
+    
+    stroke: rgb(0, 0, 0);
+
+    stroke-width: 1.75px;
+
+    stroke-dasharray: 18;
+
+    stroke-dashoffset: 18;
+
+    transform: translate(0px, 26.5px);
+
+}
+
+.ContactLinks {
+
+    position: fixed;
+
+    color: #000000;
+
+    font-style: italic;
+
+    letter-spacing: 0.05em;
+
+    -moz-user-select: none;
+
+    -webkit-user-select: none;
+
+    user-select: none;
+
+    z-index: 999999;
+
+    width: 15%;
+
+    height: 50px;
+
+    bottom: 10%;
+    
+    right: 1.5%;
+    
+    -moz-transform: rotate(90deg) translate(2.25em, 2.25em);
+    
+    -webkit-transform: rotate(90deg) translate(2.25em, 2.25em);
+    
+    transform: rotate(90deg) translate(2.25em, 2.25em);
+
+    -moz-transform-origin: top right;
+    
+    -webkit-transform-origin: top right;
+    
+    transform-origin: top right;
+
+}
+
+.ContactLinks .Line {
+
+    position: absolute;
+    
+    stroke: rgb(0, 0, 0);
+    
+    stroke-width: 1.75px;
+    
+    stroke-dasharray: 25;
+    
+    // stroke-dashoffset: 18;
+    
+    transform: translate(50%, 25%);
+
+}
+
+.ContactContainer {
+
+    position: absolute;
+    
+    left: 10%;
+
+    height: 100%;
+
+}
+
+.ContactContainer > * {
+
+    position: relative;
+    
+    display: inline-block;
+    
+    margin: 10px;
+    
+    top: 12.5%;
+
+}
+
+.Link {
+
+    color: rgb(0, 0, 0);
+
+    text-decoration: none;
+
+    cursor: none;
+
+    opacity: 0;
+
+}

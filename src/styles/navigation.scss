@@ -1,0 +1,369 @@
+.Navigation {
+
+    position: fixed;
+
+    z-index: 3;
+
+    height: 100%;
+
+    width: 100%;
+
+    top: 0;
+
+    left: 0;
+
+    pointer-events: none;
+
+}
+
+.CuriousNav {
+
+    position: absolute;
+
+    // width: 25em;
+
+    width: 30%;
+    
+    height: 5em;
+
+    top: 0%;
+    
+    left: 10%;
+
+    // width: 25%;
+
+    z-index: 10;
+
+}
+
+.CuriousNav .TitleContainer {
+
+    position: relative;
+
+    top: 0%;
+    left: 0%;
+
+}
+
+.CuriousNav .MessageContainer {
+
+    position: relative;
+
+    top: 0%;
+    left: 7.5%;
+
+}
+
+.CuriousLineContainer {
+
+    height: 50px;
+
+}
+
+.CuriousTitle {
+
+    font-size: -webkit-calc(15px + (22 - 15)*(100vw - 900px) / (1440 - 900));
+    
+    font-size: calc(15px + (22 - 15)*(100vw - 900px) / (1440 - 900));
+    
+    letter-spacing: 0.08em;
+
+    margin: 10px;
+
+    font-style: italic;
+
+    opacity: 0;
+    
+}
+
+.CuriousMessage {
+
+    font-size: -webkit-calc(10px + (12 - 10)*(100vw - 900px) / (1440 - 900));
+    
+    font-size: calc(10px + (12 - 10)*(100vw - 900px) / (1440 - 900));
+    
+    letter-spacing: 0.08em;
+
+    margin: 10px;
+
+    font-style: italic;
+
+    opacity: 0;
+
+}
+
+.CuriousLine1 {
+
+    stroke: rgb(255, 255, 255);
+
+    stroke-dasharray: 25;
+
+    stroke-dashoffset: 0;
+
+    stroke-width: 2px;
+
+}
+
+.CuriousLine2 {
+
+    stroke: rgb(255, 255, 255);
+
+    stroke-dasharray: 25;
+
+    stroke-dashoffset: 25;
+
+    stroke-width: 2px;
+
+}
+
+.CuriousNav .Counter {
+
+    position: absolute;
+    
+    top: 50%;
+    
+    left: 0%;
+    
+    /* width: 100%; */
+    
+    color: white;
+    
+    opacity: 0;
+    
+    font-size: 15px;
+    
+    -moz-user-select: none;
+    
+    -webkit-user-select: none;
+    
+    user-select: none;
+    
+    text-align: center;
+
+}
+
+.NavCircle {
+
+    // z-index: 10;
+
+    stroke: rgb(0, 0, 0);
+
+    fill-opacity: 0;
+
+    stroke-width: 1.25;
+
+    opacity: 0;
+
+    // stroke-linecap: round;
+
+}
+
+.CuriousNav .Line1 {
+
+    stroke: rgb(255, 255, 255);
+
+    stroke-width: 1px;
+
+    // stroke-dasharray: 25;
+
+    // stroke-dashoffset: -25;
+
+    opacity: 0;
+
+}
+
+.CuriousNav .Line2 {
+
+    stroke: rgb(255, 255, 255);
+
+    stroke-width: 1px;
+
+    // stroke-dasharray: 25;
+
+    // stroke-dashoffset: 25;
+
+    opacity: 0;
+
+}
+
+.CuriousNav .Line3 {
+
+    stroke: rgb(255, 255, 255);
+
+    stroke-width: 1.75px;
+
+    // stroke-dasharray: 25;
+
+    // stroke-dashoffset: 25;
+
+    opacity: 0;
+
+}
+
+.CuriousNav .View {
+    
+    position: absolute;
+    
+    /* width: 100%; */
+    
+    top: 50%;
+    
+    left: 90%;
+    
+    color: white;
+    
+    opacity: 0;
+    
+    text-align: center;
+    
+    -moz-user-select: none;
+    
+    -webkit-user-select: none;
+    
+    user-select: none;
+
+}
+
+.CuriousNav .View p {
+
+    margin: 0;
+
+}
+
+.CuriousNav .ArrowUp {
+
+    stroke: rgb(255, 255, 255);
+
+    stroke-width: 1.75px;
+
+    fill-opacity: 0;
+
+    opacity: 0;
+
+}
+
+.CuriousNav .ArrowDown {
+
+    stroke: rgb(255, 255, 255);
+
+    stroke-width: 1.75px;
+
+    fill-opacity: 0;
+
+    opacity: 0;
+
+}
+
+// .Navigation .NavButton {
+
+//     position: absolute;
+
+//     top: 25%;
+
+//     left: 85%;
+
+//     z-index: 999999;
+
+//     stroke: rgb(255, 255, 255);
+
+//     stroke-width: 2.5;
+
+//     // stroke-linecap: round;
+
+// }
+
+// .NavLine {
+
+//     z-index: 999999;
+
+//     position: absolute;
+
+// }
+
+.NavLineContainer {
+    
+    position: absolute;
+    
+    z-index: 999999;
+    
+    width: 1.75px;
+    
+    height: 50%;
+    
+    top: 27.5%;
+    
+    left: 85%;
+    
+}
+
+.NavLine {
+
+    // position: absolute;
+
+    stroke: rgba(92, 91, 91, 0.226);
+
+    opacity: 0;
+
+    stroke-width: 2px;
+
+    stroke-dasharray: 0;
+
+    stroke-dashoffset: 0;
+
+}
+
+.ProgressLine {
+
+    stroke: rgb(255, 255, 255);
+
+    opacity: 0;
+
+    stroke-width: 2px;
+
+    stroke-dasharray: 0;
+
+    stroke-dashoffset: 0;
+
+    // -webkit-transform: matrix(1.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+
+    // transform: matrix(1.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+
+}
+
+.Message {
+
+    position: absolute;
+
+    // top: 12.5%;
+
+    width: 300px;
+    
+    height: 100px;
+
+    // transform: translate(0%, -50%);
+
+}
+
+// .Exit {
+
+//     // position: absolute;
+    
+//     width: 100%;
+    
+//     height: 100%;
+
+// }
+
+.ExitLine {
+
+    stroke: rgb(255, 255, 255);
+
+    stroke-width: 1.75px;
+
+    stroke-dasharray: 25;
+
+    stroke-dashoffset: 25;
+
+    opacity: 0;
+
+}

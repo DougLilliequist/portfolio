@@ -1,0 +1,75 @@
+.LandingPage {
+
+    // position: relative;
+    
+    // width: 100vw;
+
+    // height: 125vh;
+    // // top: 20em;
+    // // top: 42.5%;
+    // /* left: 15%; */
+    
+    // // transform: translate(50%, 50%);
+    
+    // z-index: 1;
+
+    position: relative;
+    z-index: 1;
+    width: 100vw;
+    height: 125vh;
+    // height: 100vh;
+    top: 0;
+    left: 0;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+
+}
+
+.LandingPage .Title {
+
+    position: absolute;
+    color: #000000;
+    top: 38.5%;
+    left: 12.5%;
+    font-size: -webkit-calc(12px + (14 - 12)*(100vw - 900px) / (1440 - 900));
+    font-size: calc(12px + (14 - 12)*(100vw - 900px) / (1440 - 900));
+    letter-spacing: 0.25em;
+
+}
+
+.LandingPage .Title h1 {
+
+    margin: 0;
+
+}
+
+.Intro {
+
+    position: absolute;
+    top: 42.5%;
+    left: 12.5%;
+    color: #000000;
+    font-size: -webkit-calc(12px + (14 - 12)*(100vw - 900px) / (1440 - 900));
+    font-size: calc(12px + (14 - 12)*(100vw - 900px) / (1440 - 900));
+    letter-spacing: 0.25em;
+
+}
+
+.CTA {
+
+    position: absolute;
+    bottom: 22.25%;
+    left: 12.25%;
+
+    color: #ffffff;
+    font-size: -webkit-calc(10px + (14 - 10)*(100vw - 900px) / (1440 - 900));
+    font-size: calc(10px + (14 - 10)*(100vw - 900px) / (1440 - 900));
+
+}

@@ -1,0 +1,53 @@
+{
+  "name": "dlilliequistportfolio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "budo app.js --live -- -t sassify -t [ babelify --presets [ es2015 react ] ] -t glslify -t aliasify",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Douglas Lilliequist",
+  "license": "ISC",
+  "aliasify": {
+    "aliases": {
+      "renderer": "./src/3d/renderer.js",
+      "simData": "./src/3d/utils/simdata.js",
+      "FBO": "./src/3d/utils/FBO/fbo.js",
+      "renderTarget": "./src/3d/utils/renderTarget.js",
+      "renderPass": "./src/3d/postProcessing/pass.js",
+      "eventEmitter": "./src/emitter.js",
+      "math": "./src/math.js",
+      "helpers": "./src/helpers.js"
+    }
+  },
+  "dependencies": {
+    "aliasify": "^2.1.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babelify": "^8.0.0",
+    "classnames": "^2.2.5",
+    "event-emitter": "^0.3.5",
+    "glsl-fast-gaussian-blur": "^1.0.2",
+    "glsl-fxaa": "^3.0.0",
+    "glslify": "^6.1.0",
+    "gsap": "^1.20.3",
+    "hammerjs": "^2.0.8",
+    "preact": "^8.2.7",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-jss": "^8.2.1",
+    "react-reveal-text": "^0.1.1",
+    "react-transition-group": "^1.2.1",
+    "sassify": "^4.0.1",
+    "three": "^0.89.0"
+  },
+  "devDependencies": {
+    "budo": "^10.0.4",
+    "envify": "^4.1.0",
+    "glslify-live": "^2.1.1",
+    "uglify-js": "^3.3.8",
+    "uglifyify": "^4.0.5"
+  }
+}

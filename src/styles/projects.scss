@@ -1,0 +1,299 @@
+.Project {
+
+    position: relative;
+
+    z-index: 1;
+
+    width: 100vw;
+
+    height: 100vh;
+
+    top: 0;
+
+    left: 0;
+
+    display: flex;
+
+    -webkit-box-align: center;
+
+    -webkit-box-pack: center;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    -webkit-box-orient: vertical;
+
+    -webkit-box-direction: normal;
+
+    flex-direction: column;
+
+}
+
+// .ProjectContainer {
+
+//     position: relative;
+
+//     width: 64vw;
+
+//     height: 30vh;
+
+// }
+
+.Project .Title {
+
+    position: absolute;
+
+    // display: inline-block;
+    // top: 17.5%;
+    top: 15.75%;
+    // font-size: calc((.2em + 1vmin) + (.2em + 1vmax));
+    font-size: -webkit-calc(22px + (28 - 22)*(100vw - 900px) / (1440 - 900));
+    font-size: calc(22px + (28 - 22)*(100vw - 900px) / (1440 - 900));
+    letter-spacing: 0.05em;
+    right: 15.0%;
+    opacity: 0.0;
+    // transform: translate(-25px, 0px);
+    width: max-content;
+    // width: 100%;
+}
+
+.Project .Title h2 {
+
+    margin: 0;
+
+}
+
+.Project .LineContainer {
+
+    // position: absolute;
+    
+    left: 0%;
+    
+    // width: 100px;
+
+    width: 100%;
+    
+    height: 150px;
+
+}
+
+.LineContainer .Line {
+
+    stroke: rgb(0, 0, 0);
+
+    stroke-width: 2px;
+
+    // stroke-dasharray:; //I hope this will make the size as a big as the parent container
+
+    // stroke-dashoffset: -100;
+
+    // transform: translate(0px, 0px);
+
+}
+
+.LineContainer3 .Line {
+
+    stroke: rgb(0, 0, 0);
+
+    stroke-width: 2px;
+
+}
+
+ .LineContainer1 .TextLine1 {
+
+    stroke: rgb(0, 0, 0);
+
+    stroke-width: 2;
+
+    stroke-dasharray: 50;
+
+    // stroke-dashoffset: -50;
+
+}
+
+.LineContainer2 .TextLine2 {
+
+    stroke: rgb(0, 0, 0);
+
+    stroke-width: 2;
+
+    stroke-dasharray: 50;
+
+    // stroke-dashoffset: -50;
+
+}
+
+.Project .CopyContainer {
+
+    width: 100%;
+    height: 20%;
+    bottom: 2.75%;
+    text-align: left;
+    position: absolute;
+
+}
+
+.Project .Description {
+    
+    font-size: -webkit-calc(12px + (17.25 - 12)*(100vw - 900px) / (1440 - 900));
+    font-size: calc(12px + (17.25 - 12)*(100vw - 900px) / (1440 - 900));
+    letter-spacing: 0.05em;
+    opacity: 0.0;
+    position: relative;
+    width: 37.5%;
+    left: 22.5%;
+    will-change: opacity;
+
+}
+
+.Project .Role {
+
+    font-size: -webkit-calc(10px + (14 - 10)*(100vw - 900px) / (1440 - 900));
+    font-size: calc(10px + (14 - 10)*(100vw - 900px) / (1440 - 900));
+    letter-spacing: 0.05em;
+    opacity: 0.0;
+    position: relative;
+    top: 15%;
+    left: 22.5%;
+    will-change: opacity;
+    width: 100%;
+    font-style: italic;
+
+}
+
+
+.Project .Tech {
+
+    font-size: -webkit-calc(10px + (14 - 10)*(100vw - 900px) / (1440 - 900));
+    font-size: calc(10px + (14 - 10)*(100vw - 900px) / (1440 - 900));
+    letter-spacing: 0.05em;
+    opacity: 0.0;
+    position: relative;
+    top: 30%;
+    left: 22.5%;
+    will-change: opacity;
+    width: 100%;
+    font-style: italic;
+
+}
+
+.Project .ProjectVid {
+
+    position: relative;
+
+    // multiply by 1.75 for correct size
+
+    width: 55vw;
+
+    height: 55vh;
+
+    overflow: hidden;
+
+    z-index: 20;
+
+}
+
+.Project .ProjectVid video {
+
+    position: absolute;
+
+    object-fit: fill;
+
+    width: 100%;
+
+    height: 100%;
+
+    top: 0;
+
+    left: 0;
+
+}
+
+.ProjectNumb {
+
+    position: absolute;
+
+    font-size: -webkit-calc(22px + (24 - 22)*(100vw - 900px) / (1440 - 900));
+    
+    font-size: calc(22px + (24 - 22)*(100vw - 900px) / (1440 - 900));
+    
+    // transform: rotate(270deg) translate(-14.5em, 3.85em);
+    
+    // transform: rotate(270deg);
+    
+    right: 15%;
+    
+    top: 10%;
+
+    opacity: 0;
+
+    width: 13.85em;
+    
+    height: 1.5em;
+
+}
+
+.ProjectNumb h3 {
+
+    position: absolute;
+
+    margin: 0;
+    
+    right: 0%;
+
+    transform: translate(0%, 12.5%);
+
+}
+
+.Project .LetterBox {
+
+    position: absolute;
+
+    width: 54vw;
+
+    height: 100%;
+
+    // top: 0;
+
+    // left: 0;
+
+}
+
+.Project .LetterBox .LetterBox1 {
+
+    position: absolute;
+
+    width: 100%;
+
+    height: 100%;
+
+    fill: rgb(255, 0, 0);
+
+    stroke-dasharray: 0 25 0 25;
+
+    // top: 0%;
+
+    // stroke-width: 3px;
+
+    // transform: translate(0%, 0%);
+
+}
+
+// .Project .LetterBox .LetterBox2 {
+
+//     position: absolute;
+
+//     width: 100%;
+
+//     height: 50px;
+
+//     fill: rgb(255, 255, 255);
+
+//     bottom: 0%;
+
+//     // transform: translate(0%, 100%);
+    
+// }
