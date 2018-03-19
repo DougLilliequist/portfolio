@@ -10,7 +10,7 @@ const emitter = eventEmitter.emitter
 
 // import {h, Component} from 'preact'
 
-import World3D from './3d/world3d.js'
+// import World3D from './3d/world3d.js'
 
 import ViewLoader from './pages/viewLoader/index.js'
 
@@ -44,9 +44,9 @@ export default class Main extends Component {
 
     componentDidMount() {
 
-        const world = new World3D()
+        // const world = new World3D()
 
-        ReactDOM.render(<World3D />, this.worldContainer)
+        // ReactDOM.render(<World3D />, this.worldContainer)
 
     }
 
@@ -58,7 +58,7 @@ export default class Main extends Component {
             <Navigation ref = "nav" />
             <Contact />
             <ViewLoader ref = {(container) => {this.loader = container}} />
-            <div className = "WorldContainer" ref = {(container) => this.worldContainer = container}/>
+            {/* <div className = "WorldContainer" ref = {(container) => this.worldContainer = container}/> */}
         </div>
         
         )

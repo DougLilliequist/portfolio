@@ -7,6 +7,7 @@ export const projectCopy = {
         description: 'Personal, ongoing project that is meant to be an expressive and virtual representation of myself.',
         tech: 'WebGL(THREE.js) / instancing / GPGPU simulation',
         role: 'developer (Front-End), concept creator, designer',
+        context: 'Personal Project',
         vid: './src/media/doli.mp4'
 
     },
@@ -15,9 +16,10 @@ export const projectCopy = {
         
         number: '003',
         title: '[ We\'re All Human ]',
-        description: 'WebVR client project I built in collaboration with Swiss agency TBNT. And there are hoverboards!',
-        tech: 'WebVR / WebGL(THREE.js)',
+        description: 'WebVR project I built in collaboration with Swiss agency TBNT for a client.',
+        tech: 'WebVR / WebGL(THREE.js) / GLSL',
         role: 'developer (Front-End)',
+        context: 'Client Project',
         vid: './src/media/tbntproj.mp4'
 
     },
@@ -32,6 +34,7 @@ export const projectCopy = {
         // 'The project uses custom software that I built with OpenFrameworks, which sends socket messages containing the detection data and screen space coordinates which was used for my teammember\'s tracking solution.',
         tech: 'WebGL(THREE.Js) / OpenFrameworks / YOLO / Node.js / sockets.io',
         role: 'developer(OpenFrameWorks, assisting Front-End)',
+        context: 'RnD Project',
         vid: './src/media/intrnshpproj.mp4'
 
     },
@@ -43,6 +46,7 @@ export const projectCopy = {
         description: 'Team project for the Exploring Tech 2015 event held by Hyper Island. The installation is an art puzzle game, were the user unravels a mysterious disappearance with help of memories associated with the items in the room.',
         tech: 'Arduino / Processing / Resolume',
         role: 'developer, designer',
+        context: 'School Project',
         vid: './src/media/gdnghtswthrtweb.mp4'
 
     }

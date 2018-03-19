@@ -45,7 +45,7 @@ export default class Events extends Component {
 
         this.offSet += e.deltaY
 
-        if(this.offSet > 200) {
+        if(this.offSet > 100) {
 
             this.parent.transitionOut()
 
@@ -59,9 +59,9 @@ export default class Events extends Component {
 
             this.offSet = 0
 
-        } else if(this.offSet > this.parent.container.getBoundingClientRect().height * 3.25) {
+        } else if(this.offSet > this.parent.container.getBoundingClientRect().height * 4) {
 
-            this.offSet = this.parent.container.getBoundingClientRect().height * 3.25
+            this.offSet = this.parent.container.getBoundingClientRect().height * 4
 
         }
 
@@ -69,17 +69,16 @@ export default class Events extends Component {
 
     onUpdate() {
 
-        this.pos.y += (this.offSet - this.pos.y) * Math.sin(0.3 * Math.PI) * 0.05
+        // this.pos.y += (this.offSet - this.pos.y) * Math.sin(0.3 * Math.PI) * 0.05
+        this.pos.y += (this.offSet - this.pos.y) * 0.05
 
         this.parent.container.style.transform = 'matrix(1.0, 0.0, 0.0, 1.0, 0.0,' + -this.pos.y + ')'
 
-        this.offSet = Math.min(Math.max(this.offSet, 0), this.parent.container.getBoundingClientRect().height * 3.25)
+        this.offSet = Math.min(Math.max(this.offSet, 0), this.parent.container.getBoundingClientRect().height * 4.0)
 
         let x = this.parent.container.getBoundingClientRect().x
 
         let y = this.parent.container.getBoundingClientRect().y
-
-        // console.log(y)
 
         let dist = Math.sqrt(Math.pow(0 - x, 2) + Math.pow(0 - y, 2))
         

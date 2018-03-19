@@ -36,6 +36,14 @@ export default class ViewLoader extends Component {
             
         }
 
+        this.pos = {}
+
+        this.pos.x = 0
+
+        this.pos.y = 0
+
+        this.offSet = 0
+
         this.initViews()
 
         this.initEvents()
@@ -56,6 +64,10 @@ export default class ViewLoader extends Component {
         emitter.on('viewTargeted', (target) => {this.setState({currentTarget: target})})
 
         emitter.on('viewSelected', this.selectView.bind(this))
+
+        // emitter.on('scrolling', this.onScroll.bind(this))
+
+        // emitter.on('update', this.onUpdate.bind(this))
 
     }
 
@@ -123,7 +135,7 @@ export default class ViewLoader extends Component {
     
                 emitter.emit('morphDOLI', this.views[this.state.index].name)
     
-                this.viewIndicator.updateText(this.views[this.state.index].name)
+                // this.viewIndicator.updateText(this.views[this.state.index].name)
         
                 if(this.state.currentView === 'work') {
 
@@ -147,26 +159,45 @@ export default class ViewLoader extends Component {
 
     componentDidMount() {
 
-        this.viewIndicator.updateText('home')
+        // this.viewIndicator.updateText('home')
 
         this.currentView.transitionIn()
 
     }
 
+    onScroll(e) {
+
+        this.offSet += e.deltaY
+
+        if(this.offSet < 0) {
+            
+            this.offSet = 0
+
+        } else if(this.offSet >= ReactDOM.findDOMNode(this.currentView).getBoundingClientRect().height * 4.0) {
+
+            this.offSet = ReactDOM.findDOMNode(this.currentView).getBoundingClientRect().height * 4.0
+
+        }
+
+    }
+
     onUpdate() {
 
+        this.pos.y += (this.offSet - this.pos.y) * Math.sin(0.3 * Math.PI) * 0.05
 
+        // this.container.style.transform = 'matrix(1.0, 0.0, 0.0, 1.0, ' + 0.0 + ', ' + -this.pos.y + ')'
 
+        this.offSet = Math.min(Math.max(this.offSet, 0), ReactDOM.findDOMNode(this.currentView).getBoundingClientRect().height * 4.0)
     }
 
     render() {
 
         return(
 
-            <div className = "Loader" ref = "loaderContainer">
+            <div className = "Loader" ref = {(container) => this.container = container}>
 
-                <ViewIndicator ref = {(component) => {this.viewIndicator = component}} />
-                <LandingPage ref = {(view) => {this.currentView = view}}/>
+                {/* <ViewIndicator ref = {(component) => {this.viewIndicator = component}} /> */}
+                <LandingPage ref = {(view) => {this.currentView = view}} pos = {this.pos.y}/>
                 <Project ref = {(view) => {this.currentView = view}} project = 'doli' />
                 <Project ref = {(view) => {this.currentView = view}} project = 'redCrossWebVR' /> 
                 <Project ref = {(view) => {this.currentView = view}} project = 'internshipProject' />

@@ -127,9 +127,9 @@ export default class Events extends Component {
             
             this.offSet = 0
 
-        } else if(this.offSet >= this.parent.project.getBoundingClientRect().height * 4.25) {
+        } else if(this.offSet >= this.parent.project.getBoundingClientRect().height * 4) {
 
-            this.offSet = this.parent.project.getBoundingClientRect().height * 4.25
+            this.offSet = this.parent.project.getBoundingClientRect().height * 4
 
         }
 
@@ -137,11 +137,13 @@ export default class Events extends Component {
 
     onUpdate() {
 
-        this.pos.y += (this.offSet - this.pos.y) * Math.sin(0.3 * Math.PI) * 0.05
+        // this.pos.y += (this.offSet - this.pos.y) * Math.sin(0.3 * Math.PI) * 0.05
+        
+        this.pos.y += (this.offSet - this.pos.y) * 0.05
 
         this.parent.project.style.transform = 'matrix(1.0, 0.0, 0.0, 1.0, ' + 0.0 + ', ' + -this.pos.y + ')'
 
-        this.offSet = Math.min(Math.max(this.offSet, 0), this.parent.project.getBoundingClientRect().height * 4.25)
+        this.offSet = Math.min(Math.max(this.offSet, 0), this.parent.project.getBoundingClientRect().height * 4)
 
 
         // this.pos.x += (this.target.x * 0.01 - this.pos.x) * 0.05

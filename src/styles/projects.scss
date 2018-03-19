@@ -184,31 +184,35 @@
 
     position: relative;
 
-    // multiply by 1.75 for correct size
+    // width: 64vw;
+    // height: 36vh;
 
-    width: 55vw;
+    // width: 94.5vw;
+    // height: 54vh;
 
-    height: 55vh;
+    width: 94.5vh;
+    height: 54vh;
+    
+    // width: 54vw;
+    // width: 100%;
+
+    // width: 50vw;
+
+    // height: 50vh;
 
     overflow: hidden;
 
-    z-index: 20;
+    z-index: 3;
 
 }
 
 .Project .ProjectVid video {
 
-    position: absolute;
-
-    object-fit: fill;
+    // object-fit: fill;
 
     width: 100%;
 
     height: 100%;
-
-    top: 0;
-
-    left: 0;
 
 }
 
@@ -248,39 +252,44 @@
 
 }
 
-.Project .LetterBox {
+.Project .LetterBox1 {
 
-    position: absolute;
-
-    width: 54vw;
-
-    height: 100%;
-
-    // top: 0;
-
-    // left: 0;
-
-}
-
-.Project .LetterBox .LetterBox1 {
-
-    position: absolute;
-
-    width: 100%;
-
-    height: 100%;
-
-    fill: rgb(255, 0, 0);
-
-    stroke-dasharray: 0 25 0 25;
-
-    // top: 0%;
-
-    // stroke-width: 3px;
-
+    // width: 100%;
+    // height: 20%;
     // transform: translate(0%, 0%);
+    fill: rgb(255, 255, 255);
 
 }
+
+.Project .LetterBox2 {
+
+    // width: 100%;
+    // height: 20%;
+    /* position: absolute; */
+    // transform: translate(0%, 80%);
+    fill: rgb(255, 255, 255);
+
+}
+
+// .Project .LetterBox .LetterBox1 {
+
+//     position: absolute;
+
+//     width: 100%;
+
+//     height: 100%;
+
+//     fill: rgb(255, 0, 0);
+
+//     stroke-dasharray: 0 25 0 25;
+
+//     // top: 0%;
+
+//     // stroke-width: 3px;
+
+//     // transform: translate(0%, 0%);
+
+// }
 
 // .Project .LetterBox .LetterBox2 {
 
