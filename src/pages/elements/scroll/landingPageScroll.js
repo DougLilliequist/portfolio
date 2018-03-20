@@ -30,19 +30,29 @@ export default class LandingPageScroll extends Component {
 
     animate() {
 
+        TweenLite.fromTo(this.refs['scrollLine'], 3.75, {
+
+            ease: Sine.easeInOut,
+            opacity: 1.0
+
+        }, {
+
+            ease: Sine.easeInOut,
+            opacity: 0.0
+
+        })
+
         TweenLite.to(this.refs['scrollLine'], 2.25, {
 
             strokeDashoffset: -180.0,
 
-            opacity: 0.0,
-
-            ease: Sine.easeOut,
+            ease: Sine.easeInOut,
 
             onComplete: () => {
 
                 this.refs['scrollLine'].style.strokeDashoffset = 180.0
 
-                this.refs['scrollLine'].style.opacity = 1.0
+                // this.refs['scrollLine'].style.opacity = 1.0
 
                 if(this.state.animating) {
 
@@ -89,9 +99,9 @@ export default class LandingPageScroll extends Component {
             <div className = "Scroll">
                 
                 {/* replace with react-reveal text */}
-                <div className = "ScrollHint" ref = "scrollHin">[ hold + drag ]</div> 
+                <div className = "ScrollHint" ref = "scrollHint">scroll</div> 
                 
-                <svg> 
+                <svg style = {{width: '100%', height: '2px'}}> 
                     {/* <path className = "ScrollLine"  ref = "scrollLine" d = {'m0 0 l 180 0'}/> */}
                     <line className = "Line"  ref = "scrollLine" x1 = {0} y1 = {0} x2 = {180} y2 = {0} />
                 </svg>

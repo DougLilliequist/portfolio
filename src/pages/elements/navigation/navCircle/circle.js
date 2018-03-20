@@ -62,8 +62,8 @@ export default class NavCircle extends Component {
 
         this.activeTime = null
 
-        // this.ease = 0.15
-        this.ease = 1.0
+        this.ease = 0.35
+        // this.ease = 1.0
         
     }
 

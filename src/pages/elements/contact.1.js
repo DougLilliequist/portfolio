@@ -104,7 +104,7 @@ export default class Contact extends React.Component {
 
             <div className = "ContactLinks" onMouseLeave = {this.onLeave}>
 
-                <svg ref = {(el) => this.contactSymbol = el}style = {{display: 'inline-block', position: 'absolute', left: '100%', width: '50px', height: '50px'}} onMouseEnter = {this.onHover}>
+                <svg ref = {(el) => this.contactSymbol = el}style = {{display: 'inline-block', position: 'absolute', width: '50px', height: '50px'}} onMouseEnter = {this.onHover}>
                     <line className = "Line" ref = "contactLine1" x1 = {0} y1 = {0} x2 = {0.0} y2 = {25} />
                     <line className = "Line" ref = "contactLine2" x1 = {-12.5} y1 = {12.5} x2 = {12.5} y2 = {12.5} />
                 </svg>

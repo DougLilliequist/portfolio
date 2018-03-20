@@ -37,7 +37,7 @@ export default class LandingPage extends Component {
             
             title: 'DOUGLAS LILLIEQUIST',
 
-            intro: '[ Junior Creative / Interactive Developer ]'
+            intro: '[ Junior Creative Developer / Hyper Island alumni]'
 
         }
 
@@ -155,7 +155,7 @@ export default class LandingPage extends Component {
             
             <div className = "LandingPage" ref = {(container) => {this.container = container}}>
 
-                {/* <LandingPageScroll /> */}
+                <LandingPageScroll />
                             
                 <div className = "Title">
 
