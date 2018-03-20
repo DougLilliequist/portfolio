@@ -60,33 +60,14 @@ export default class Events extends Component {
 
     enable() {
 
-        emitter.on('mouseDown', this.onMouseDown.bind(this))
-
-        // emitter.on('revealCopy', this.revealCopy.bind(this))
-
-        emitter.on('mouseMove', this.onmouseMove.bind(this))
-
-        emitter.on('projectHovered', this.revealCopy.bind(this))
-
-        this.parent.projectVid.addEventListener('mouseenter', this.onEnter.bind(this))
-
-        this.parent.projectVid.addEventListener('mouseleave', this.onLeave.bind(this))
+        // emitter.on('mouseMove', this.onmouseMove.bind(this))
 
         emitter.on('scrolling', this.onScroll.bind(this))
 
         emitter.on('update', this.onUpdate.bind(this))
 
-        emitter.on('resizing', this.onResize.bind(this))
+        // emitter.on('resizing', this.onResize.bind(this))
         
-    }
-
-    revealCopy(b) {
-
-
-        b === true ? this.parent.revealCopyIn() : this.parent.revealCopyOut()
-
-        b === true ? this.onEnter() : this.onLeave()
-
     }
 
     onMouseDown() {
@@ -173,19 +154,5 @@ export default class Events extends Component {
         this.parent.updateLayout()
 
     }
-
-    // disable() {
-
-    //     console.log('eventsDisabled')
-        
-    //     window.removeEventListener('mousedown', this.onMouseDown.bind(this))
-
-    //     emitter.off('revealCopy', this.revealCopy.bind(this))
-
-    //     this.parent.projectContainer.removeEventListener('mouseenter', this.onEnter.bind(this))
-
-    //     this.parent.projectContainer.removeEventListener('mouseleave', this.onLeave.bind(this))
-        
-    // }
 
 }

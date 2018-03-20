@@ -161,8 +161,6 @@ export default class ViewLoader extends Component {
 
         // this.viewIndicator.updateText('home')
 
-        this.currentView.transitionIn()
-
     }
 
     onScroll(e) {

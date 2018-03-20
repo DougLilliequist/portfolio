@@ -9,7 +9,7 @@ export const projectCopy = {
         role: 'developer (Front-End), concept creator, designer',
         context: 'Personal Project',
         link: 'https://doli91.github.io/doliv2/',
-        vid: './src/media/doli.mp4'
+        vid: './src/media/doliv2.mp4'
 
     },
 

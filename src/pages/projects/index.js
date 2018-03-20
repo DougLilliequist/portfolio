@@ -51,14 +51,6 @@ export default class Project extends Component {
         this.events.enable()
 
         this.initAnim()
-
-        // this.updateLayout()
-
-        // this.transitionIn()
-
-        // this.revealCopyIn()
-
-        // console.log(this.project.getBoundingClientRect())
         
     }
 
@@ -74,9 +66,9 @@ export default class Project extends Component {
 
         // console.log(this.ltrBox1)
 
-        this.tl.fromTo(this.ltrBox1, 0.75, {ease: Power4.easeOut, scaleY: 0.0, transformOrigin: '0% top'}, {ease: Power4.easeOut, scaleY: 1, transformOrigin: '0% top'})
+        this.tl.fromTo(this.letterBox, 0.75, {ease: Power4.easeOut, scaleY: 0.0, transformOrigin: '0% top'}, {ease: Power4.easeOut, scaleY: 1.0, transformOrigin: '0% top'})
         
-        this.tl.fromTo(this.ltrBox2, 0.75, {ease: Power4.easeOut, scaleY: 0.0, transformOrigin: '0% bottom'}, {ease: Power4.easeOut, scaleY: 1, transformOrigin: '0% bottom'}, "-=0.75")
+        this.tl.fromTo(this.letterBox2, 0.75, {ease: Power4.easeOut, scaleY: 0.0, transformOrigin: '0% bottom'}, {ease: Power4.easeOut, scaleY: 1.0, transformOrigin: '0% bottom'}, "-=0.75")
 
         this.tl.staggerFromTo([this.projectNumb, this.title, this.link], 0.5, {opacity: 0.0, x: 15}, {opacity: 1.0, x: 0}, 0.15, "-=0.8")
 
@@ -94,108 +86,42 @@ export default class Project extends Component {
 
     }
 
-    revealCopyIn() {
+    componentDidUpdate(prevProps, prevState) {
+
+        if(prevState.viewingProject !== this.state.viewingProject) {
+
+            if(this.state.viewingProject) {
+
+            this.tl.kill()
+
+            TweenLite.killTweensOf(this.vid)
+
+            TweenLite.to(this.vid, 0.75, {
+
+                opacity: 0.4
+
+            })
         
-        this.tl.kill()
+            this.tl.play().timeScale(1)
 
-        TweenLite.killTweensOf(this.vid)
+            } else if (!this.state.viewingProject) {
 
-        TweenLite.to(this.vid, 0.75, {
+            this.tl.kill()
 
-            opacity: 0.4
+            TweenLite.killTweensOf(this.vid)
 
-        })
-        
-        this.tl.play().timeScale(1)
+            TweenLite.to(this.vid, 0.75, {
 
-
-    }
-
-    revealCopyOut() {
-
-        this.tl.kill()
-
-        TweenLite.killTweensOf(this.vid)
-
-        TweenLite.to(this.vid, 0.75, {
-
-            delay: 0.5,
-            opacity: 1.0
+                delay: 0.5,
+                opacity: 1.0
             
-        })
+            })
 
-        this.tl.reverse().timeScale(1.5)
+            this.tl.reverse().timeScale(1.5)
 
-    }
+            }
 
-    transitionIn() {
-
-
-    }
-
-    transitionOut() {
-
-
-    }
-
-    componentWillEnter(callback) {
-
-        TweenLite.killTweensOf(this)
-
-        TweenLite.to(this, 0.15, {
-
-            onStart: () => {
-                this.transitionIn()
-                // console.log('called')
-            },
-
-            onComplete: callback
-
-        })
-
-    }
-
-    // componentDidUpdate(newProps, newState) {
-
-    //     this.project.style.transform = 'matrix(1.0, 0.0, 0.0, 1.0, ' + 0.0 + ', ' + -this.props.pos + ')'
-
-    // }
-
-    // componentDidEnter() {
-
-    //     this.transitionIn()
-
-    // }
-
-    componentWillLeave(callback) {
-
-        // TweenLite.killTweensOf(this)
-
-        TweenLite.to(this, 0.15, {
-
-            onStart: () => {
-                
-                // console.log('project called when it shouldnt?')
-
-                this.transitionOut()
-
-            },
-
-            onComplete: callback
-        
-        })
-
-    }
-
-    componentDidUpdate() {
-
-        this.updateLayout()
-        
-    }
-
-    updateLayout() {
-
-        // TweenLite.set(this.ltrBox2, {bottom: '0%'})
+        }
 
     }
 
@@ -204,8 +130,6 @@ export default class Project extends Component {
         return(
 
             <div className = "Project" ref = {(component) => {this.project = component}}>
-
-            {/* <div className = "ProjectContainer"> */}
 
             <div className = "ProjectNumb" ref = {(numb) => {this.projectNumb = numb}}><p>{'[ PROJECT : ' + this.projectCopy[this.props.project].number + ' ]'}</p>
             
@@ -245,17 +169,17 @@ export default class Project extends Component {
 
                 </div>
 
-                <div className = "ProjectVid" ref = {(video) => this.projectVid = video}>
+                <div className = "ProjectVid" ref = {(video) => this.projectVid = video} onMouseEnter = {()=> this.setState({viewingProject: true})} onMouseLeave = {()=> this.setState({viewingProject: false})}>
 
-                <svg ref = {(container) => this.letterBox = container} style = {{position: 'absolute', width: '100%', height: '20%', top: '0%', zIndex: '2'}}>
+                <svg ref = {(container) => this.letterBox = container} style = {{position: 'absolute', width: '100%', height: '20%', top: '0%', zIndex: '3'}}>
 
-                <rect className = "LetterBox1" ref = {(el) => this.ltrBox1 = el} width = {'100%'} height = {'100%'} style ={{position: 'absolute', fill: 'rgba(255, 255, 255, 1)'}}/>
+                <rect className = "LetterBox1" ref = {(el) => this.ltrBox1 = el} width = {'100%'} height = {'100%'} style ={{position: 'absolute', fill: 'rgba(255, 255, 255)', pointerEvents: 'none'}}/>
 
                 </svg>
 
-                <svg ref ={(container) => this.letterBox2 = container} style = {{position: 'absolute', width: '100%', height: '20%', bottom: '0%', zIndex: '2'}}>
+                <svg ref ={(container) => this.letterBox2 = container} style = {{position: 'absolute', width: '100%', height: '20%', bottom: '0%', zIndex: '3'}}>
 
-                    <rect className = "LetterBox2" ref = {(el) => this.ltrBox2 = el} width = {'100%'} height = {'100%'} style ={{position: 'absolute', fill: 'rgba(255, 255, 255, 1)'}}/>
+                    <rect className = "LetterBox2" ref = {(el) => this.ltrBox2 = el} width = {'100%'} height = {'100%'} style ={{position: 'absolute', fill: 'rgba(255, 255, 255)', pointerEvents: 'none'}}/>
 
                 </svg>
 
