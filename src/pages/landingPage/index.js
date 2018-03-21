@@ -65,7 +65,7 @@ export default class LandingPage extends Component {
 
     componentDidMount() {
 
-        const events = new Events(this)
+        // const events = new Events(this)
         
     }
 

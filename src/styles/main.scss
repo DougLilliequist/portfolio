@@ -30,6 +30,10 @@ html, body {
 
     height: 100%;
 
+    top: 0;
+
+    left: 0;
+
 }
 
 .WorldContainer {
@@ -50,7 +54,7 @@ html, body {
 
 .Loader {
 
-    position: fixed;
+    position: relative;
 
     width: 100%;
 

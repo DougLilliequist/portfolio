@@ -12,9 +12,9 @@ import {
     TimelineLite, TweenLite
 } from 'gsap'
 
-import Events from './events.js'
+import GlitchText from '../elements/glitchText.js'
 
-import InfoButton from './infoButton.js'
+import Events from './events.js'
 
 import eventEmitter from 'eventEmitter'
 
@@ -48,9 +48,9 @@ export default class Project extends Component {
 
     componentDidMount() {
 
-        this.events = new Events(this)
+        // this.events = new Events(this)
 
-        this.events.enable()
+        // this.events.enable()
 
         this.initAnim()
         
@@ -66,14 +66,22 @@ export default class Project extends Component {
 
 
         this.tl.fromTo(this.letterBox, 0.75, {ease: Power4.easeOut, scaleY: 0.0, transformOrigin: '0% top'}, {ease: Power4.easeOut, scaleY: 1.0, transformOrigin: '0% top'})
+        // this.tl.fromTo(this.ltrBox1, 0.75, {ease: Power4.easeOut, scaleY: 0.0, transformOrigin: '0% top'}, {ease: Power4.easeOut, scaleY: 1.0, transformOrigin: '0% top'})
         
         this.tl.fromTo(this.letterBox2, 0.75, {ease: Power4.easeOut, scaleY: 0.0, transformOrigin: '0% bottom'}, {ease: Power4.easeOut, scaleY: 1.0, transformOrigin: '0% bottom'}, "-=0.75")
+        // this.tl.fromTo(this.ltrBox2, 0.75, {ease: Power4.easeOut, scaleY: 0.0, transformOrigin: '0% bottom'}, {ease: Power4.easeOut, scaleY: 1.0, transformOrigin: '0% bottom'}, "-=0.75")
 
-        this.tl.staggerFromTo([this.projectNumb, this.title, this.link], 0.5, {opacity: 0.0, x: 15}, {opacity: 1.0, x: 0}, 0.15, "-=0.8")
+        this.tl.fromTo(this.title, 0.5, {opacity: 0.0, x: 0}, {opacity: 1.0, x: 0.0}, '-=0.7')
+        
+        this.tl.fromTo(this.projectNumb, 0.5, {opacity: 0.0, x: 15}, {opacity: 1.0, x: 0.0}, '-=0.5')
+        
+        this.tl.fromTo(this.link, 0.5, {opacity: 0.0, x: 15}, {opacity: 1.0, x: 0}, 0.15, "-=0.5")
 
-        this.tl.staggerFromTo([this.projectLine, this.linkLine], 0.35, {strokeDashoffset: 50}, {strokeDashoffset: 0.0}, 0.1, " -= 0.15")
+        this.tl.staggerFromTo([this.projectLine, this.linkLine], 0.8, {strokeDashoffset: 100}, {strokeDashoffset: 0.0}, 0.1, " += 0.15")
 
-        this.tl.staggerFromTo([this.desc, this.role, this.ctx, this.tech], 0.5, {opacity: 0.0, x: -15}, {opacity: 1.0, x: 0}, 0.15, "-=0.6")
+        this.tl.fromTo(this.desc, 0.5, {opacity: 0.0, x: -15}, {opacity: 1.0, x: 0}, '-=0.7')
+
+        this.tl.staggerFromTo([this.ctx, this.role, this.tech], 0.5, {opacity: 0.0, x: -15}, {opacity: 1.0, x: 0}, 0.15, "-=0.6")
 
 
     }
@@ -159,7 +167,9 @@ export default class Project extends Component {
 
             </div>
 
-                <div className = "Title" ref = {(title) => this.title = title}><h2>{this.projectCopy[this.props.project].title}</h2></div>
+                {/* <div className = "Title" ref = {(title) => this.title = title}><h2>{this.projectCopy[this.props.project].title}</h2></div> */}
+                
+                <div className = "Title" ref = {(title) => this.title = title}><h2><GlitchText text = {this.projectCopy[this.props.project].title} glitch = {this.state.viewingProject}/></h2></div>
                 
                 <div className = "Description" ref = {(desc) => this.desc = desc}><h5 style = {{margin: 0}}>{this.projectCopy[this.props.project].description}</h5></div>
                 

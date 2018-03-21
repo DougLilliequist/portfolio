@@ -32,10 +32,11 @@ export const projectCopy = {
         title: 'YOLO + WebGL',
         // description: 'An RnD project I collaborated on during my internship at B-Reel London, which uses detection data from YOLO to affect the content a WebGL experience in real time. ' +
         // 'The project uses custom software that I built with OpenFrameworks, which sends socket messages containing the detection data and screen space coordinates which was used for my teammember\'s tracking solution. With this, I was then able to animate lines that follows the detections.',
-        description: '( Project I collaborated on during my internship at B-Reel London )',
-        tech: 'WebGL(THREE.Js) / OpenFrameworks / YOLO / Node.js / sockets.io',
-        role: 'developer(OpenFrameWorks, assisting Front-End)',
-        context: 'RnD Project',
+        // description: '( Project I collaborated on during my internship at B-Reel London )',
+        description: '( RealTime animations based on detection data from YOLO )',
+        tech: 'WebGL(THREE.js) / OpenFrameworks / YOLO / Node.js / sockets.io',
+        role: 'developer(OpenFrameworks, assisting Front-End (added the drawing lines))',
+        context: 'RnD Project / Internship @ B-Reel London',
         link: 'no_link_available',
         vid: './src/media/intrnshpproj.mp4'
 

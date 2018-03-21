@@ -46,6 +46,32 @@
 
 }
 
+.ScrollBarContainer {
+
+    position: fixed;
+
+    top: 0%;
+
+    right: 0%;
+
+    width: 3px;
+
+    height: 100%;
+
+}
+
+.ScrollBarContainer .ScrollBar {
+
+    stroke: rgb(0, 0, 0);
+
+    stroke-width: 100%;
+
+    stroke-dasharray: 0;
+
+    stroke-dashoffset: -40;
+
+}
+
 .ProjectScroll {
 
     position: absolute;

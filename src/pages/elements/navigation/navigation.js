@@ -6,9 +6,7 @@ import {TweenLite} from 'gsap'
 
 import NavCircle from './navCircle/circle.js'
 
-import CuriousNavigation from './curiousNav.js'
-
-import ExitPrompt from './navCircle/exitPrompt.js'
+import ScrollBar from '../scrollBar.js'
 
 import eventEmitter from 'eventEmitter'
 
@@ -184,9 +182,11 @@ export default class Navigation extends Component {
 
                 <NavCircle ref = {(el) => {this.navCircle = el}} target = {this.mouse} active = {this.state.interacting}/>
 
-                <ExitPrompt />
+                <ScrollBar />
+
+                {/* <ExitPrompt /> */}
                 
-                <CuriousNavigation ref = {(el) => {this.curiousNav = el}} target = {this.mouse} size = {{x: this.cursorSize.x * 2, y: this.cursorSize.y * 2.0}} offSet = {this.offSet}/>
+                {/* <CuriousNavigation ref = {(el) => {this.curiousNav = el}} target = {this.mouse} size = {{x: this.cursorSize.x * 2, y: this.cursorSize.y * 2.0}} offSet = {this.offSet}/> */}
 
             </div>
    

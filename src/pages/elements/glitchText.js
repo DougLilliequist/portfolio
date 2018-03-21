@@ -24,7 +24,11 @@ export default class GlitchText extends Component {
 
     init() {
 
-        this.randomChars = '?[|!#%)_!@#!@~%)_%#@_%(/-'
+        this.randomChars = '[|!#%)_!@#!@~%)_%#@_%(/-'
+
+        this.randomChars += '&#9612'
+
+        this.randomChars += '&##9603'
 
     }
 
@@ -34,18 +38,22 @@ export default class GlitchText extends Component {
 
     }
 
-    //can use componentWillRecieveProps for killing animation tween
+    glitch() {
 
-    componentWillReceiveProps(newProp) {
 
-        // const willGlitch = this.props.text !== newProp.text && this.props.glitch === true
-        // const willGlitch = this.props.text !== newProp.text
+    }
 
-        // if(willGlitch) {
+    componentDidUpdate(prevProps, prevState) {
 
-            this.setNewText(newProp.text)
+        if(this.props.glitch !== prevProps.glitch) {
 
-        // }
+            if(this.props.glitch) {
+
+                this.glitch()
+
+            }
+
+        }
 
     }
 
@@ -113,7 +121,8 @@ export default class GlitchText extends Component {
 
     render() {
 
-        return <div className = "GlitchText" ref = {(text) => this.text = text}>{this.outPutText}</div>
+        // return <div className = "GlitchText" ref = {(text) => this.text = text}>{this.outPutText}</div>
+        return <div className = "GlitchText" ref = {(text) => this.text = text}>{this.props.text}</div>
 
     }
 
