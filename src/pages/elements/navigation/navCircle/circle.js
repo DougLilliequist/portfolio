@@ -225,7 +225,7 @@ export default class NavCircle extends Component {
 
         return(
 
-            <div ref = {(container) => {this.container = container}} style = {{position: 'absolute', width: '200px', height: '200px', pointerEvents: 'none'}}>
+            <div ref = {(container) => {this.container = container}} style = {{position: 'absolute', width: '50px', height: '50px', pointerEvents: 'none'}}>
 
             <svg style = {{width: '100%', height: '100%'}}>
                     

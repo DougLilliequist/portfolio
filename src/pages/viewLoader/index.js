@@ -60,18 +60,6 @@ export default class ViewLoader extends Component {
 
     }
 
-    componentDidUpdate() {
-
-        // console.log(this.state.index)
-
-    }
-
-    componentDidMount() {
-
-        // this.viewIndicator.updateText('home')
-
-    }
-
     onScroll(e) {
 
         let scrollMax = ReactDOM.findDOMNode(this.currentView).getBoundingClientRect().height * 4.0

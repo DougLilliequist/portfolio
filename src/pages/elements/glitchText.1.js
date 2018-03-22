@@ -40,20 +40,7 @@ export default class GlitchText extends Component {
 
         this.animCounterLimit = this.targetTextLen
 
-        // this.randomChars = '[|!#%)_!@#!@~%)_%#@_%(/-'
-        this.randomChars = '/|-[|))(/-]]|^'
-
-        this.randomChars += String.fromCharCode(9604)
-        
-        this.randomChars += String.fromCharCode(9612)
-        
-        this.randomChars += String.fromCharCode(9602)
-        
-        this.randomChars += String.fromCharCode(9609)
-        
-        this.randomChars += String.fromCharCode(9626)
-
-        this.randomChars += String.fromCharCode(9614)
+        this.randomChars = '[|!#%)_!@#!@~%)_%#@_%(/-'
 
         this.delay = this.props.start
 
@@ -64,6 +51,8 @@ export default class GlitchText extends Component {
     }
 
     init() {
+
+        console.log('starting glitch')
 
         this.setState({
             
@@ -97,6 +86,8 @@ export default class GlitchText extends Component {
 
     scramble() {
 
+        console.log('scrambling')
+
         if(this.state.scrambleCounter < this.targetTextLen) {
 
             this.outPutText = this.getRandomChar().slice(0, this.state.scrambleCounter)
@@ -121,9 +112,10 @@ export default class GlitchText extends Component {
 
         this.setState((prevState) => ({
 
-            animProgress: this.animCounterLimit - this.state.textCounter
+            animProgress: this.animCounterLimit - prevState.animProgress
 
         }), () => {
+
 
             if(this.state.animProgress <= this.targetTextLen) {
 
@@ -135,13 +127,13 @@ export default class GlitchText extends Component {
 
                 this.outPutText = str
 
-            } else if (this.state.textCounter + 2 < this.targetTextLen) {
-
-                let len = Math.min(this.state.textCounter + 2, 9)
+            } else if(this.state.textCounter + 2 > this.targetTextLen) {
+                
+                let len = Math.min(this.targetTextLen + 2, 9)
 
                 this.outPutText = this.getRandomChar().slice(0, len)
-
-            } else {
+                
+            }  else {
 
                 this.outPutText = this.getRandomChar().slice(0, 9)
 
@@ -161,6 +153,10 @@ export default class GlitchText extends Component {
                 this.animTime = TweenLite.delayedCall(this.animSpeed, this.animate)
 
             })
+
+        } else {
+
+            this.outPutText = this.targetText
 
         }
 
@@ -182,58 +178,46 @@ export default class GlitchText extends Component {
 
     getRandomChar() {
 
-        let str = ''
+        let str = ' '
 
-        if(this.targetTextLen > 10) {
+        // if(this.targetTextLen > 20) {
 
-            for(let i = 0; i < this.targetTextLen; i++) {
+        //     for(let i = 0; i < this.targetTextLen; i++) {
+
+        //         str += this.randomChars[Math.floor(Math.random() * this.randomChars.length)]
+
+        //     }
+
+        //     str.slice(0, 20)
+
+        //     for(let j = 0; j < this.targetTextLen; j++) {
+
+        //         str += this.this.randomChars[Math.floor(Math.random() * this.randomChars.length)]
+
+        //     }
+
+        //     str.slice(0, this.targetTextLen - 20)
+
+        // } else {
+
+            for(let i = 0; i < this.targetTextLen; i ++) {
 
                 str += this.randomChars[Math.floor(Math.random() * this.randomChars.length)]
-
-                str.slice(0, 10)
-
+    
             }
-
-            for(let j = 0; j < this.targetTextLen - 10; j++) {
-
-                str += this.randomChars[Math.floor(Math.random() * this.randomChars.length)]
-
-                str.slice(0, this.targetTextLen - 10)
-
-            }
-
-        } else {
-
-        for(let i = 0; i < this.targetTextLen; i ++) {
-
-            str += this.randomChars[Math.floor(Math.random() * this.randomChars.length)]
 
             str.slice(0, this.targetTextLen)
 
-        }
-
-    }
-
-        return str
+        // }
         
+        // return str.slice(0, this.targetTextLen)
+        return str
 
     }
-
-    // shouldComponentUpdate(nextProps, nextState) {
-
-    //     // const counterChanged = this.state.textCounter !== newState.textCounter && nextState.textCounter > this.state.textCounter
-
-    //     // const scramblerChanged = this.state.scrambleCounter !== newState.scrambleCounter
-
-    //     // const progressChanged = this.state.animProgress !== newState.animProgress
-
-    //     // return counterChanged
-
-    //     // return (scramblerChanged || counterChanged || progressChanged)
-
-    // }
 
     componentDidUpdate(prevProps, prevState) {
+
+        console.log(this.state)
 
         if(this.props.glitch !== prevProps.glitch) {
 
@@ -249,15 +233,25 @@ export default class GlitchText extends Component {
 
         }
 
-        if(this.state.textCounter !== prevState.textCounter) {
+        // if(this.state.scrambling !== prevState.scrambling) {
 
-            if(this.state.textCounter >= this.animCounterLimit) {
+        //     if(this.state.scrambling === false) {
 
-                this.outPutText = this.targetText
+        //         this.revealText()
 
-            }
+        //     }
 
-        }
+        // }
+
+        // if(this.state.progress !== prevState.progress) {
+
+        //     if(this.state.progress >= this.charCount) {
+
+        //         emitter.off('update', this.update.bind(this))
+
+        //     }
+
+        // }
 
     }
 

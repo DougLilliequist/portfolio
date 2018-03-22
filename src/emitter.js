@@ -2,8 +2,6 @@ import ee from 'event-emitter'
 
 import {TweenMax} from 'gsap'
 
-import Hammer from 'hammerjs'
-
 class EventEmitter {
 
     constructor() {
@@ -11,8 +9,6 @@ class EventEmitter {
         this.initEmitter()
 
         this.initEvents()
-
-        this.initInteractionManager()
 
     }
 
@@ -35,55 +31,6 @@ class EventEmitter {
         window.addEventListener('wheel', this.onScroll.bind(this), false)
 
         window.addEventListener('resize', this.onResize.bind(this))
-
-    }
-
-    initInteractionManager() {
-
-        const interActionManager = new Hammer.Manager(document.body)
-
-        interActionManager.options.domEvents = true
-
-        const press = new Hammer.Press({
-
-            time: 150
-
-        })
-
-        const pan = new Hammer.Pan({
-
-            direction: Hammer.DIRECTION_ALL,
-            threshold: 10
-
-        })
-
-        interActionManager.add(press)
-
-        interActionManager.add(pan)
-
-        interActionManager.on('press', (e) => {
-
-            this.emitter.emit('press', e)
-
-        })
-
-        interActionManager.on('panstart', (e) => {
-
-            this.emitter.emit('panStart', e)
-
-        })
-
-        interActionManager.on('panmove', (e) => {
-
-            this.emitter.emit('panMove', e)
-
-        })
-
-        interActionManager.on('panend', (e) => {
-
-            this.emitter.emit('panEnd', e)
-
-        })
 
     }
 
@@ -112,10 +59,6 @@ class EventEmitter {
     }
 
     onScroll(e) {
-
-        // e.preventDefault()
-
-        // e.stopPropagation()
 
         this.emitter.emit('scrolling', e)
 

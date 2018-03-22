@@ -6,6 +6,8 @@ import ReactDOM from 'react-dom'
 
 import {TweenLite, TimelineLite} from 'gsap'
 
+import ContactLink from './contactLink.js'
+
 import ReactRevealText from 'react-reveal-text'
 
 export default class Contact extends React.Component {
@@ -16,13 +18,17 @@ export default class Contact extends React.Component {
 
         this.state = {
 
-            hovered: false
+            hovered: false,
+
+            linkHovered: false
 
         }
 
         this.onHover = this.onHover.bind(this)
 
         this.onLeave = this.onLeave.bind(this)
+
+        // this.onLinkHover = this.onLinkHover.bind(this)
 
     }
 
@@ -38,7 +44,7 @@ export default class Contact extends React.Component {
 
         this.tl.staggerTo(this.container.getElementsByClassName('Link'), 0.35, {
 
-            opacity: 1.0
+            opacity: 0.7
 
         }, -.15, "-= 0.15")
 
@@ -110,9 +116,13 @@ export default class Contact extends React.Component {
                 </svg>
 
             <div className = "ContactContainer" ref = {(container) => this.container = container}>
-                <div className = "LinkedIn"><a className = "Link" href = "https://www.linkedin.com/in/douglas-lilliequist-a2798b110/" target = "_blank">linkedin</a></div>
-                <div className = "LinkedIn"><a className = "Link" href = "https://twitter.com/DougLilliequist" target = "_blank">twitter</a></div>
-                <div className = "Email"><a className = "Link" href = "mailto:douglas.lilliequist@hyperisland.se">mail</a></div>
+
+                <ContactLink url = {'https://www.linkedin.com/in/douglas-lilliequist-a2798b110/'} enable = {this.state.hovered} channel = {'linkedIn'} />
+                <ContactLink url = {'https://twitter.com/DougLilliequist'} enable = {this.state.hovered} channel = 'twitter' />
+                <ContactLink url = {'mailto:douglas.lilliequist@hyperisland.se'} enable = {this.state.hovered} channel = 'mail' />
+                {/* <div className = "LinkedIn" onMouseEnter = {this.onLinkHover}><a className = "Link" href = "https://www.linkedin.com/in/douglas-lilliequist-a2798b110/" target = "_blank">linkedin</a></div> */}
+                {/* <div className = "Twitter" onMouseEnter = {this.onLinkHover}><a className = "Link" href = "https://twitter.com/DougLilliequist" target = "_blank">twitter</a></div> */}
+                {/* <div className = "Email" onMouseEnter = {this.onLinkHover}><a className = "Link" href = "mailto:douglas.lilliequist@hyperisland.se">mail</a></div> */}
             </div>
             
             </div>

@@ -12,6 +12,8 @@ import Events from './events.js'
 
 import { TweenLite } from 'gsap'
 
+import GlitchText from '../elements/glitchText.js'
+
 import eventEmitter from 'eventEmitter'
 
 const emitter = eventEmitter.emitter
@@ -28,7 +30,7 @@ export default class LandingPage extends Component {
 
         this.state = {
 
-            revealCopy: true,
+            revealCopy: false,
             onLandingPage: true
 
         }
@@ -65,83 +67,85 @@ export default class LandingPage extends Component {
 
     componentDidMount() {
 
+        this.setState({revealCopy: true})
+
         // const events = new Events(this)
         
     }
 
 
-    transitionIn() {
+    // transitionIn() {
 
-        this.setState({onLandingPage: true})
+    //     this.setState({onLandingPage: true})
 
-    }
+    // }
 
-    transitionOut() {
+    // transitionOut() {
 
-        this.setState({onLandingPage: false})
+    //     this.setState({onLandingPage: false})
 
-    }
+    // }
 
-    componentWillLeave(callback) {
+    // componentWillLeave(callback) {
 
-        TweenLite.killTweensOf(this)
+    //     TweenLite.killTweensOf(this)
 
-        TweenLite.to(this, 0.15, {
+    //     TweenLite.to(this, 0.15, {
 
-            opacity: 0.0,
+    //         opacity: 0.0,
 
-            // onStart: () => this.transitionOut(),
+    //         // onStart: () => this.transitionOut(),
 
-            onComplete: callback
+    //         onComplete: callback
         
-        })
+    //     })
 
-    }
+    // }
 
-    shouldComponentUpdate(newProps, newState) {
+    // shouldComponentUpdate(newProps, newState) {
 
-        if(this.state.onLandingPage !== newState.onLandingPage) {
+    //     if(this.state.onLandingPage !== newState.onLandingPage) {
 
-            return true
+    //         return true
 
-        } else {
+    //     } else {
 
-            return false
+    //         return false
 
-        }
+    //     }
 
-    }
+    // }
 
-    componentDidUpdate(prevProps, prevState) {
+    // componentDidUpdate(prevProps, prevState) {
 
-        if(this.state.onLandingPage !== prevState.onLandingPage) {
+    //     if(this.state.onLandingPage !== prevState.onLandingPage) {
 
-            if(this.state.onLandingPage) {
+    //         if(this.state.onLandingPage) {
 
-                emitter.emit('reveal')
+    //             emitter.emit('reveal')
 
-                TweenLite.to(this, 0.5, {
+    //             TweenLite.to(this, 0.5, {
 
-                    opacity: 1.0
+    //                 opacity: 1.0
 
-                })
+    //             })
 
-            } else {
+    //         } else {
 
-                emitter.emit('hide')
+    //             emitter.emit('hide')
 
 
-                TweenLite.to(this, 0.5, {
+    //             TweenLite.to(this, 0.5, {
 
-                    opacity: 0.0
+    //                 opacity: 0.0
 
-                })
+    //             })
 
-            }
+    //         }
 
-        }
+    //     }
 
-    }
+    // }
 
     // componentWillUnmount() {
 
@@ -159,19 +163,17 @@ export default class LandingPage extends Component {
                             
                 <div className = "Title">
 
-                <h1><ReactRevealText show = {this.state.revealCopy} text = {this.copy.title}/></h1>
+                <h1><GlitchText text = {this.copy.title} glitch = {this.state.revealCopy} delay = {0.5} speed = {0.015} /></h1>
+
+                {/* <h1><ReactRevealText show = {this.state.revealCopy} text = {this.copy.title}/></h1>*/}
                 </div>
                 
                 <div className = "Intro">
 
-                <ReactRevealText show = {this.state.revealCopy} text = {this.copy.intro}/>
+                <GlitchText text = {this.copy.intro} glitch = {this.state.revealCopy} delay = {0.8} speed = {0.015}/>
+
+                {/* <ReactRevealText show = {this.state.revealCopy} text = {this.copy.intro}/> */}
                 
-                </div>
-
-                <div className = "CTA">
-
-                <ReactRevealText show = {this.state.revealCopy} text = {'[ drag + hold ]'}/>
-
                 </div>
                             
             </div>

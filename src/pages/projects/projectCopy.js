@@ -36,8 +36,8 @@ export const projectCopy = {
         description: '( RealTime animations based on detection data from YOLO )',
         tech: 'WebGL(THREE.js) / OpenFrameworks / YOLO / Node.js / sockets.io',
         role: 'developer(OpenFrameworks, assisting Front-End (added the drawing lines))',
-        context: 'RnD Project / Internship @ B-Reel London',
-        link: 'no_link_available',
+        context: 'R&D Project / Internship @ B-Reel London',
+        link: ' ',
         vid: './src/media/intrnshpproj.mp4'
 
     },
@@ -50,7 +50,7 @@ export const projectCopy = {
         tech: 'Arduino / Processing / Resolume',
         role: 'developer, designer',
         context: 'Team Project, Hyper Island',
-        link: 'no_link_available',
+        link: ' ',
         vid: './src/media/gdnghtswthrtweb.mp4'
 
     }

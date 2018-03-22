@@ -71,7 +71,7 @@ export default class Project extends Component {
         this.tl.fromTo(this.letterBox2, 0.75, {ease: Power4.easeOut, scaleY: 0.0, transformOrigin: '0% bottom'}, {ease: Power4.easeOut, scaleY: 1.0, transformOrigin: '0% bottom'}, "-=0.75")
         // this.tl.fromTo(this.ltrBox2, 0.75, {ease: Power4.easeOut, scaleY: 0.0, transformOrigin: '0% bottom'}, {ease: Power4.easeOut, scaleY: 1.0, transformOrigin: '0% bottom'}, "-=0.75")
 
-        this.tl.fromTo(this.title, 0.5, {opacity: 0.0, x: 0}, {opacity: 1.0, x: 0.0}, '-=0.7')
+        this.tl.fromTo(this.title, 0.8, {opacity: 0.0, y: -10}, {opacity: 1.0, x: 0.0}, '-=0.7')
         
         this.tl.fromTo(this.projectNumb, 0.5, {opacity: 0.0, x: 15}, {opacity: 1.0, x: 0.0}, '-=0.5')
         
@@ -103,6 +103,8 @@ export default class Project extends Component {
         })
 
     }
+
+
 
     componentDidUpdate(prevProps, prevState) {
 
@@ -169,25 +171,31 @@ export default class Project extends Component {
 
                 {/* <div className = "Title" ref = {(title) => this.title = title}><h2>{this.projectCopy[this.props.project].title}</h2></div> */}
                 
-                <div className = "Title" ref = {(title) => this.title = title}><h2><GlitchText text = {this.projectCopy[this.props.project].title} glitch = {this.state.viewingProject}/></h2></div>
+                <div className = "Title" ref = {(title) => this.title = title}><h2><GlitchText text = {this.projectCopy[this.props.project].title} glitch = {this.state.viewingProject} start = {0.3} speed = {0.015}/></h2></div>
                 
                 <div className = "Description" ref = {(desc) => this.desc = desc}><h5 style = {{margin: 0}}>{this.projectCopy[this.props.project].description}</h5></div>
                 
                 <div className = "ProjectInfo" ref = {(container) => this.projectInfo = container}>
 
-                <div className = "Context" ref = {(el) => this.ctx = el}><b style = {{fontStyle: 'normal'}}>context: </b>{this.projectCopy[this.props.project].context}<b style = {{fontStyle: 'normal'}}></b></div>
+                <div className = "Context" ref = {(el) => this.ctx = el}><b style = {{fontStyle: 'normal'}}>Context: </b>{this.projectCopy[this.props.project].context}<b style = {{fontStyle: 'normal'}}></b></div>
                 
-                <div className = "Role" ref = {(el) => this.role = el}><b style = {{fontStyle: 'normal'}}>role: </b>{this.projectCopy[this.props.project].role}<b style = {{fontStyle: 'normal'}}></b></div>                
+                <div className = "Role" ref = {(el) => this.role = el}><b style = {{fontStyle: 'normal'}}>Role: </b>{this.projectCopy[this.props.project].role}<b style = {{fontStyle: 'normal'}}></b></div>                
                 
-                <div className = "Tech" ref = {(el) => this.tech = el}><b style = {{fontStyle: 'normal'}}>tech: </b>{this.projectCopy[this.props.project].tech}<b style = {{fontStyle: 'normal'}}></b></div>
+                <div className = "Tech" ref = {(el) => this.tech = el}><b style = {{fontStyle: 'normal'}}>Tech: </b>{this.projectCopy[this.props.project].tech}<b style = {{fontStyle: 'normal'}}></b></div>
 
                 </div>
 
                 </div>
 
-                <div className = "ProjectVid" ref = {(video) => this.projectVid = video} onMouseOver = {()=> this.setState({viewingProject: true})} onMouseLeave = {()=> this.setState({viewingProject: false})}>
+                <div className = "ProjectVid" ref = {(video) => this.projectVid = video} onMouseEnter = {()=> this.setState({viewingProject: true})} onMouseLeave = {()=> this.setState({viewingProject: false})}>
 
-                           <div className = "ProjectLink" ref = {(el) => this.link = el} onMouseEnter = {this.hintClick} onMouseLeave = {this.hintClick}><a className = "Link" href = {this.projectCopy[this.props.project].link} target = "_blank"><p ref = {(text) => this.linkText = text}>[ VIEW PROJECT ]</p></a>
+                           <div className = "ProjectLink" ref = {(el) => this.link = el} onMouseEnter = {this.hintClick} onMouseLeave = {this.hintClick}>
+                           
+                           {this.projectCopy[this.props.project].link === ' ' ? <div className = "Link"><p ref = {(text) => this.linkText = text}>[there_is_no_link]</p></div> : 
+                           
+                           <a className = "Link" href = {this.projectCopy[this.props.project].link} target = "_blank"><p ref = {(text) => this.linkText = text}>[ VIEW PROJECT ]</p></a>
+
+                           }
             
             <svg className = "LineContainer" ref = {(container) => this.titleLineContainer = container} style = {{position: 'relative', width: '2.5vw', height: '2px'}}>
 
