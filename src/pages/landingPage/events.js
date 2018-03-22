@@ -33,9 +33,9 @@ export default class Events extends Component {
 
         // console.log(this.parent.container.getBoundingClientRect())
 
-        // emitter.on('scrolling', this.onScroll.bind(this))
+        emitter.on('scrolling', this.onScroll.bind(this))
 
-        // emitter.on('update', this.onUpdate.bind(this))
+        emitter.on('update', this.onUpdate.bind(this))
 
     }
 

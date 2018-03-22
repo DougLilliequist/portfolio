@@ -44,7 +44,7 @@ export default class Contact extends React.Component {
 
         this.tl.staggerTo(this.container.getElementsByClassName('Link'), 0.35, {
 
-            opacity: 0.7
+            opacity: 0.4
 
         }, -.15, "-= 0.15")
 

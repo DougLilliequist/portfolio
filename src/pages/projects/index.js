@@ -173,7 +173,15 @@ export default class Project extends Component {
                 
                 <div className = "Title" ref = {(title) => this.title = title}><h2><GlitchText text = {this.projectCopy[this.props.project].title} glitch = {this.state.viewingProject} start = {0.3} speed = {0.015}/></h2></div>
                 
-                <div className = "Description" ref = {(desc) => this.desc = desc}><h5 style = {{margin: 0}}>{this.projectCopy[this.props.project].description}</h5></div>
+                <div className = "Description" ref = {(desc) => this.desc = desc}><p style = {{margin: 0}}>{this.projectCopy[this.props.project].description}</p>
+                
+                <svg className = "LineContainer" ref = {(container) => this.titleLineContainer = container} style = {{position: 'relative', width: '2.5vw', height: '2px'}}>
+
+<line className = "Line" ref = {(container) => this.linkLine = container} x1 = {0} y1 = {0} x2 = {100} y2 = {0} /> 
+
+</svg>
+                
+                </div>
                 
                 <div className = "ProjectInfo" ref = {(container) => this.projectInfo = container}>
 
@@ -197,11 +205,11 @@ export default class Project extends Component {
 
                            }
             
-            <svg className = "LineContainer" ref = {(container) => this.titleLineContainer = container} style = {{position: 'relative', width: '2.5vw', height: '2px'}}>
+            {/* <svg className = "LineContainer" ref = {(container) => this.titleLineContainer = container} style = {{position: 'relative', width: '2.5vw', height: '2px'}}>
 
                 <line className = "Line" ref = {(container) => this.linkLine = container} x1 = {0} y1 = {0} x2 = {100} y2 = {0} /> 
 
-            </svg>
+            </svg> */}
         
         </div>
 

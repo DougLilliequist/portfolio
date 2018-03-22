@@ -100,8 +100,8 @@
 
 .Project .Description {
     
-    font-family: Arial;
-    font-weight: 300;
+    // font-family: Arial;
+    // font-weight: 300;
     font-size: -webkit-calc(12px + (17.25 - 12)*(100vw - 900px) / (1440 - 900));
     font-size: calc(12px + (17.25 - 12)*(100vw - 900px) / (1440 - 900));
     letter-spacing: 0.05em;
@@ -109,7 +109,12 @@
     position: absolute;
     right: 15%;
     bottom: 7.5%;
-    width: 33%;
+    // width: 33%;
+    width: fit-content;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-end;
+    justify-content: space-between;
     will-change: opacity;
 
 }
@@ -226,6 +231,10 @@
 }
 
 .ProjectLink .Link {
+
+    font-family: Arial;
+
+    font-weight: 300;
 
     font-size: -webkit-calc(10px + (15 - 10)*(100vw - 900px) / (1440 - 900));
     

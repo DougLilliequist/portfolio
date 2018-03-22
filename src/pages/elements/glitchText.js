@@ -41,7 +41,7 @@ export default class GlitchText extends Component {
         this.animCounterLimit = this.targetTextLen
 
         // this.randomChars = '[|!#%)_!@#!@~%)_%#@_%(/-'
-        this.randomChars = '/|-[|))(/-]]|^'
+        this.randomChars = 'X/|-1[|1X)0)(0/-]1]X|^'
 
         this.randomChars += String.fromCharCode(9604)
         

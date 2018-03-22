@@ -216,9 +216,13 @@
 
 .Link {
 
-    font-size: -webkit-calc(12px + (18 - 12)*(100vw - 900px) / (1440 - 900));
+    font-family: Arial;
+
+    font-weight: 300;
+
+    font-size: -webkit-calc(12px + (15 - 12)*(100vw - 900px) / (1440 - 900));
     
-    font-size: calc(12px + (18 - 12)*(100vw - 900px) / (1440 - 900));
+    font-size: calc(12px + (15 - 12)*(100vw - 900px) / (1440 - 900));
 
     color: rgb(0, 0, 0);
 

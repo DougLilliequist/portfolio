@@ -38,7 +38,7 @@ html, body {
 
 .WorldContainer {
 
-    position: fixed;
+    position: absolute;
 
     width: 100%;
 
@@ -47,6 +47,8 @@ html, body {
     top: 0;
 
     left: 0;
+
+    z-index: 1;
 
     // overflow: hidden;
 

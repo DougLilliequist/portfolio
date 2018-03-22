@@ -42,13 +42,13 @@ export default class Main extends Component {
 
     }
 
-    componentDidMount() {
+    // componentDidMount() {
 
-        // const world = new World3D()
+    //     const world = new World3D()
 
-        // ReactDOM.render(<World3D />, this.worldContainer)
+    //     ReactDOM.render(<World3D />, this.worldContainer)
 
-    }
+    // }
 
     render() {
 

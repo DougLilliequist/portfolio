@@ -14,6 +14,8 @@ import { TweenLite } from 'gsap'
 
 import GlitchText from '../elements/glitchText.js'
 
+import World3D from '../../3d/world3d.js'
+
 import eventEmitter from 'eventEmitter'
 
 const emitter = eventEmitter.emitter
@@ -66,6 +68,10 @@ export default class LandingPage extends Component {
     // }
 
     componentDidMount() {
+
+        const world = new World3D()
+
+        ReactDOM.render(<World3D />, this.worldContainer)
 
         this.setState({revealCopy: true})
 
@@ -175,6 +181,8 @@ export default class LandingPage extends Component {
                 {/* <ReactRevealText show = {this.state.revealCopy} text = {this.copy.intro}/> */}
                 
                 </div>
+
+                    <div className = "WorldContainer" ref = {(container) => this.worldContainer = container}/>
                             
             </div>
 

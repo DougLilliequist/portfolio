@@ -42,7 +42,7 @@ export default class ContactLink extends Component {
 
             ease: Power4.easeOut,
 
-            opacity: this.state.hovered ? 1.0 : 0.7
+            opacity: this.state.hovered ? 1.0 : 0.4
 
         })
 
