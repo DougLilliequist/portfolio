@@ -12,8 +12,6 @@ import * as THREE from 'three'
 
 import DOLI from './doli/index.js'
 
-import NavObjs from './navObjects/index.js'
-
 import RenderTarget from 'renderTarget'
 
 import renderer from 'renderer'
