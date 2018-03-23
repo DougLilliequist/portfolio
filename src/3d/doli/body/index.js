@@ -2,12 +2,6 @@
 
 import * as THREE from 'three'
 
-import videoTexture from './textures/vidTexture.js'
-
-// import ProjectQuad from './projectQuad/index.js'
-
-import Mesh from './projectQuad/mesh.js'
-
 import {
     config
 } from '../config.js'
@@ -62,22 +56,6 @@ export default class Body extends THREE.Object3D {
 
         const forwardVec = new Float32Array(amnt * 3)
 
-        // let projectModeW = config.particleAmntX
-
-        // let projectModeH = config.particleAmntY
-
-        let projectModeW = config.particleAmntX * 1.25
-
-        let projectModeH = config.particleAmntY * 0.75
-
-        let uvScaleConstX = 1 / projectModeW
-        
-        let uvScaleConstY = 1 / projectModeH
-
-        const uvScale = new Float32Array(amnt * 2)
-
-        const uvOffset = new Float32Array(amnt * 2)
-
         for (let i = 0; i < translations.length; i++) {
 
             let i3 = i * 3
@@ -126,31 +104,6 @@ export default class Body extends THREE.Object3D {
 
         }
 
-        let uvIterator = 0
-
-        //need to rework the loop that shapes the project mode
-        //right now, this iteration is VERY confusing
-
-        for(let i = 0; i < projectModeW; i++) {
-
-            for(let y = 0; y < projectModeH; y++) {
-
-                let i2 = uvIterator * 2
-
-                uvScale[i2 + 0] = uvScaleConstX
-
-                uvScale[i2 + 1] = uvScaleConstY
-
-                uvOffset[i2 + 0] = i * uvScaleConstX
-
-                uvOffset[i2 + 1] = y * uvScaleConstY
-
-                uvIterator++
-
-            }
-
-        }
-
 
         this.geo.addAttribute('translation', new THREE.InstancedBufferAttribute(translations, 3, 1))
 
@@ -159,10 +112,6 @@ export default class Body extends THREE.Object3D {
         this.geo.addAttribute('scale', new THREE.InstancedBufferAttribute(scales, 3, 1))
 
         this.geo.addAttribute('forward', new THREE.InstancedBufferAttribute(forwardVec, 3, 1))
-
-        this.geo.addAttribute('uvScale', new THREE.InstancedBufferAttribute(uvScale, 2, 1))
-        
-        this.geo.addAttribute('uvOffSet', new THREE.InstancedBufferAttribute(uvOffset, 2, 1))
 
         this.geo.setIndex(baseGeo.index)
 
@@ -179,34 +128,9 @@ export default class Body extends THREE.Object3D {
             w: config.particleAmntX,
             
             h: config.particleAmntY
-            // w: config.particleAmntX * 1.25,
-            
-            // h: config.particleAmntY * 0.75
 
         }
         
-
-        // this.srces = [] //make this to an object and instead refer to project name when applying texture
-        // this.srces[0] = './src/media/gdnghtswthrtweb.mp4'
-        // this.srces[1] = './src/media/tbntproj.mp4'
-        // this.srces[2] = './src/media/tbntproj.mp4'
-        // this.srces[3] = './src/media/intrnshpproj.mp4'
-        // this.srces[4] = './src/media/gdnghtswthrtweb.mp4'
-
-        // this.textures = []
-        // this.textures[0] = videoTexture.get(this.srces[0], texRes)
-        // this.textures[1] = videoTexture.get(this.srces[1], texRes)
-        // this.textures[2] = videoTexture.get(this.srces[2], texRes)
-        // this.textures[3] = videoTexture.get(this.srces[3], texRes)
-        // this.textures[4] = videoTexture.get(this.srces[4], texRes)
-
-        // console.log(this.textures)
-
-        // this.img = new THREE.TextureLoader().load('./src/3d/doli/body/testImg/test.jpeg')
-
-        // this.img2 = new THREE.TextureLoader().load('./src/3d/doli/body/testImg/test2.jpg')
-
-        // this.vidTexture = new THREE.VideoTexture()
 
         this.mat = new THREE.RawShaderMaterial({
 
@@ -348,55 +272,9 @@ export default class Body extends THREE.Object3D {
 
     }
 
-    // initProjectQuad() {
-
-    //     // this.projectQuadFactory = new ProjectQuad()
-
-    //     this.projectQuad = new Mesh()
-
-    //     this.projectQuad.visible = false
-
-    //     this.add(this.projectQuad)
-
-
-    // }
-
     initEvents() {
 
-        // emitter.on('projectChanged', this.updateTexture.bind(this))
-
-        // emitter.on('projectHovered', this.onHover.bind(this))
-
-        emitter.on('reveal', this.onReveal.bind(this))
-
-        emitter.on('hide', this.onHide.bind(this))
-
-    }
-
-    onReveal() {
-
-        console.log('revealing')
-
-        TweenLite.killTweensOf(this)
-
-        TweenLite.to(this.mesh.material.uniforms['alpha'], 0.5, {
-
-            value: 1.0
-
-        })
-
-
-    }
-
-    onHide() {
-
-        TweenLite.killTweensOf(this)
-
-        TweenLite.to(this.mesh.material.uniforms['alpha'], 0.5, {
-
-            value: 0.0
-
-        })
+        
 
     }
 

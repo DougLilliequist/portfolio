@@ -23,6 +23,6 @@ renderer.domElement.style.top = '0%'
 
 renderer.domElement.style.left = '0%'
 
-window.renderer = renderer
+// window.renderer = renderer
 
 export default renderer

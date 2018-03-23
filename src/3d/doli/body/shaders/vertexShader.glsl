@@ -6,8 +6,6 @@ attribute vec3 normal;
 attribute vec3 forward;
 
 attribute vec2 uv;
-attribute vec2 uvScale;
-attribute vec2 uvOffSet;
 
 uniform mat4 projectionMatrix;
 uniform mat4 modelViewMatrix;
@@ -185,8 +183,6 @@ void main() {
     gl_Position = projectionMatrix * modelViewMatrix * finalPos;
     
     vModelViewMatrix = modelViewMatrix;
-
-    vUv = uv * uvScale + uvOffSet;
 
     vViewPosition = (modelViewMatrix * vec4(pos, 1.0)).xyz;
 

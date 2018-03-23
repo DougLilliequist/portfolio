@@ -4,6 +4,10 @@ import * as THREE from 'three'
 
 import Pass from 'renderPass'
 
+import RenderTarget from 'renderTarget'
+
+import OutlinePass from './outline.js'
+
 import BloomPass from './bloom3.js'
 
 import BlurPass from './blur.js'
@@ -57,6 +61,14 @@ export default class FinalRender extends Pass {
 
         }
 
+        this.renderQuad.material.uniforms.fxaa = {
+
+            type: 't',
+
+            value: null
+
+        }
+
         this.renderQuad.material.uniforms.lerp = {
 
             type: 'f',
@@ -95,11 +107,15 @@ export default class FinalRender extends Pass {
 
     }
 
-    initPasses(width, height, rtt) {
+    initPasses(width, height) {
 
-        this.bloomPass = new BloomPass(width, height)
+        this.rtt = new RenderTarget(width, height)
 
-        this.blurPass = new BlurPass(width, height)
+        this.outlinePass = new OutlinePass(width, height)
+
+        // this.bloomPass = new BloomPass(width, height)
+
+        // this.blurPass = new BlurPass(width, height)
 
         this.fxaaPass = new FxaaPass(width, height)
         
@@ -129,30 +145,31 @@ export default class FinalRender extends Pass {
 
     //Do I need to explicitly clear the renderer here as well?
 
-    render(rtt) {
+    render(args = {}) {
+
+        // renderer.render(args.scene, args.camera, this.rtt)
+
+        this.outlinePass.render(args)
         
-        this.bloomPass.render(rtt)
+        // this.bloomPass.render(this.rtt)
 
-        this.blurPass.render(rtt) //remove this later
+        // this.blurPass.render(this.rtt) //remove this later
 
-        this.fxaaPass.render(rtt)
+        // this.fxaaPass.render(this.outlinePass.rtt)
 
-        this.renderQuad.material.uniforms['bloom'].value = this.bloomPass.rtt
-
-        this.renderQuad.material.uniforms['blur'].value = this.blurPass.rtt
+        // this.renderQuad.material.uniforms['blur'].value = this.blurPass.rtt
         
-        // this.renderQuad.material.uniforms.mainTex.value = rtt
-        this.renderQuad.material.uniforms['mainTex'].value = this.fxaaPass.rtt
-
-        //or rather, make the fxaa pass it's uniform and apply final blending
+        // this.renderQuad.material.uniforms['mainTex'].value = this.outlinePass.rtt
+        this.renderQuad.material.uniforms['mainTex'].value = this.outlinePass.rtt
+        // this.renderQuad.material.uniforms['mainTex'].value = this.rtt
 
         renderer.render(this.scene, this.cam) //get uuid error when forceclearing
-
-        renderer.toneMappingExposure = Math.pow(1.0, 4.0)
 
     }
 
     onResize() {
+
+        this.rtt.setSize(this.w, this.h)
 
         renderer.setSize(this.w, this.h)
 

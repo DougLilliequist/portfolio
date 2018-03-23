@@ -1,5 +1,7 @@
 import * as THREE from 'three'
 
+import renderer from 'renderer'
+
 const glslify = require('glslify')
 
 export default class FBO {
