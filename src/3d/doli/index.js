@@ -202,8 +202,6 @@ export default class DOLI extends THREE.Object3D {
         // this.activityCoef -= (this.activityCoef > 0.0 && this.isInteracting) ? 0.01 : 0.0;
         this.activityCoef -= (this.activityCoef > 0.0 && this.isInteracting) ? 0.25 : 0.0;
 
-        // this.soul.animate(deltaTime, mousePos, delta, this.scrollDirection)
-
         this.soul.animate(deltaTime, mousePos, this.activityCoef, this.scrollDirection)
 
         this.body.mesh.material.uniforms.previousPos.value = this.soul.position.rtt2
