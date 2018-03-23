@@ -67,20 +67,6 @@ export default class DOLI extends THREE.Object3D {
 
     initEvents() {
 
-        emitter.on('panMove', this.onMouseMove.bind(this))
-
-        // emitter.on('curious', () => {
-
-        //     if (this.body.projectQuad.visible) {
-
-        //         this.body.projectQuad.visible = false
-
-        //         this.isCurious = true
-
-        //     }
-
-        // }) //hack
-
         emitter.on('morphDOLI', this.morph.bind(this))
 
     }
@@ -152,9 +138,6 @@ export default class DOLI extends THREE.Object3D {
 
         })
 
-        // emitter.emit('bloom', true)
-
-        // emitter.off('scrolling', this.loadProject.bind(this))
 
     }
 
@@ -179,17 +162,10 @@ export default class DOLI extends THREE.Object3D {
 
         })
 
-        // if (this.body.projectQuad.visible === false) {
-
-        //     this.body.projectQuad.visible = true
-
-        // }
-
-        // emitter.emit('bloom', false)
 
     }
 
-    animate(deltaTime, mousePos, rayCaster) {
+    animate(deltaTime, mousePos) {
 
         this.activityTime += deltaTime
 
@@ -199,18 +175,13 @@ export default class DOLI extends THREE.Object3D {
 
         }
 
-        // this.activityCoef -= (this.activityCoef > 0.0 && this.isInteracting) ? 0.01 : 0.0;
-        this.activityCoef -= (this.activityCoef > 0.0 && this.isInteracting) ? 0.25 : 0.0;
+        // this.activityCoef -= (this.activityCoef > 0.0 && this.isInteracting) ? 0.25 : 0.0;
 
-        // this.soul.animate(deltaTime, mousePos, delta, this.scrollDirection)
-
-        this.soul.animate(deltaTime, mousePos, this.activityCoef, this.scrollDirection)
+        this.soul.animate(deltaTime, mousePos, this.activityCoef)
 
         this.body.mesh.material.uniforms.previousPos.value = this.soul.position.rtt2
 
         this.body.mesh.material.uniforms.currentPos.value = this.soul.position.rtt
-
-        this.body.mesh.material.uniforms.direction.value = this.soul.direction.rtt
 
         this.prevPos.copy(this.currPos)
 
@@ -221,44 +192,6 @@ export default class DOLI extends THREE.Object3D {
         this.body.mesh.material.uniforms.mousePos.value.copy(this.currPos)
 
         this.body.mesh.material.uniforms.animTime.value += deltaTime
-
-        // const intersect = rayCaster.intersectObject(this.body.projectQuad)
-
-        // if (intersect.length > 0) {
-
-        //     this.projectQuad = intersect[0].object
-
-        //     if (this.projectQuad.hovered === false) {
-
-        //         this.projectQuad.hovered = true
-
-        //         emitter.emit('projectHovered', this.projectQuad.hovered)
-
-        //         // if(this.isInteracting === true) {
-
-        //         //     this.projectQuad.hovered = false
-
-        //         //     emitter.emit('projectHovered', this.projectQuad.hovered)
-
-        //         // }
-
-        //     }
-
-        // } else {
-
-        //     if (this.projectQuad) {
-
-        //         if (this.projectQuad.hovered === true) {
-
-        //             this.projectQuad.hovered = false
-
-        //             emitter.emit('projectHovered', this.projectQuad.hovered)
-
-        //         }
-
-        //     }
-
-        // }
 
     }
 

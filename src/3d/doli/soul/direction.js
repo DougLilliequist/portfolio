@@ -115,7 +115,7 @@ export default class Direction extends FBO {
 
     }
 
-    update(mousePos, currPos, prevPos) {
+    update(props = {}) {
 
         let autoClearCol = renderer.autoClearColor
 
@@ -133,15 +133,15 @@ export default class Direction extends FBO {
 
         this.prevPos.copy(this.currPos)
 
-        this.currPos.copy(mousePos)
+        this.currPos.copy(props.mouse)
 
         this.renderQuad.material = this.mat
 
         this.renderQuad.material.uniforms.directions.value = this.rtt2
 
-        this.renderQuad.material.uniforms.currentPos.value = currPos
+        this.renderQuad.material.uniforms.currentPos.value = props.pos
 
-        this.renderQuad.material.uniforms.previousPos.value = prevPos
+        this.renderQuad.material.uniforms.previousPos.value = props.prevPos
 
         this.renderQuad.material.uniforms.prevMousePos.value = this.prevPos
 

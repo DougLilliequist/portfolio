@@ -50,27 +50,6 @@ export default class Velocity extends FBO {
 
             uniforms: {
 
-                separation: {
-
-                    type: 't',
-                    value: null
-
-                },
-
-                seek: {
-
-                    type: 't',
-                    value: null
-
-                },
-
-                acceleration: {
-
-                    type: 't',
-                    value: null
-
-                },
-
                 velocity: {
 
                     type: 't',
@@ -79,13 +58,6 @@ export default class Velocity extends FBO {
                 },
 
                 positions: {
-
-                    type: 't',
-                    value: null
-
-                },
-
-                offSets: {
 
                     type: 't',
                     value: null
@@ -133,7 +105,7 @@ export default class Velocity extends FBO {
 
     }
 
-    update(positions, /*separate,*/ seek, offSets, time) {
+    update(props = {}) {
 
         let autoClearCol = renderer.autoClearColor
 
@@ -151,17 +123,9 @@ export default class Velocity extends FBO {
 
         this.renderQuad.material = this.mat
 
-        this.renderQuad.material.uniforms.animTime.value += time
+        this.renderQuad.material.uniforms.animTime.value += props.time
 
-        this.renderQuad.material.uniforms.offSets.value = offSets
-
-        // this.renderQuad.material.uniforms.acceleration.value = acceleration
-
-        // this.renderQuad.material.uniforms.separation.value = separate
-
-        this.renderQuad.material.uniforms.seek.value = seek
-
-        this.renderQuad.material.uniforms.positions.value = positions
+        this.renderQuad.material.uniforms.positions.value = props.pos
 
         this.renderQuad.material.uniforms.velocity.value = this.rtt2
 

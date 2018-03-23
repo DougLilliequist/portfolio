@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 
 import {TweenLite, Power4} from 'gsap'
 
+import GlitchText from '../elements/glitchText.js'
+
 export default class ContactLink extends Component {
 
     constructor(props) {

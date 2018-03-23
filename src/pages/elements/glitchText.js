@@ -81,7 +81,7 @@ export default class GlitchText extends Component {
 
     }
 
-    glitch(text) {
+    glitch() {
 
         this.init()
 
@@ -97,7 +97,7 @@ export default class GlitchText extends Component {
 
     scramble() {
 
-        if(this.state.scrambleCounter < this.targetTextLen) {
+        if(this.state.scrambleCounter < this.targetTextLen) { //change name of targetext
 
             this.outPutText = this.getRandomChar().slice(0, this.state.scrambleCounter)
 
@@ -135,7 +135,7 @@ export default class GlitchText extends Component {
 
                 this.outPutText = str
 
-            } else if (this.state.textCounter + 2 < this.targetTextLen) {
+            } else if (this.state.textCounter + 2 < this.targetTextLen) { //not fully getting the point with this
 
                 let len = Math.min(this.state.textCounter + 2, 9)
 
@@ -143,7 +143,7 @@ export default class GlitchText extends Component {
 
             } else {
 
-                this.outPutText = this.getRandomChar().slice(0, 9)
+                this.outPutText = this.getRandomChar().slice(0, 9) //this either
 
             }
 
@@ -161,6 +161,10 @@ export default class GlitchText extends Component {
                 this.animTime = TweenLite.delayedCall(this.animSpeed, this.animate)
 
             })
+
+        } else {
+
+            return
 
         }
 

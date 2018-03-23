@@ -75,17 +75,18 @@ export default class Position extends FBO {
 
                 },
 
-                originPos: {
+                offSets: {
 
                     type: 't',
                     value: null
 
                 },
 
-                offSets: {
+                originPos: {
 
                     type: 't',
                     value: null
+
                 },
 
                 state: {
@@ -109,13 +110,6 @@ export default class Position extends FBO {
 
                 },
 
-                activityCoef: {
-
-                    type: 'f',
-                    value: 0.0
-
-                },
-
                 mode: {
 
                     type: 'f',
@@ -124,20 +118,6 @@ export default class Position extends FBO {
                 },
 
                 transitionTime: {
-
-                    type: 'f',
-                    value: 0.0
-
-                },
-
-                scrollDirection: {
-
-                    type: 'f',
-                    value: 0.0
-
-                },
-
-                mouseTravel: {
 
                     type: 'f',
                     value: 0.0
@@ -171,19 +151,7 @@ export default class Position extends FBO {
 
     }
 
-    get mode() {
-
-        return this.mat.uniforms['mode'].value
-
-    }
-
-    set mode(v) {
-
-        this.mat.uniforms['mode'].value = v
-
-    }
-
-    update(mousePos, delta, deltaTime, velocity, bool, scrollDirection, portfolioPos, transition) {
+    update(props = {}) {
 
         let autoClearCol = renderer.autoClearColor
 
@@ -205,15 +173,13 @@ export default class Position extends FBO {
 
         this.renderQuad.material = this.mat
 
-        this.renderQuad.material.uniforms.mousePos.value.copy(mousePos)
+        this.renderQuad.material.uniforms.mousePos.value.copy(props.mouse)
 
-        this.renderQuad.material.uniforms.activityCoef.value = delta
+        this.renderQuad.material.uniforms.animTime.value += props.time
 
-        this.renderQuad.material.uniforms.animTime.value += deltaTime
+        this.renderQuad.material.uniforms.transitionTime.value = props.transition
 
-        this.renderQuad.material.uniforms.transitionTime.value = transition
-
-        this.renderQuad.material.uniforms.velocity.value = velocity
+        this.renderQuad.material.uniforms.velocity.value = props.vel
 
         this.renderQuad.material.uniforms.positions.value = this.rtt2 //what I do know, is that the quad will read from the second rendertarget
         //and the result will be rendered to the target rendertarget (did I just answer my own question?)
@@ -221,6 +187,8 @@ export default class Position extends FBO {
         //From what I understand, I'm basically reading from the previous render target
         //then use the said values and write new values on it which in turn, will be rendererd on the main
         //render target and have the displayed on screen
+
+        this.renderQuad.material.uniforms.offSets.value = this.offSets
 
         renderer.render(this.scene, this.cam, this.rtt, true)
 

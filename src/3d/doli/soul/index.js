@@ -36,17 +36,11 @@ export default class Soul {
 
         this.bool = true
 
-        this.transitionTime = 0.0 //?
-
-        // this.separate = new Separate(config.particleAmntX, config.particleAmntY)
-
-        this.seek = new Seek(config.particleAmntX, config.particleAmntY)
+        this.transitionTime = 0.0
 
         this.velocity = new Velocity(config.particleAmntX, config.particleAmntY)
 
         this.position = new Position(config.particleAmntX, config.particleAmntY)
-
-        this.direction = new Direction(config.particleAmntX, config.particleAmntY)
 
     }
 
@@ -142,16 +136,9 @@ export default class Soul {
 
     animate(deltaTime, mousePos, delta, scrollDirection, distance) {
 
-        // this.separate.update(this.position.rtt, this.velocity.rtt, this.bool, deltaTime)
+        this.velocity.update({pos: this.position.rtt, offSet: this.position.offSets, time: deltaTime})
 
-        this.seek.update(deltaTime, mousePos, delta, this.position.rtt, this.velocity.rtt, scrollDirection)
-
-        // this.velocity.update(this.position.rtt, this.separate.rtt, this.seek.rtt, this.position.offSets, deltaTime)
-        this.velocity.update(this.position.rtt, /*this.separate.rtt,*/ this.seek.rtt, this.position.offSets, deltaTime)
-
-        this.position.update(mousePos, delta, deltaTime, this.velocity.rtt, this.bool, scrollDirection, this.seek.portfolioTexture, this.transitionTime)
-
-        this.direction.update(mousePos, this.position.rtt, this.position.rtt2)
+        this.position.update({mouse: mousePos, time: deltaTime, vel: this.velocity.rtt, transition: this.transitionTime})
 
     }
 

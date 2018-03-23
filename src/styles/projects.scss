@@ -109,12 +109,13 @@
     position: absolute;
     right: 15%;
     bottom: 7.5%;
-    // width: 33%;
+    // width: 22.75%;
     width: fit-content;
     display: flex;
     flex-direction: row-reverse;
     align-items: flex-end;
-    justify-content: space-between;
+    justify-content: space-around;
+    // justify-content: space-between;
     will-change: opacity;
 
 }
@@ -184,7 +185,7 @@
     
     opacity: 0;
     
-    width: 12%;
+    width: fit-content;
     
     display: flex;
 

@@ -161,7 +161,7 @@ export default class Project extends Component {
 
                     <div className = "ProjectNumb" ref = {(numb) => {this.projectNumb = numb}}><p>{'( PROJECT : ' + this.projectCopy[this.props.project].number + ' )'}</p>
             
-            <svg className = "LineContainer" ref = {(container) => this.titleLineContainer = container} style = {{position: 'relative', width: '2.5vw', height: '2px'}}>
+            <svg className = "LineContainer" ref = {(container) => this.titleLineContainer = container} style = {{position: 'relative', width: '2.5vw', height: '2px', marginRight: '1em'}}>
 
                 <line className = "Line" ref = {(container) => this.projectLine = container} x1 = {0} y1 = {0} x2 = {100} y2 = {0} /> 
 
@@ -171,11 +171,11 @@ export default class Project extends Component {
 
                 {/* <div className = "Title" ref = {(title) => this.title = title}><h2>{this.projectCopy[this.props.project].title}</h2></div> */}
                 
-                <div className = "Title" ref = {(title) => this.title = title}><h2><GlitchText text = {this.projectCopy[this.props.project].title} glitch = {this.state.viewingProject} start = {0.3} speed = {0.015}/></h2></div>
+                <div className = "Title" ref = {(title) => this.title = title}><h2><GlitchText text = {this.projectCopy[this.props.project].title} glitch = {this.state.viewingProject} start = {0.3} speed = {0.01 / (this.projectCopy[this.props.project].title.length * 0.1)}/></h2></div>
                 
                 <div className = "Description" ref = {(desc) => this.desc = desc}><p style = {{margin: 0}}>{this.projectCopy[this.props.project].description}</p>
                 
-                <svg className = "LineContainer" ref = {(container) => this.titleLineContainer = container} style = {{position: 'relative', width: '2.5vw', height: '2px'}}>
+                <svg className = "LineContainer" ref = {(container) => this.titleLineContainer = container} style = {{position: 'relative', width: '2.5vw', height: '2px', marginRight:'1em'}}>
 
 <line className = "Line" ref = {(container) => this.linkLine = container} x1 = {0} y1 = {0} x2 = {100} y2 = {0} /> 
 
