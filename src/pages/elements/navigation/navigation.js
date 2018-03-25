@@ -182,7 +182,7 @@ export default class Navigation extends Component {
 
                 <NavCircle ref = {(el) => {this.navCircle = el}} target = {this.mouse} active = {this.state.interacting}/>
 
-                {/* <ScrollBar /> */}
+                <ScrollBar />
 
                 {/* <ExitPrompt /> */}
                 

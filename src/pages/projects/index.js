@@ -9,7 +9,7 @@ import {
 } from './projectCopy.js'
 
 import {
-    TimelineLite, TweenLite
+    TimelineLite, TweenLite, Power4
 } from 'gsap'
 
 import GlitchText from '../elements/glitchText.js'
@@ -81,7 +81,7 @@ export default class Project extends Component {
 
         this.tl.fromTo(this.desc, 0.5, {opacity: 0.0, x: -15}, {opacity: 1.0, x: 0}, '-=0.7')
 
-        this.tl.staggerFromTo([this.ctx, this.role, this.tech], 0.5, {ease: Circ.easeIn, opacity: 0.0, x: -15}, {ease: Circ.easeOut, opacity: 1.0, x: 0}, 0.15, "-=0.6")
+        this.tl.staggerFromTo([this.ctx, this.role, this.tech], 0.5, {ease: Circ.easeIn, opacity: 0.0, y: 30}, {ease: Circ.easeOut, opacity: 1.0, y: 0}, 0.15, "-=0.6")
 
 
     }
@@ -193,6 +193,12 @@ export default class Project extends Component {
                 
                 <div className = "Tech" ref = {(el) => this.tech = el}><b style = {{fontStyle: 'normal'}}>Tech: </b>{this.projectCopy[this.props.project].tech}<b style = {{fontStyle: 'normal'}}></b></div>
 
+                {/* <div className = "Context" ref = {(el) => this.ctx = el}><b style = {{fontStyle: 'normal'}}>Context: </b><GlitchText text = {this.projectCopy[this.props.project].context} glitch = {this.state.viewingProject} delay = {0.15} speed = {0.01 / (this.projectCopy[this.props.project].context.length * 0.5)}/><b style = {{fontStyle: 'normal'}}></b></div> */}
+                
+                {/* <div className = "Role" ref = {(el) => this.role = el}><b style = {{fontStyle: 'normal'}}>Role: </b><GlitchText text = {this.projectCopy[this.props.project].role} glitch = {this.state.viewingProject} delay = {0.3} speed = {0.01 / (this.projectCopy[this.props.project].role.length * 0.5)}/><b style = {{fontStyle: 'normal'}}></b></div>                 */}
+                
+                {/* <div className = "Tech" ref = {(el) => this.tech = el}><b style = {{fontStyle: 'normal'}}>Tech: </b><GlitchText text = {this.projectCopy[this.props.project].tech} glitch = {this.state.viewingProject} delay = {0.4} speed = {0.01 / (this.projectCopy[this.props.project].tech.length * 0.5)}/><b style = {{fontStyle: 'normal'}}></b></div> */}
+
                 </div>
 
                 </div>
@@ -217,21 +223,25 @@ export default class Project extends Component {
 
                 <svg ref = {(container) => this.letterBox = container} style = {{position: 'absolute', width: '100%', height: '20%', top: '0%', zIndex: '3'}}>
 
-                <rect className = "LetterBox1" ref = {(el) => this.ltrBox1 = el} width = {'100%'} height = {'100%'} style ={{position: 'absolute', fill: 'rgba(255, 255, 255)', pointerEvents: 'none'}}/>
+                <rect className = "LetterBox1" ref = {(el) => this.ltrBox1 = el} width = {'100%'} height = {'100%'} style ={{position: 'fixed', fill: 'rgba(255, 255, 255)', pointerEvents: 'none'}}/>
 
                 </svg>
 
                 <svg ref ={(container) => this.letterBox2 = container} style = {{position: 'absolute', width: '100%', height: '20%', bottom: '0%', zIndex: '3'}}>
 
-                    <rect className = "LetterBox2" ref = {(el) => this.ltrBox2 = el} width = {'100%'} height = {'100%'} style ={{position: 'absolute', fill: 'rgba(255, 255, 255)', pointerEvents: 'none'}}/>
+                    <rect className = "LetterBox2" ref = {(el) => this.ltrBox2 = el} width = {'100%'} height = {'100%'} style ={{position: 'fixed', fill: 'rgba(255, 255, 255)', pointerEvents: 'none'}}/>
 
                 </svg>
+
+                {/* <div className = 'VideoContainer' ref = {(container) => this.vidContainer = container}> */}
 
                     <video ref = {(vid) => this.vid = vid} autoPlay = {true} loop = {true} crossOrigin = {'Anonymous'}>
 
                         <source src = {this.projectCopy[this.props.project].vid} type = {'video/mp4'} />
 
                     </video>
+
+                {/* </div> */}
 
                 </div>  
 

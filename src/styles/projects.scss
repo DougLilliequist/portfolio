@@ -127,7 +127,7 @@
     flex-direction: column;
     width: fit-content;
     left: 15.25%;
-    top: 45%;
+    top: 48%;
 
 }
 
@@ -159,7 +159,29 @@
 
 }
 
+.Project .ProjectVid .VideoContainer {
+
+    // position: absolute;
+
+    // top: 0;
+
+    // left: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    // -webkit-clip
+
+    overflow: hidden;
+
+}
+
 .Project .ProjectVid video {
+
+    object-fit: cover;
+
+    // position: relative;
 
     opacity: 1.0;
 

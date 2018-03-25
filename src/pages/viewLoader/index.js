@@ -46,6 +46,12 @@ export default class ViewLoader extends Component {
 
         this.offSet = 0
 
+        this.counter = 0
+
+        this.counterLimit = 0.2
+
+        this.update = this.onUpdate.bind(this)
+
     }
 
     componentDidMount() {
@@ -62,7 +68,7 @@ export default class ViewLoader extends Component {
 
         emitter.on('scrolling', this.onScroll.bind(this))
 
-        emitter.on('update', this.onUpdate.bind(this))
+        // emitter.on('update', this.onUpdate.bind(this))
 
         emitter.on('resizing', this.onResize.bind(this))
 
@@ -70,21 +76,32 @@ export default class ViewLoader extends Component {
 
     onScroll(e) {
 
+        this.counter = 0
+
         this.offSet += e.deltaY
 
-        emitter.emit('updateScrollBar', map(this.offSet, 0, this.scrollMax, 0, 100))
+        emitter.emit('updateScrollBar', map(this.offSet, 0, this.scrollMax, 0, window.innerHeight))
+
+        if(this.animate) {
+
+            this.animate.kill()
+
+        }
+
+        this.animate = TweenLite.delayedCall(0.001, this.update)
 
     }
 
     onUpdate() {
 
+            this.counter += 0.001
 
-            this.pos.y += (this.offSet - this.pos.y) * Math.sin(0.3 * Math.PI) * 0.08
+            this.pos.y += (this.offSet - this.pos.y) * Math.sin(0.3 * Math.PI) * 0.05
             
             // this.pos.y += (this.offSet - this.pos.y) * Math.sin(0.3 * Math.PI) * 0.05
 
-            // this.container.style.transform = 'matrix(1.0, 0.0, 0.0, 1.0, ' + 0.0 + ', ' + -this.pos.y + ')'
-            this.container.style.transform = 'translate3d(0.0px, ' + -this.pos.y + 'px' + ', 0.0px)'
+            this.container.style.transform = 'matrix(1.0, 0.0, 0.0, 1.0, ' + 0.0 + ', ' + -this.pos.y + ')'
+            // this.container.style.transform = 'translate3d(0.0px, ' + -this.pos.y + 'px' + ', 0.0px)'
     
             if(this.offSet < 0) {
                 
@@ -94,6 +111,18 @@ export default class ViewLoader extends Component {
     
                 this.offSet = this.scrollMax
     
+            }
+
+            if(this.counter > this.counterLimit) {
+
+                this.counter = this.counterLimit
+
+                return
+
+            } else {
+
+                this.animate = TweenLite.delayedCall(0.001, this.update) 
+
             }
 
 
@@ -106,6 +135,10 @@ export default class ViewLoader extends Component {
     onResize() {
 
         this.scrollMax = ReactDOM.findDOMNode(this.currentView).getBoundingClientRect().height * 4.0
+
+        emitter.emit('updateScrollBar', map(this.offSet, 0, this.scrollMax, 0, window.innerHeight))
+
+        // this.animte = TweenLite.delayedCall(0.001, this.update)
 
     }
 

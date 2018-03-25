@@ -96,7 +96,7 @@ export default class NavCircle extends Component {
 
             ease: Power4.easeInOut,
 
-            radius: b === true ? 20 : 18
+            radius: b === true ? 20 : 15
 
         })
 
@@ -142,7 +142,7 @@ export default class NavCircle extends Component {
 
             ease: Power4.easeInOut,
 
-            radius: 18,
+            radius: 15,
 
             // onStart: () => this.animate = TweenLite.delayedCall(0.001, this.update)
 

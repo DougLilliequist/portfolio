@@ -18,49 +18,55 @@ export default class ScrollBar extends Component {
 
         this.target = 0
 
+        this.counter = 0
+
+        this.countLimit = 1
+
+        this.update = this.update.bind(this)
+
     }
 
     componentDidMount() {
+
+        this.canvas = this.canvasEl
+
+        this.ctx = this.canvasEl.getContext('2d')
+
+        this.w = this.canvas.width = 5
+        
+        this.h = this.canvas.height = window.innerHeight
 
         this.initEvents()
 
     }
 
     initEvents() {
-
-        emitter.on('updateScrollBar', (v) => this.len = v)
         
-        // emitter.on('updateScrollBar', this.updateEl.bind(this))
-
-        emitter.on('update', this.update.bind(this))
+        emitter.on('updateScrollBar', this.updateEl.bind(this))
+        
+        emitter.on('resizing', this.onResize.bind(this))
 
     }
 
-    // updateEl(v) {
+    updateEl(v) {
 
-    //     TweenLite.killTweensOf(this)
+        this.counter = 0
 
-    //     TweenLite.to(this.scrollBar, 0.2, {
+        this.len = v
 
-    //         ease: Circ.easeInOut,
+        if(this.animate) {
 
-    //         attr: {
+            this.animate.kill()
 
-    //             x2: v + '%'
+        }
 
-    //         },
+        this.animate = TweenLite.delayedCall(0.001, this.update)
 
-    //         // onUpdate: () => {
-
-    //         //     this.target += (v - this.target) * 0.05
-
-    //         // }
-
-    //     })
-
-    // }
+    }
 
     update() {
+
+        this.counter += 0.01
 
         this.target += (this.len - this.target) * 0.05
 
@@ -69,8 +75,46 @@ export default class ScrollBar extends Component {
             this.target = 0.1
 
         }
+
+        this.draw()
+
+        if(this.counter > this.countLimit) {
+
+                this.counter = this.countLimit
+
+            return
+
+        } else {
+    
+            this.animate = TweenLite.delayedCall(0.001, this.update)
+
+        }
         
-        TweenLite.set(this.scrollBar, {attr: {y2: this.target + '%'}})
+    }
+    
+    draw() {
+
+        this.ctx.clearRect(0, 0, this.w, this.h)
+
+        this.ctx.beginPath()
+
+        this.ctx.lineWidth = 20
+
+        this.ctx.strokeStyle = '#000000'
+
+        this.ctx.moveTo(0, 0)
+
+        this.ctx.lineTo(0, this.target)
+
+        this.ctx.stroke()
+
+    }
+
+    onResize() {
+
+        this.w = this.canvas.width = 5
+
+        this.h = this.canvas.height = window.innerHeight
 
     }
 
@@ -78,15 +122,7 @@ export default class ScrollBar extends Component {
 
         return(
 
-            <div className = "ScrollBarContainer">
-
-                <svg style = {{width: '100%', height: '100%'}}>
-
-                    <line className = "ScrollBar" ref = {(el) => this.scrollBar = el} x1 = {0} y2 = {0} x1 = {0} y2 = {'100%'}/>
-
-                </svg>
-
-            </div>
+            <canvas className = 'ScrollBar' ref = {(el) => this.canvasEl = el}/>
 
         )
 

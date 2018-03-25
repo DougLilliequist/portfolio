@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom'
 
 // import {TweenLite} from 'gsap'
 
-import {TweenLite, TimelineLite} from 'gsap'
+import {TweenLite, TimelineLite, Power4} from 'gsap'
 
 import ContactLink from './contactLink.js'
 
@@ -28,23 +28,8 @@ export default class Contact extends React.Component {
 
         this.onLeave = this.onLeave.bind(this)
 
-        // this.onLinkHover = this.onLinkHover.bind(this)
-
     }
 
-    componentDidMount() {
-
-        this.tl = new TimelineLite({
-
-            paused: true
-
-        })
-
-        this.tl.fromTo(this.contactSymbol, 0.35, {rotation: 0.0}, {rotation: -135.0})
-
-        this.tl.staggerFromTo([this.linkedIn.link, this.twitter.link, this.mail.link], 0.35, {opacity: 0.0}, {opacity: 0.4}, -.15, "-= 0.15")
-
-    }
 
     onHover() {
 
@@ -62,52 +47,31 @@ export default class Contact extends React.Component {
 
         if(this.state.hovered !== prevState.hovered) {
 
-            this.tl.kill()
+            TweenLite.killTweensOf(this.contactSymbol)
 
             if(this.state.hovered) {
 
-                this.tl.play()
+                TweenLite.to(this.contactSymbol, 0.75, {
+
+                    ease: Power4.easeInOut,
+                    rotation: -135.0
+
+                })
 
             } else {
 
-                this.tl.reverse()
+                TweenLite.to(this.contactSymbol, 0.75, {
+
+                    ease: Power4.easeInOut,
+                    rotation: 0.0
+
+                })
 
             }
 
         }
 
     }
-
-    // animate() {
-
-    //     console.log('animating!')
-
-    //     TweenMax.killTweensOf(this.contactSymbol)
-
-    //     TweenMax.killChildTweensOf(ReactDOM.findDOMNode(this.container))
-
-    //     TweenMax.to(this.contactSymbol, 0.35, {
-
-    //         rotation: (this.state.hovered) ? -135.0 : 0.0,
-
-    //     })
-
-    //     TweenMax.staggerTo(this.container.getElementsByClassName('Link'), 0.35, {
-
-    //         opacity: (this.state.hovered) ? 1.0 : 0.0
-
-    //     }, (this.state.hovered) ? -.15 : .15)
-
-    // }
-    
-    // animate() {
-        
-    //     this.tl.kill()
-
-
-    //     this.state.hovered ? this.tl.play() : this.tl.reverse()
-
-    // }
 
 
     render() {
@@ -123,9 +87,9 @@ export default class Contact extends React.Component {
 
             <div className = "ContactContainer" ref = {(container) => this.container = container}>
 
-                <ContactLink ref = {(link) => this.linkedIn = link} url = {'https://www.linkedin.com/in/douglas-lilliequist-a2798b110/'} enable = {this.state.hovered} channel = {'linkedIn'} target = {'_blank'}/>
-                <ContactLink ref = {(link) => this.twitter = link} url = {'https://twitter.com/DougLilliequist'} enable = {this.state.hovered} channel = 'twitter' target = {'_blank'}/>
-                <ContactLink ref = {(link) => this.mail = link} url = {'mailto:douglas.lilliequist@hyperisland.se'} enable = {this.state.hovered} channel = 'mail' target = {'_self'}/>
+                <ContactLink ref = {(link) => this.linkedIn = link} url = {'https://www.linkedin.com/in/douglas-lilliequist-a2798b110/'} onMouseEnter = {()=> console.log('hello')} enable = {this.state.hovered} channel = {'linkedIn'} target = {'_blank'} delay = {0.0}/>
+                <ContactLink ref = {(link) => this.twitter = link} url = {'https://twitter.com/DougLilliequist'} enable = {this.state.hovered} channel = 'twitter' target = {'_blank'} delay = {0.15}/>
+                <ContactLink ref = {(link) => this.mail = link} url = {'mailto:douglas.lilliequist@hyperisland.se'} enable = {this.state.hovered} channel = 'mail' target = {'_self'} delay = {0.30}/>
             
             </div>
             

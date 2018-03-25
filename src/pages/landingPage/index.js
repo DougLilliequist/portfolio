@@ -28,8 +28,6 @@ export default class LandingPage extends Component {
 
         super(props)
 
-        // console.log(Transition)
-
         this.state = {
 
             revealCopy: false,
@@ -47,26 +45,6 @@ export default class LandingPage extends Component {
 
     }
 
-    // componentWillEnter(callback) {
-
-    //     TweenLite.killTweensOf(this)
-
-    //     TweenLite.to(this, 0.15, {
-
-    //         onStart: () => this.transitionIn(),
-
-    //         onComplete: callback
-
-    //     })
-
-    // }
-
-    // componentDidEnter() {
-
-    //     this.transitionIn()
-
-    // }
-
     componentDidMount() {
 
         const world = new World3D()
@@ -74,90 +52,8 @@ export default class LandingPage extends Component {
         ReactDOM.render(<World3D />, this.worldContainer)
 
         this.setState({revealCopy: true})
-
-        // const events = new Events(this)
         
     }
-
-
-    // transitionIn() {
-
-    //     this.setState({onLandingPage: true})
-
-    // }
-
-    // transitionOut() {
-
-    //     this.setState({onLandingPage: false})
-
-    // }
-
-    // componentWillLeave(callback) {
-
-    //     TweenLite.killTweensOf(this)
-
-    //     TweenLite.to(this, 0.15, {
-
-    //         opacity: 0.0,
-
-    //         // onStart: () => this.transitionOut(),
-
-    //         onComplete: callback
-        
-    //     })
-
-    // }
-
-    // shouldComponentUpdate(newProps, newState) {
-
-    //     if(this.state.onLandingPage !== newState.onLandingPage) {
-
-    //         return true
-
-    //     } else {
-
-    //         return false
-
-    //     }
-
-    // }
-
-    // componentDidUpdate(prevProps, prevState) {
-
-    //     if(this.state.onLandingPage !== prevState.onLandingPage) {
-
-    //         if(this.state.onLandingPage) {
-
-    //             emitter.emit('reveal')
-
-    //             TweenLite.to(this, 0.5, {
-
-    //                 opacity: 1.0
-
-    //             })
-
-    //         } else {
-
-    //             emitter.emit('hide')
-
-
-    //             TweenLite.to(this, 0.5, {
-
-    //                 opacity: 0.0
-
-    //             })
-
-    //         }
-
-    //     }
-
-    // }
-
-    // componentWillUnmount() {
-
-    //     this.transitionOut()
-
-    // }
 
     render() {
 
@@ -171,14 +67,11 @@ export default class LandingPage extends Component {
 
                 <h1><GlitchText text = {this.copy.title} glitch = {this.state.revealCopy} delay = {0.5} speed = {0.01 / (this.copy.title.length * 0.1)} /></h1>
 
-                {/* <h1><ReactRevealText show = {this.state.revealCopy} text = {this.copy.title}/></h1>*/}
                 </div>
                 
                 <div className = "Intro">
 
-                <GlitchText text = {this.copy.intro} glitch = {this.state.revealCopy} delay = {0.8} speed = {0.01 / (this.copy.intro.length * 1.1)}/>
-
-                {/* <ReactRevealText show = {this.state.revealCopy} text = {this.copy.intro}/> */}
+                <GlitchText text = {this.copy.intro} glitch = {this.state.revealCopy} delay = {0.8} speed = {0.01 / (this.copy.intro.length * 1.5)}/>
                 
                 </div>
 

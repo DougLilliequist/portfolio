@@ -30,11 +30,7 @@ export default class ContactLink extends Component {
 
         if(this.props.enable) {
 
-        this.setState({hovered: !this.state.hovered})
-
-        } else {
-
-            return
+            this.setState({hovered: !this.state.hovered})
 
         }
 
@@ -42,37 +38,51 @@ export default class ContactLink extends Component {
 
     animate() {
 
+            TweenLite.killTweensOf(this.link)
+
+            TweenLite.to(this.link, 1.5, {
+
+                ease: Power4.easeOut,
+    
+                opacity: this.state.hovered ? 1.0 : 0.4
+    
+            })
+
+    }
+
+    hideReveal() {
+
         TweenLite.killTweensOf(this.link)
 
-        TweenLite.to(this.link, 0.7, {
+        TweenLite.to(this.link, 0.5, {
 
-            ease: Power4.easeOut,
+            delay: this.props.delay,
 
-            opacity: this.state.hovered ? 1.0 : 0.4
+            ease: Power4.easeInOut,
+
+            opacity: this.props.enable ? 0.4 : 0.0
 
         })
 
     }
 
-    // hideReveal() {
-
-    //     TweenLite.killTweensOf(this.link)
-
-    //     TweenLite.to(this.link, 0.4, {
-
-    //         opacity: this.props.reveal ? 0.7 : 0.0
-
-    //     })
-
-    // }
-
     componentDidUpdate(prevProps, prevState) {
 
+        if(this.props.enable !== prevProps.enable) {
+
+            this.hideReveal()
+
+        }
+
         if(this.state.hovered !== prevState.hovered) {
+
+            if(this.props.enable) {
 
             emitter.emit('hintClick', this.state.hovered)
 
             this.animate()
+
+            }
 
         }
 
@@ -83,7 +93,7 @@ export default class ContactLink extends Component {
 
         return(
 
-            <div onMouseEnter = {this.onLinkHover} onMouseLeave = {this.onLinkHover}><a ref = {(el) => this.link = el} className = 'Link' href = {this.props.url} target = {this.props.target}>{this.props.channel}</a></div>
+            <a className = 'ContactLink' ref = {(el) => this.link = el} href = {this.props.url} onMouseEnter = {this.onLinkHover} onMouseLeave = {this.onLinkHover} target = {this.props.target}>{this.props.channel}</a>
 
         )
 

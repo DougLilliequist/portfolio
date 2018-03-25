@@ -46,31 +46,51 @@
 
 }
 
-.ScrollBarContainer {
+.ScrollBar {
 
     position: fixed;
 
-    top: 0%;
+    margin: 0;
+
+    width: auto;
+    
+    height: 100%;
 
     right: 0%;
 
-    width: 3px;
+    top: 0%;
 
-    height: 100%;
+    z-index: 3;
 
-}
-
-.ScrollBarContainer .ScrollBar {
-
-    stroke: rgb(0, 0, 0);
-
-    stroke-width: 100%;
-
-    stroke-dasharray: 0;
-
-    stroke-dashoffset: -40;
+    pointer-events: none;
 
 }
+
+// .ScrollBarContainer {
+
+//     position: fixed;
+
+//     top: 0%;
+
+//     right: 0%;
+
+//     width: 3px;
+
+//     height: 100%;
+
+// }
+
+// .ScrollBarContainer .ScrollBar {
+
+//     stroke: rgb(0, 0, 0);
+
+//     stroke-width: 100%;
+
+//     stroke-dasharray: 0;
+
+//     stroke-dashoffset: -40;
+
+// }
 
 .ProjectScroll {
 
@@ -230,6 +250,34 @@
 
     cursor: none;
 
-    // opacity: 0.0;
+    opacity: 0.0;
+
+}
+
+.ContactLink {
+
+    font-family: Arial;
+
+    font-weight: 300;
+
+    font-size: -webkit-calc(12px + (15 - 12)*(100vw - 900px) / (1440 - 900));
+    
+    font-size: calc(12px + (15 - 12)*(100vw - 900px) / (1440 - 900));
+
+    color: rgb(0, 0, 0);
+
+    text-decoration: none;
+
+    cursor: none;
+
+    opacity: 0.0;
+
+    transition: letter-spacing 0.2s ease-in-out 0.08s;
+
+}
+
+.ContactLink:hover {
+
+    letter-spacing: 0.15em;
 
 }
