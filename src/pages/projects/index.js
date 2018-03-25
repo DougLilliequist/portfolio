@@ -81,7 +81,7 @@ export default class Project extends Component {
 
         this.tl.fromTo(this.desc, 0.5, {opacity: 0.0, x: -15}, {opacity: 1.0, x: 0}, '-=0.7')
 
-        this.tl.staggerFromTo([this.ctx, this.role, this.tech], 0.5, {opacity: 0.0, x: -15}, {opacity: 1.0, x: 0}, 0.15, "-=0.6")
+        this.tl.staggerFromTo([this.ctx, this.role, this.tech], 0.5, {ease: Circ.easeIn, opacity: 0.0, x: -15}, {ease: Circ.easeOut, opacity: 1.0, x: 0}, 0.15, "-=0.6")
 
 
     }
@@ -90,11 +90,13 @@ export default class Project extends Component {
 
         this.setState({hovering: !this.state.hovering}, () => {
 
+            emitter.emit('hintClick', this.state.hovering)
+
             TweenLite.to(this.linkText, 0.35, {
 
                 ease: Sine.easeInOut,
 
-                scale: this.state.hovering ? 1.025 : 1.0,
+                // scale: this.state.hovering ? 1.025 : 1.0,
 
                 opacity: this.state.hovering ? 1.0 : 0.7
 

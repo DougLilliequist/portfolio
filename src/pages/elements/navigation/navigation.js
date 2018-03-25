@@ -58,9 +58,9 @@ export default class Navigation extends Component {
 
         this.initEvents()
 
-        this.cursorSize.x = ReactDOM.findDOMNode(this.navCircle.container).getBoundingClientRect().width
+        // this.cursorSize.x = ReactDOM.findDOMNode(this.navCircle.container).getBoundingClientRect().width
 
-        this.cursorSize.y = ReactDOM.findDOMNode(this.navCircle.container).getBoundingClientRect().height
+        // this.cursorSize.y = ReactDOM.findDOMNode(this.navCircle.container).getBoundingClientRect().height
 
         this.offSet.x = this.cursorSize.x * 0.5
         
@@ -85,7 +85,7 @@ export default class Navigation extends Component {
         
         emitter.on('mouseUp', this.onMouseUp.bind(this))
 
-        emitter.on('update', this.onUpdate.bind(this))
+        // emitter.on('update', this.onUpdate.bind(this))
 
         // emitter.on('pan')
 
@@ -182,7 +182,7 @@ export default class Navigation extends Component {
 
                 <NavCircle ref = {(el) => {this.navCircle = el}} target = {this.mouse} active = {this.state.interacting}/>
 
-                <ScrollBar />
+                {/* <ScrollBar /> */}
 
                 {/* <ExitPrompt /> */}
                 

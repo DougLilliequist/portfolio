@@ -111,9 +111,9 @@ export default class FinalRender extends Pass {
 
         this.rtt = new RenderTarget(width, height)
 
-        this.outlinePass = new OutlinePass(width, height)
+        // this.outlinePass = new OutlinePass(width, height)
 
-        // this.bloomPass = new BloomPass(width, height)
+        this.bloomPass = new BloomPass(width, height)
 
         // this.blurPass = new BlurPass(width, height)
 
@@ -147,20 +147,22 @@ export default class FinalRender extends Pass {
 
     render(args = {}) {
 
-        // renderer.render(args.scene, args.camera, this.rtt)
+        renderer.render(args.scene, args.camera, this.rtt)
 
-        this.outlinePass.render(args)
+        // this.outlinePass.render(args)
         
-        // this.bloomPass.render(this.rtt)
+        this.bloomPass.render(this.rtt)
 
         // this.blurPass.render(this.rtt) //remove this later
 
-        // this.fxaaPass.render(this.outlinePass.rtt)
+        this.fxaaPass.render(this.rtt)
 
         // this.renderQuad.material.uniforms['blur'].value = this.blurPass.rtt
+        this.renderQuad.material.uniforms['bloom'].value = this.bloomPass.rtt
         
         // this.renderQuad.material.uniforms['mainTex'].value = this.outlinePass.rtt
-        this.renderQuad.material.uniforms['mainTex'].value = this.outlinePass.rtt
+        // this.renderQuad.material.uniforms['mainTex'].value = this.outlinePass.rtt
+        this.renderQuad.material.uniforms['mainTex'].value = this.fxaaPass.rtt
         // this.renderQuad.material.uniforms['mainTex'].value = this.rtt
 
         renderer.render(this.scene, this.cam) //get uuid error when forceclearing

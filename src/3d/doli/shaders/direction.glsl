@@ -30,11 +30,13 @@ void main() {
 
     // direction = lifeStep * normalize(mousePos - prevMousePos);
 
-    if(life <= 0.0) {
+    // if(life <= 0.0) {
 
         direction = normalize(mousePos - prevMousePos);
 
-    }
+        direction *= 1.0 - smoothstep(0.0, 8.0, life);
+
+    // }
 
 
 

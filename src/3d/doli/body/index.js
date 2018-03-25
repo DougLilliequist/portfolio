@@ -215,6 +215,14 @@ export default class Body extends THREE.Object3D {
 
                 },
 
+                mode: {
+
+                    type: 'f',
+
+                    value: 0.0
+
+                },
+
                 rotationEaseTime: {
 
                     type: 'f',
@@ -274,7 +282,13 @@ export default class Body extends THREE.Object3D {
 
     initEvents() {
 
-        
+        emitter.on('applyNormal', this.applyNormal.bind(this))
+
+    }
+
+    applyNormal(b) {
+
+        this.mesh.material.uniforms['mode'].value = (b === true) ? 1.0 : 0.0
 
     }
 

@@ -20,10 +20,8 @@ export default class OutlinePass extends Pass {
 
         this.init()
 
-        this.initNormalPass()
+        this.initNormalDepthPass()
         
-        this.initDepthPass()
-
         this.initEdgePass()
 
         this.initEvents()
@@ -32,20 +30,15 @@ export default class OutlinePass extends Pass {
 
     init() {
 
-        this.copyMat = this.getCopyMat()
+        this.rtt = new RenderTarget(this.w, this.h)
 
-        this.renderQuad.material = this.copyMat
-
-
-    }
-
-    initNormalPass() {
-
-        return
+        this.copyRtt = new RenderTarget(this.w, this.h)
 
     }
 
-    initDepthPass() {
+    initNormalDepthPass() {
+
+        this.normalRtt = new RenderTarget(this.w, this.h)
 
         this.depthRtt = new RenderTarget(this.w, this.h)
 
@@ -61,19 +54,15 @@ export default class OutlinePass extends Pass {
 
         this.depthRtt.depthTexture.type = THREE.UnsignedShortType
 
-        console.log(this.depthRtt)
-
-        this.depthMat = this.getDepthMat()
-
-        this.renderQuad.material = this.depthMat
-
-        console.log(this.depthMat)
+        this.normDepthMat = this.getNormalDepthMat()
 
     }
 
     initEdgePass() {
 
-        this.rtt = new RenderTarget(this.w, this.h)
+        this.edgeRtt = new RenderTarget(this.w, this.h)
+
+        this.edgeMat = this.getEdgeMat()
 
     }
 
@@ -89,27 +78,31 @@ export default class OutlinePass extends Pass {
 
         const camera = args.camera
 
-        renderer.render(scene, camera, this.depthRtt, true)
+        renderer.render(scene, camera, this.copyRtt)
 
-        // console.log(this.renderQuad.material)
+        emitter.emit('applyNormal', true)
 
-        // this.renderQuad.material.uniforms['tex'].value = this.rtt
+        renderer.render(scene, camera, this.normalRtt)
 
-        // renderer.render(this.scene, this.cam, this.depthRtt)
+        emitter.emit('applyNormal', false)
+
+        renderer.render(scene, camera, this.depthRtt)
+
+        this.renderQuad.material = this.normDepthMat
+
+        this.renderQuad.material.uniforms['tNormal'].value = this.normalRtt
         
-        this.renderQuad.material = this.depthMat
+        this.renderQuad.material.uniforms['tDepth'].value = this.depthRtt.depthTexture
 
-        // this.depthMat.uniforms['tDiffuse'].value = this.depthRtt
+        renderer.render(this.scene, this.cam, this.edgeRtt)
 
-        // this.depthMat.uniforms['tDepth'].value = this.depthRtt.depthTexture
+        this.renderQuad.material = this.edgeMat
 
-        // this.normalMat.uniforms['tDiffuse'].value = this.normalRtt
+        this.renderQuad.material.uniforms['tDiffuse'].value = this.copyRtt
+        
+        this.renderQuad.material.uniforms['tNormDepth'].value = this.edgeRtt
 
-        // this.material = this.normalMat
-
-        // scene.overrideMaterial = null
-
-        // renderer.render(scene, camera, this.rtt)
+        renderer.render(this.scene, this.cam, this.rtt)
 
     }
 
@@ -119,54 +112,16 @@ export default class OutlinePass extends Pass {
 
     }
 
-    getCopyMat() {
+    getNormalDepthMat() {
 
         return new THREE.ShaderMaterial({
 
             uniforms: {
 
-                tex: {
+                tNormal: {
 
                     type: 't',
 
-                    value: null
-
-                },
-
-                opacity: {
-
-                    type: 'f',
-
-                    value: 1.0
-
-                }
-
-            },
-
-            vertexShader: glslify('./shaders/renderQuad.glsl'),
-
-            fragmentShader: glslify('./shaders/copy.glsl'),
-
-            transparent: true,
-
-            depthTest: false,
-
-            depthWrite: false
-
-
-        })
-
-    }
-
-    getDepthMat() {
-
-        return new THREE.ShaderMaterial({
-
-            uniforms: {
-
-                tDiffuse: {
-
-                    type: 't',
                     value: null
 
                 },
@@ -179,26 +134,65 @@ export default class OutlinePass extends Pass {
 
                 },
 
-                near: {
+                cameraNear: {
 
                     type: 'f',
 
-                    value: 0.1
+                    value: 1.25
+
                 },
 
-                far: {
+                cameraFar: {
 
                     type: 'f',
+                    value: 5.0
 
-                    value: 1.0
-
-                }
+                },
 
             },
 
-            // vertexShader: glslify('./shaders/renderQuad.glsl'),
-            
-            // fragmentShader: glslify('./shaders/depth.glsl')
+            vertexShader: glslify('./shaders/renderQuad.glsl'),
+
+            fragmentShader: glslify('./shaders/edges/normal.glsl'),
+
+        })
+
+    }
+
+    getEdgeMat() {
+
+        return new THREE.ShaderMaterial({
+
+            uniforms: {
+
+                tDiffuse: {
+
+                    type: 't',
+                    value: null
+
+                },
+
+                tNormDepth: {
+
+                    type: 't',
+                    value: null
+
+                },
+
+                resolution: {
+
+                    type: 'v2',
+                    value: new THREE.Vector2(this.w || 1, this.h || 1)
+
+                }
+
+
+            },
+
+            vertexShader: glslify('./shaders/renderQuad.glsl'),
+
+            fragmentShader: glslify('./shaders/edges/edge.glsl')
+
 
         })
 

@@ -15,8 +15,3 @@ export const config = {
     // particleAmntY: 1024
 
 }
-
-//would be cool if I can somehow, through this object or if I make a new class
-//detect what device is used, and adjust to said device,
-//i.e, if the device is mobile, adapt the voxel ammount and data type
-//so it works on

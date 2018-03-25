@@ -192,11 +192,11 @@ export default class World3D extends Component {
 
         // this.navObjs.update(this.deltaTime, this.w, this.h, this.mouse.worldPos, this.camera, this.rayCaster)
 
-        // this.renderer.render(this.scene, this.camera)
+        this.renderer.render(this.scene, this.camera)
 
         // this.renderer.render(this.scene, this.camera, this.rtt, true)
 
-        this.post.render({scene: this.scene, camera: this.camera})
+        // this.post.render({scene: this.scene, camera: this.camera})
 
     }
 

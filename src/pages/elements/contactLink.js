@@ -4,6 +4,10 @@ import {TweenLite, Power4} from 'gsap'
 
 import GlitchText from '../elements/glitchText.js'
 
+import eventEmitter from 'eventEmitter'
+
+const emitter = eventEmitter.emitter
+
 export default class ContactLink extends Component {
 
     constructor(props) {
@@ -66,6 +70,8 @@ export default class ContactLink extends Component {
 
         if(this.state.hovered !== prevState.hovered) {
 
+            emitter.emit('hintClick', this.state.hovered)
+
             this.animate()
 
         }
@@ -77,7 +83,7 @@ export default class ContactLink extends Component {
 
         return(
 
-            <div onMouseEnter = {this.onLinkHover} onMouseLeave = {this.onLinkHover}><a ref = {(el) => this.link = el} className = "Link" href = {this.props.url}>{this.props.channel}</a></div>
+            <div onMouseEnter = {this.onLinkHover} onMouseLeave = {this.onLinkHover}><a ref = {(el) => this.link = el} className = 'Link' href = {this.props.url} target = {this.props.target}>{this.props.channel}</a></div>
 
         )
 

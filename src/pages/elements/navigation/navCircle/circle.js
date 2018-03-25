@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 
 import ReactDOM from 'react-dom'
 
-import {TweenLite} from 'gsap'
+import {TweenLite, Power4} from 'gsap'
 
 import {map} from 'math'
 
@@ -26,7 +26,9 @@ export default class NavCircle extends Component {
 
             focused: false,
 
-            onProject: false
+            onProject: false,
+
+            interacting: false
 
         }
 
@@ -35,8 +37,6 @@ export default class NavCircle extends Component {
             x: 0,
 
             y: 0,
-
-            r: 0
 
         }
 
@@ -52,17 +52,14 @@ export default class NavCircle extends Component {
 
         }
 
-        this.size = {
-
-            x: 0,
-
-            y: 0
-
-        }
-
         this.activeTime = null
 
-        this.ease = 0.35
+        this.radius = 0
+
+        this.ease = 0.25
+
+        this.update = this.onUpdate.bind(this)
+
         // this.ease = 1.0
         
     }
@@ -71,169 +68,132 @@ export default class NavCircle extends Component {
 
         emitter.on('hintClick', this.onClickable.bind(this)) //rename
 
-        emitter.on('stick', this.onFocus.bind(this)) //rename
+        // emitter.on('stick', this.onFocus.bind(this)) //rename
 
-        emitter.on('unStick', (b) => this.setState({focused: false}))
+        // emitter.on('unStick', (b) => this.setState({focused: false}))
 
-        emitter.on('projectHovered', (b) => this.setState({onProject: b}))
+        // emitter.on('projectHovered', (b) => this.setState({onProject: b}))
 
-        emitter.on('resizing', this.onResize.bind(this))
+        this.canvas = this.canvasEl
 
+        this.ctx = this.canvas.getContext('2d')
+
+        this.w = this.canvas.width = window.innerWidth
+
+        this.h = this.canvas.height = window.innerHeight
+        
         emitter.on('update', this.onUpdate.bind(this))
-
-        this.size.x = ReactDOM.findDOMNode(this.container).getBoundingClientRect().width
-
-        this.size.y = ReactDOM.findDOMNode(this.container).getBoundingClientRect().height
-
-        this.offSetX = this.size.x * 0.5
-
-        this.offSetY = this.size.y * 0.5
-
-        this.target.x = window.innerWidth * 0.5
-
-        this.target.y = window.innerHeight * 0.5
-
+        
+        emitter.on('resizing', this.onResize.bind(this))
+        
         this.spawn()
     
     }
 
     onClickable(b) {
 
-        TweenLite.killTweensOf(this.circle)
+        TweenLite.to(this, 0.35, {
 
-        TweenLite.to(this.circle, 0.25, {
-    
-            attr: {
+            ease: Power4.easeInOut,
 
-                r: (b) ? 30.0 : 10.0
-
-            }
+            radius: b === true ? 20 : 18
 
         })
-
-    }
-
-    onFocus(el) {
-
-        this.setState({focused: true}, () => {
-
-            this.target.focusX = (el.x - this.offSetX) + (el.width * 0.5 || 0)
-
-            this.target.focusY = (el.y - this.offSetY) + (el.height * 0.5 || 0)
-
-        })
-
-    }
-
-    animate(b) { //rename
-
-        TweenLite.killTweensOf(this.circle)
-
-        TweenLite.to(this.circle, 0.5, {
-
-            attr: {
-
-                r: (b) ? 50 : 10
-
-            } 
-
-        })
-
-    }
-
-    componentDidUpdate(prevProps, prevState) {
-
-        if(this.props.active !== prevProps.active) {
-
-            if(this.state.onProject) {
-
-            TweenLite.killTweensOf(this.circle)
-
-            TweenLite.to(this.circle, 0.35, {
-
-                opacity: this.props.active ? 1.0 : 0.0
-
-             })
-
-            }
-
-        }
 
     }
 
     onUpdate() {
 
-        this.target.x = this.props.target.x - this.offSetX
+        this.draw()
 
-        this.target.y = this.props.target.y - this.offSetY
+        this.target.x = this.props.target.x
 
-        if(this.state.focused === false) {
+        this.target.y = this.props.target.y
 
-            this.pos.x += (this.target.x - this.pos.x) * this.ease
-
-            this.pos.y += (this.target.y - this.pos.y) * this.ease
-
-        } else {
-
-            this.pos.x += (this.target.focusX - this.pos.x) * 0.1
-
-            this.pos.y += (this.target.focusY - this.pos.y) * 0.1
-
-        }
-
-        // this.container.style.transform = 'matrix(1, 0, 0, 1, ' + this.pos.x + ', ' + this.pos.y + ')' //matrix transform this
+        this.pos.x += (this.target.x - this.pos.x) * this.ease
         
-        this.container.style.transform = translate(this.pos) //maybe overkill?
+        this.pos.y += (this.target.y - this.pos.y) * this.ease
 
-        // console.log(this.container.style.transform)
+        // if(Math.abs(this.pos.x) < 0.1 && Math.abs(this.pos.y) < 0.1) {
+
+        //     console.log('too close')
+
+        //     if(this.animate) this.animate.kill()
+
+        //     return
+
+        // } else {
+
+        //     console.log(this.pos.x)
+
+        //     this.animate = TweenLite.delayedCall(0.001, this.update)
+
+        // }
 
     }
 
     spawn() {
 
-        TweenLite.to(this.circle, 0.35, {
+        // this.pos.x = this.w * 0.3
 
-            attr: {
+        // this.pos.y = this.h * 0.8
 
-                r: 10
+        TweenLite.to(this, 2.5, {
 
-            },
+            ease: Power4.easeInOut,
 
-            opacity: 1.0,
-        
+            radius: 18,
+
+            // onStart: () => this.animate = TweenLite.delayedCall(0.001, this.update)
+
+            // onComplete: () => {
+
+            //     emitter.on('update', this.onUpdate.bind(this))
+
+            // }
+
         })
+
+
+    }
+
+    draw() {
+
+        this.ctx.clearRect(0, 0, this.w, this.h)
+        
+        this.ctx.beginPath()
+
+        this.ctx.arc(this.pos.x, this.pos.y, this.radius, 0, Math.PI * 2, false)
+
+        this.ctx.lineWidth = 0.5
+
+        this.ctx.strokeStyle = '#000000'
+
+        this.ctx.stroke()
 
     }
 
     onResize() {
 
-        this.offSetX = ReactDOM.findDOMNode(this.container).getBoundingClientRect().width * 0.5
-        
-        this.offSetY = ReactDOM.findDOMNode(this.container).getBoundingClientRect().height * 0.5
+        this.w = this.canvas.width = window.innerWidth
+    
+        this.h = this.canvas.height = window.innerHeight
 
     }
 
-    componentWillUnmount() {
+    // componentWillUnmount() {
 
-        window.removeEventListener('resize', this.onResize.bind(this))
+    //     window.removeEventListener('resize', this.onResize.bind(this))
 
-        emitter.off('update', this.onUpdate.bind(this))
+    //     emitter.off('update', this.onUpdate.bind(this))
 
-    }
+    // }
 
     render() {
 
         return(
 
-            <div ref = {(container) => {this.container = container}} style = {{position: 'absolute', width: '50px', height: '50px', pointerEvents: 'none'}}>
-
-            <svg style = {{width: '100%', height: '100%'}}>
-                    
-                <circle className = "NavCircle" ref = {(circle) => {this.circle = circle}} cx = {'50%'} cy = {'50%'} r = {this.pos.r}/>
-
-            </svg>
-
-        </div>
+            <canvas className = "NavCircle" ref = {(el) => this.canvasEl = el}/>
             
         )
 

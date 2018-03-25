@@ -42,11 +42,7 @@ export default class Contact extends React.Component {
 
         this.tl.fromTo(this.contactSymbol, 0.35, {rotation: 0.0}, {rotation: -135.0})
 
-        this.tl.staggerTo(this.container.getElementsByClassName('Link'), 0.35, {
-
-            opacity: 0.4
-
-        }, -.15, "-= 0.15")
+        this.tl.staggerFromTo([this.linkedIn.link, this.twitter.link, this.mail.link], 0.35, {opacity: 0.0}, {opacity: 0.4}, -.15, "-= 0.15")
 
     }
 
@@ -66,7 +62,17 @@ export default class Contact extends React.Component {
 
         if(this.state.hovered !== prevState.hovered) {
 
-            this.animate()
+            this.tl.kill()
+
+            if(this.state.hovered) {
+
+                this.tl.play()
+
+            } else {
+
+                this.tl.reverse()
+
+            }
 
         }
 
@@ -94,14 +100,14 @@ export default class Contact extends React.Component {
 
     // }
     
-    animate() {
+    // animate() {
         
-        this.tl.kill()
+    //     this.tl.kill()
 
 
-        this.state.hovered ? this.tl.play() : this.tl.reverse()
+    //     this.state.hovered ? this.tl.play() : this.tl.reverse()
 
-    }
+    // }
 
 
     render() {
@@ -117,12 +123,10 @@ export default class Contact extends React.Component {
 
             <div className = "ContactContainer" ref = {(container) => this.container = container}>
 
-                <ContactLink url = {'https://www.linkedin.com/in/douglas-lilliequist-a2798b110/'} enable = {this.state.hovered} channel = {'linkedIn'} />
-                <ContactLink url = {'https://twitter.com/DougLilliequist'} enable = {this.state.hovered} channel = 'twitter' />
-                <ContactLink url = {'mailto:douglas.lilliequist@hyperisland.se'} enable = {this.state.hovered} channel = 'mail' />
-                {/* <div className = "LinkedIn" onMouseEnter = {this.onLinkHover}><a className = "Link" href = "https://www.linkedin.com/in/douglas-lilliequist-a2798b110/" target = "_blank">linkedin</a></div> */}
-                {/* <div className = "Twitter" onMouseEnter = {this.onLinkHover}><a className = "Link" href = "https://twitter.com/DougLilliequist" target = "_blank">twitter</a></div> */}
-                {/* <div className = "Email" onMouseEnter = {this.onLinkHover}><a className = "Link" href = "mailto:douglas.lilliequist@hyperisland.se">mail</a></div> */}
+                <ContactLink ref = {(link) => this.linkedIn = link} url = {'https://www.linkedin.com/in/douglas-lilliequist-a2798b110/'} enable = {this.state.hovered} channel = {'linkedIn'} target = {'_blank'}/>
+                <ContactLink ref = {(link) => this.twitter = link} url = {'https://twitter.com/DougLilliequist'} enable = {this.state.hovered} channel = 'twitter' target = {'_blank'}/>
+                <ContactLink ref = {(link) => this.mail = link} url = {'mailto:douglas.lilliequist@hyperisland.se'} enable = {this.state.hovered} channel = 'mail' target = {'_self'}/>
+            
             </div>
             
             </div>

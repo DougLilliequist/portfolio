@@ -176,7 +176,7 @@ export default class LandingPage extends Component {
                 
                 <div className = "Intro">
 
-                <GlitchText text = {this.copy.intro} glitch = {this.state.revealCopy} delay = {0.8} speed = {0.01 / (this.copy.intro.length * 0.1)}/>
+                <GlitchText text = {this.copy.intro} glitch = {this.state.revealCopy} delay = {0.8} speed = {0.01 / (this.copy.intro.length * 1.1)}/>
 
                 {/* <ReactRevealText show = {this.state.revealCopy} text = {this.copy.intro}/> */}
                 
