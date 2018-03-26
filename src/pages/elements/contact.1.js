@@ -87,7 +87,7 @@ export default class Contact extends React.Component {
 
             <div className = "ContactContainer" ref = {(container) => this.container = container}>
 
-                <ContactLink ref = {(link) => this.linkedIn = link} url = {'https://www.linkedin.com/in/douglas-lilliequist-a2798b110/'} onMouseEnter = {()=> console.log('hello')} enable = {this.state.hovered} channel = {'linkedIn'} target = {'_blank'} delay = {0.0}/>
+                <ContactLink ref = {(link) => this.linkedIn = link} url = {'https://www.linkedin.com/in/douglas-lilliequist-a2798b110/'} enable = {this.state.hovered} channel = {'linkedIn'} target = {'_blank'} delay = {0.0}/>
                 <ContactLink ref = {(link) => this.twitter = link} url = {'https://twitter.com/DougLilliequist'} enable = {this.state.hovered} channel = 'twitter' target = {'_blank'} delay = {0.15}/>
                 <ContactLink ref = {(link) => this.mail = link} url = {'mailto:douglas.lilliequist@hyperisland.se'} enable = {this.state.hovered} channel = 'mail' target = {'_self'} delay = {0.30}/>
             

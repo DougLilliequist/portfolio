@@ -179,7 +179,7 @@ export default class Position extends FBO {
 
         this.renderQuad.material.uniforms.transitionTime.value = props.transition
 
-        this.renderQuad.material.uniforms.velocity.value = props.vel
+        // this.renderQuad.material.uniforms.velocity.value = props.vel
 
         this.renderQuad.material.uniforms.positions.value = this.rtt2 //what I do know, is that the quad will read from the second rendertarget
         //and the result will be rendered to the target rendertarget (did I just answer my own question?)

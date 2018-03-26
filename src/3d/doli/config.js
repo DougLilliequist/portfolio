@@ -1,6 +1,7 @@
 export const config = {
 
     // particleAmntX: 32,
+    // particleAmntX: 48,
     particleAmntX: 64,
     // particleAmntX: 1024,
     // particleAmntX: 512,
@@ -9,6 +10,7 @@ export const config = {
 
     // particleAmntY: 32
     // particleAmntY: 128
+    // particleAmntY: 48
     particleAmntY: 64
     // particleAmntY: 256
     // particleAmntY: 512

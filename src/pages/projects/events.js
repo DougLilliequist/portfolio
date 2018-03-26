@@ -126,7 +126,7 @@ export default class Events extends Component {
 
         // this.parent.project.style.transform = 'matrix(1.0, 0.0, 0.0, 1.0, ' + 0.0 + ', ' + this.pos.y * -1 + ')'
 
-        this.parent.copyContainer.style.transform = 'matrix(1.0, 0.0, 0.0, 1.0, ' + 0.0 + ', ' + this.offSet * 0.05 * -1 + ')'
+        this.parent.copyContainer.style.transform = 'matrix(1.0, 0.0, 0.0, 1.0, ' + 0.0 + ', ' + this.pos.y * 0.05 * -1 + ')'
 
         this.pos.y = Math.min(Math.max(this.pos.y, 0), this.parent.project.getBoundingClientRect().height * 4)
         

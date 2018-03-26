@@ -26,6 +26,12 @@ export default class ContactLink extends Component {
 
     }
 
+    componentDidMount() {
+
+        this.link.style.pointerEvents = 'none'
+
+    }
+
     onLinkHover() {
 
         if(this.props.enable) {
@@ -71,6 +77,8 @@ export default class ContactLink extends Component {
         if(this.props.enable !== prevProps.enable) {
 
             this.hideReveal()
+
+            this.link.style.pointerEvents = this.props.enable ? 'auto' : 'none'
 
         }
 

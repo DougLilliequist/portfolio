@@ -36,7 +36,11 @@ export default class LandingPage extends Component {
         }
 
         this.copy = {
+
+            // greeting: ['Hello', 'Hi', 'Hej'],
             
+            // title: '[ My name is Douglas Lilliequist, \n ' +
+            // 'and I\'m a junior creative developer and an Hyper Island alumni who likes to make interactive and beautiful experiences ]',
             title: 'DOUGLAS LILLIEQUIST',
 
             intro: '[ Junior Creative Developer / Hyper Island alumni]'
@@ -61,17 +65,17 @@ export default class LandingPage extends Component {
             
             <div className = "LandingPage" ref = {(container) => {this.container = container}}>
 
-                <LandingPageScroll />
+                <LandingPageScroll delay = {2.2}/>
                             
                 <div className = "Title">
 
-                <h1><GlitchText text = {this.copy.title} glitch = {this.state.revealCopy} delay = {0.5} speed = {0.01 / (this.copy.title.length * 0.1)} /></h1>
+                <h1><GlitchText text = {this.copy.title} glitch = {this.state.revealCopy} delay = {1.5} speed = {0.01 / (this.copy.title.length * 0.1)} /></h1>
 
                 </div>
                 
                 <div className = "Intro">
 
-                <GlitchText text = {this.copy.intro} glitch = {this.state.revealCopy} delay = {0.8} speed = {0.01 / (this.copy.intro.length * 1.5)}/>
+                <GlitchText text = {this.copy.intro} glitch = {this.state.revealCopy} delay = {1.8} speed = {0.01 / (this.copy.intro.length * 1.5)}/>
                 
                 </div>
 

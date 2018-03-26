@@ -32,18 +32,41 @@
 
 }
 
-.LandingPage .Title {
+.LandingPage .Greeting {
 
     position: absolute;
     font-family: Arial;
     // font-family: 'Times';
     font-weight: 900;
     color: #000000;
+    top: 30%;
+    left: 12.5%;
+    font-size: -webkit-calc(14px + (20 - 14)*(100vw - 900px) / (1440 - 900));
+    font-size: calc(14px + (20 - 14)*(100vw - 900px) / (1440 - 900));
+    // letter-spacing: 0.1em;
+    z-index: 2;
+
+}
+
+.LandingPage .Greeting h1 {
+
+    margin: 0;
+
+}
+
+.LandingPage .Title {
+
+    position: absolute;
+    font-family: Arial;
+    font-weight: 900;
+    color: #000000;
+    text-align: left;
     // top: 38.5%;
     left: 12.5%;
     font-size: -webkit-calc(14px + (20 - 14)*(100vw - 900px) / (1440 - 900));
     font-size: calc(14px + (20 - 14)*(100vw - 900px) / (1440 - 900));
     letter-spacing: 0.35em;
+    user-select: none;
     z-index: 2;
 
 }
@@ -63,6 +86,7 @@
     font-size: -webkit-calc(12px + (16 - 12)*(100vw - 900px) / (1440 - 900));
     font-size: calc(12px + (16 - 12)*(100vw - 900px) / (1440 - 900));
     letter-spacing: 0.15em;
+    user-select: none;
     z-index: 2;
 
 }
@@ -72,7 +96,7 @@
     position: absolute;
     bottom: 22.25%;
     left: 12.25%;
-
+    
     color: #ffffff;
     font-size: -webkit-calc(10px + (14 - 10)*(100vw - 900px) / (1440 - 900));
     font-size: calc(10px + (14 - 10)*(100vw - 900px) / (1440 - 900));

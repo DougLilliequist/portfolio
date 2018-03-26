@@ -1,4 +1,4 @@
-float map(float val, float valMin, float valMax, float destMin, float destMax) {
+lowp float map(float val, float valMin, float valMax, float destMin, float destMax) {
 
     float oldVal = valMax - valMin;
     float newVal = destMax - destMin;

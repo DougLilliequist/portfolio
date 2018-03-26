@@ -27,8 +27,6 @@ export default class DOLI extends THREE.Object3D {
 
         this.initBody()
 
-        this.initEvents()
-
     }
 
     init() {
@@ -65,127 +63,13 @@ export default class DOLI extends THREE.Object3D {
 
     }
 
-    initEvents() {
-
-        emitter.on('panMove', this.onMouseMove.bind(this))
-
-        // emitter.on('curious', () => {
-
-        //     if (this.body.projectQuad.visible) {
-
-        //         this.body.projectQuad.visible = false
-
-        //         this.isCurious = true
-
-        //     }
-
-        // }) //hack
-
-        emitter.on('morphDOLI', this.morph.bind(this))
-
-    }
-
     onMouseMove() {
 
         this.isInteracting = true
 
         this.activityTime = 0
 
-        // this.activityCoef += (this.activityCoef <= 1.0) ? 0.5 : 0.0 //play with increment
         this.activityCoef += (this.activityCoef <= 1.0) ? 0.5 : 0.0 //play with increment
-
-    }
-
-    morph(mode) {
-
-        switch (mode) {
-
-            case 'home':
-                {
-
-                    this.initSpiritMode()
-
-                }
-
-                break
-
-            case 'curious':
-                {
-                    
-                    this.initSpiritMode()
-
-                }
-
-                break
-
-            case 'work':
-                {
-
-                    this.initProjectMode()
-
-                }
-
-                break
-
-        }
-
-
-    }
-
-    initSpiritMode() {
-
-        TweenLite.to(this.body.mesh.material.uniforms.easeTime, 1.5 * 2, {
-
-            value: 0.0
-
-        })
-
-        TweenLite.to(this.body.mesh.material.uniforms.rotationEaseTime, 0.5, {
-
-            value: 0.0
-
-        })
-
-        TweenLite.to(this.soul, 1.5 * 2, {
-
-            transitionTime: 0.0
-
-        })
-
-        // emitter.emit('bloom', true)
-
-        // emitter.off('scrolling', this.loadProject.bind(this))
-
-    }
-
-    initProjectMode() {
-
-        TweenLite.to(this.body.mesh.material.uniforms.easeTime, 1.5 * 2, {
-
-            value: 1.0
-
-        })
-
-        TweenLite.to(this.body.mesh.material.uniforms.rotationEaseTime, 0.5, {
-
-            value: 1.0
-
-        })
-
-
-        TweenLite.to(this.soul, 1.0, {
-
-            transitionTime: 1.0
-
-        })
-
-        // if (this.body.projectQuad.visible === false) {
-
-        //     this.body.projectQuad.visible = true
-
-        // }
-
-        // emitter.emit('bloom', false)
 
     }
 

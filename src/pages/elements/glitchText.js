@@ -91,7 +91,7 @@ export default class GlitchText extends Component {
 
         }
 
-        this.animTime = TweenLite.delayedCall(this.delay, this.animate)
+        this.animTime = TweenLite.delayedCall(this.props.delay, this.animate)
 
     }
 

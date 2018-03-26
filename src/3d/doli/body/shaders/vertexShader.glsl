@@ -24,22 +24,15 @@ uniform float easeTime;
 uniform float rotationEaseTime;
 uniform float animTime;
 
-varying mat4 vModelViewMatrix;
 varying vec3 vPosition;
 varying vec3 vViewPosition;
 varying vec3 vNormal;
-varying vec3 vDir;
-varying vec2 vUv;
-
-varying float vAngle;
-varying float vEaseTime;
-varying float life;
 
 #pragma glslify: computeTranslation = require(../../../utils/glsl/matrixTransform/translate)
 #pragma glslify: computeRotation = require(../../../utils/glsl/matrixTransform/rotate)
 #pragma glslify: computeScale = require(../../../utils/glsl/matrixTransform/scale)
 
-float range(float val, float valMin, float valMax, float destMin, float destMax) {
+lowp float range(float val, float valMin, float valMax, float destMin, float destMax) {
 
     float oldVal = valMax - valMin;
     float newVal = destMax - destMin;
@@ -97,7 +90,7 @@ void main() {
 
     // float delta = length(currPos - prevPos);
 
-    life = currPos.w;
+    float life = currPos.w;
 
     life = max(life, 0.0);
     
@@ -115,7 +108,8 @@ void main() {
     // mat4 rotate = computeRotation(vec3(0.0, 0.0, animTime * 2.25));
 
     // vec3 seekModeScale = vec3(1.0 * life); //temporary name
-    vec3 seekModeScale = vec3(0.15 * life, 0.75 * life, 2.25 * life); //temporary name
+    vec3 seekModeScale = vec3(0.15 * life, 0.5 * life, 1.5 * life); //temporary name
+    // vec3 seekModeScale = vec3(0.5 * life, 0.5 * life, 0.25 * life); //temporary name
     // vec3 seekModeScale = vec3(2.75 * life, 0.5 * life, 0.5 * life); //temporary name
 
     // vec3 projectScale = vec3(5.0);
@@ -127,25 +121,6 @@ void main() {
     mat4 scale = computeScale(mix(seekModeScale, projectScale, easeTime)); //apply the rectangular scale whenever there is movement
 
     vec3 pos = position.xyz;
-
-
-    //In simple terms: When the particle has been created, I want
-    //it's lookAt to be towards the point where the mouse was located
-    //at the frame the particle was created untill it dies
-
-    // if(life <= 0.0) {
-
-    //   lastPos = mousePos.xyz;
-
-    //   dir = normalize(lastPos - currPos.xyz);
-
-    //   rotaAxis = normalize(cross(forward, dir));
-
-    //   angle = angleBetween(forward, dir);
-
-
-
-    // }
 
   //need to fix this mess as well...
 
@@ -163,7 +138,7 @@ void main() {
     
     vec3 projectDir = mix(dir2, normalize((modelViewMatrix * vec4(vec3(0.0, 0.0, -1.0), 1.0)).xyz - currPos.xyz), life);
 
-    vec3 finalDir = mix(seekDir, projectDir, rotationEaseTime);
+    vec3 finalDir = mix(seekDir, projectDir, 0.0);
 
 
     // vec3 finalDir = mix(dir2, dir3, range(life, 0.0, 5.0, 0.2, 1.0));
@@ -176,18 +151,18 @@ void main() {
 
     // vec3 lookAtOffset = lookAt(pos, rotationMatrix);
 
-    // pos += normalize(pos) + normalize(lookAtOffset) * length(pos);
+    // pos += (normalize(lookAtOffset) * length(pos));
 
-    vec4 finalPos = translate * rotate * rotationMatrix * scale * vec4(pos, 1.0);
+    // vec4 finalPos = translate * rotate * scale * vec4(pos, 1.0);
+    // vec4 finalPos = translate * scale * vec4(pos, 1.0);
+    vec4 finalPos = translate * rotationMatrix * scale * vec4(pos, 1.0);
     
     gl_Position = projectionMatrix * modelViewMatrix * finalPos;
     
-    vModelViewMatrix = modelViewMatrix;
+    // vModelViewMatrix = modelViewMatrix;
 
     vViewPosition = (modelViewMatrix * vec4(pos, 1.0)).xyz;
 
     vViewPosition = vViewPosition * -1.0;
-
-    vEaseTime = easeTime;
     
 }

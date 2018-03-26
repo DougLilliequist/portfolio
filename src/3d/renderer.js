@@ -1,6 +1,6 @@
 import * as THREE from 'three'
 
-const renderer = new THREE.WebGLRenderer({precision: 'highp', antialias: true, alpha: true})
+const renderer = new THREE.WebGLRenderer({precision: 'lowp', antialias: true, alpha: true})
 
 // renderer.setClearColor(0x000000, 0)
 // renderer.setPixelRatio(2)

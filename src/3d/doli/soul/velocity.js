@@ -42,6 +42,16 @@ export default class Velocity extends FBO {
 
         this.velocities = new SimData(data, this.w, this.h)
 
+        const offSetData = new Float32Array(amnt)
+
+        for(let i = 0; i < offSetData.length; i++) {
+
+            offSetData[i] = Math.random()
+
+        }
+
+        this.offSets = new SimData(offSetData, this.w, this.h)
+
     }
 
     init() {
@@ -64,10 +74,24 @@ export default class Velocity extends FBO {
 
                 },
 
+                offSets: {
+
+                    type: 't',
+                    value: null
+
+                },
+
                 maxVel: {
 
                     type: 'f',
-                    value: 10.0
+                    value: 5.0
+
+                },
+
+                mousePos: {
+
+                    type: 'v3',
+                    value: new THREE.Vector3(0, 0, 0)
 
                 },
 
@@ -127,7 +151,11 @@ export default class Velocity extends FBO {
 
         this.renderQuad.material.uniforms.positions.value = props.pos
 
+        this.renderQuad.material.uniforms.offSets.value = this.offSets
+
         this.renderQuad.material.uniforms.velocity.value = this.rtt2
+
+        this.renderQuad.material.uniforms.mousePos.value.copy(props.mouse)
 
         renderer.render(this.scene, this.cam, this.rtt, true)
 

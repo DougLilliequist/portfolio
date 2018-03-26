@@ -6,31 +6,29 @@ uniform sampler2D positions;
 uniform float maxVel;
 uniform vec2 resolution;
 
-vec3 acc;
+lowp vec3 acc;
 
 uniform float animTime;
 
+#pragma glslify: snoise = require(../../utils/glsl/noise/noise3D.glsl)
+#pragma glslify: curlNoise = require(../../utils/glsl/noise/curlNoise.glsl)
 #pragma glslify: map = require(../../utils/glsl/map)
 
 void main() {
 
     vec2 uv = gl_FragCoord.xy / resolution.xy;
 
-    // vec3 sepForce = texture2D(separation, uv).xyz;
-    
-    vec3 seekForce = texture2D(seek, uv).xyz;
+    lowp vec3 vel = texture2D(velocity, uv).xyz;
 
-    vec3 vel = texture2D(velocity, uv).xyz;
-
-    vec3 pos = texture2D(positions, uv).xyz;
+    lowp vec3 pos = texture2D(positions, uv).xyz;
 
     float life = texture2D(positions, uv).w;
 
     // sepForce *= 1.0;
 
-    seekForce *= 1.0;
+    // seekForce *= 1.0;
 
-    acc += seekForce;
+    // acc += seekForce;
 
     vel += acc.xyz;
 

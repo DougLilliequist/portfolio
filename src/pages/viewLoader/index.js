@@ -48,7 +48,7 @@ export default class ViewLoader extends Component {
 
         this.counter = 0
 
-        this.counterLimit = 0.2
+        this.counterLimit = 0.1
 
         this.update = this.onUpdate.bind(this)
 
@@ -96,7 +96,17 @@ export default class ViewLoader extends Component {
 
             this.counter += 0.001
 
-            this.pos.y += (this.offSet - this.pos.y) * Math.sin(0.3 * Math.PI) * 0.05
+            this.pos.y += (this.offSet - this.pos.y) * Math.sin(0.3 * Math.PI) * 0.08
+
+            if(this.pos.y / window.innerHeight > 0.1) {
+
+                emitter.emit('hideScroll', true)
+
+            } else {
+
+                emitter.emit('hideScroll', false)
+
+            }
             
             // this.pos.y += (this.offSet - this.pos.y) * Math.sin(0.3 * Math.PI) * 0.05
 
