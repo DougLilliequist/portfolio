@@ -35,7 +35,7 @@ export default class LandingPage extends Component {
 
             intro: '[ My name is Douglas Lilliequist, ',
 
-            whoAmI: 'I\'m a junior creative developer and an Hyper Island alumni',
+            whoAmI: 'I\'m a junior creative developer and former Hyper Island student',
             
             whatIWant: 'who likes to make interactive, engaging and beautiful experiences ]'
             
