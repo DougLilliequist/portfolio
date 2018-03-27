@@ -20,7 +20,7 @@ export default class GlitchText extends Component {
 
             animProgress: 0,
             
-            textCounter: 0,
+            animCounter: 0,
 
             scrambleCounter: 0
 
@@ -40,7 +40,6 @@ export default class GlitchText extends Component {
 
         this.animCounterLimit = this.targetTextLen
 
-        // this.randomChars = '[|!#%)_!@#!@~%)_%#@_%(/-'
         this.randomChars = 'X/|-1[|1X)0)(0/-]1]X|^'
 
         this.randomChars += String.fromCharCode(9604)
@@ -55,7 +54,7 @@ export default class GlitchText extends Component {
 
         this.randomChars += String.fromCharCode(9614)
 
-        this.delay = this.props.start
+        this.delay = this.props.delay
 
         this.animSpeed = this.props.speed
 
@@ -71,11 +70,11 @@ export default class GlitchText extends Component {
             
             animProgress: 0,
             
-            textCounter: 0,
+            animCounter: 0,
             
             scrambleCounter: 0 }, () => {
 
-            this.outPutText = ' '
+            this.outPutText = ''
 
         })
 
@@ -91,13 +90,13 @@ export default class GlitchText extends Component {
 
         }
 
-        this.animTime = TweenLite.delayedCall(this.props.delay, this.animate)
+        this.animTime = TweenLite.delayedCall(this.delay, this.animate)
 
     }
 
     scramble() {
 
-        if(this.state.scrambleCounter < this.targetTextLen) { //change name of targetext
+        if(this.state.scrambleCounter < this.targetTextLen) {
 
             this.outPutText = this.getRandomChar().slice(0, this.state.scrambleCounter)
 
@@ -119,11 +118,7 @@ export default class GlitchText extends Component {
 
     revealText() {
 
-        this.setState((prevState) => ({
-
-            animProgress: this.animCounterLimit - this.state.textCounter
-
-        }), () => {
+        this.setState({animProgress: this.animCounterLimit - this.state.animCounter}, () => {
 
             if(this.state.animProgress <= this.targetTextLen) {
 
@@ -135,9 +130,9 @@ export default class GlitchText extends Component {
 
                 this.outPutText = str
 
-            } else if (this.state.textCounter + 2 < this.targetTextLen) { //not fully getting the point with this
+            } else if (this.state.animCounter + 2 < this.targetTextLen) { //not fully getting the point with this
 
-                let len = Math.min(this.state.textCounter + 2, 9)
+                let len = Math.min(this.state.animCounter + 2, 9)
 
                 this.outPutText = this.getRandomChar().slice(0, len)
 
@@ -147,14 +142,13 @@ export default class GlitchText extends Component {
 
             }
 
-
         })
 
-        if(this.state.textCounter < this.animCounterLimit) {
+        if(this.state.animCounter < this.animCounterLimit) {
 
             this.setState((prevState) => ({
 
-                textCounter: prevState.textCounter + 1
+                animCounter: prevState.animCounter + 1
 
             }), () => {
 
@@ -188,21 +182,21 @@ export default class GlitchText extends Component {
 
         let str = ''
 
-        if(this.targetTextLen > 10) {
+        if(this.targetTextLen > 20) {
 
             for(let i = 0; i < this.targetTextLen; i++) {
 
                 str += this.randomChars[Math.floor(Math.random() * this.randomChars.length)]
 
-                str.slice(0, 10)
+                str.slice(0, 20)
 
             }
 
-            for(let j = 0; j < this.targetTextLen - 10; j++) {
+            for(let j = 0; j < this.targetTextLen - 20; j++) {
 
                 str += this.randomChars[Math.floor(Math.random() * this.randomChars.length)]
 
-                str.slice(0, this.targetTextLen - 10)
+                str.slice(0, this.targetTextLen - 20)
 
             }
 
@@ -225,7 +219,7 @@ export default class GlitchText extends Component {
 
     // shouldComponentUpdate(nextProps, nextState) {
 
-    //     // const counterChanged = this.state.textCounter !== newState.textCounter && nextState.textCounter > this.state.textCounter
+    //     // const counterChanged = this.state.animCounter !== newState.animCounter && nextState.animCounter > this.state.animCounter
 
     //     // const scramblerChanged = this.state.scrambleCounter !== newState.scrambleCounter
 
@@ -247,15 +241,15 @@ export default class GlitchText extends Component {
 
             } else {
 
-                this.outPutText = ' '
+                this.outPutText = ''
 
             }
 
         }
 
-        if(this.state.textCounter !== prevState.textCounter) {
+        if(this.state.animCounter !== prevState.animCounter) {
 
-            if(this.state.textCounter >= this.animCounterLimit) {
+            if(this.state.animCounter >= this.animCounterLimit) {
 
                 this.outPutText = this.targetText
 

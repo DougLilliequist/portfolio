@@ -37,7 +37,7 @@ export default class DOLI extends THREE.Object3D {
 
         this.activityTime = 0.0
 
-        this.activityCoef = 0.0 //might be more reliable than using mouse delta
+        this.activityCoef = 0.0
 
         this.prevPos = new THREE.Vector3(0.0, 0.0, 0.0)
 

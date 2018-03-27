@@ -6,7 +6,7 @@ import {TweenLite} from 'gsap'
 
 import NavCircle from './navCircle/circle.js'
 
-import ScrollBar from '../scrollBar.js'
+import ScrollBar from './scrollBar.js'
 
 import eventEmitter from 'eventEmitter'
 
@@ -21,8 +21,6 @@ export default class Navigation extends Component {
         this.props = props
 
         this.state = {
-
-            curious: false, //rename and not recognizing state...?
             
             interacting: false
 
@@ -36,87 +34,20 @@ export default class Navigation extends Component {
 
         }
 
-        this.cursorSize = {
-
-            x: 0,
-
-            y: 0
-
-        }
-
-        this.offSet = {
-
-            x: 0,
-
-            y: 0
-
-        }
-
     }
 
     componentDidMount() {
 
         this.initEvents()
 
-        // this.cursorSize.x = ReactDOM.findDOMNode(this.navCircle.container).getBoundingClientRect().width
-
-        // this.cursorSize.y = ReactDOM.findDOMNode(this.navCircle.container).getBoundingClientRect().height
-
-        this.offSet.x = this.cursorSize.x * 0.5
-        
-        this.offSet.y = this.cursorSize.y * 0.5
-
         this.activeTime = 0
 
     }
 
     initEvents() {
-
-        
+   
         emitter.on('mouseMove', this.onMouseMove.bind(this))
-
-        // emitter.on('mouseDown', this.onMouseDown.bind(this))
         
-        // emitter.on('press', this.onPress.bind(this))
-        
-        emitter.on('panStart', this.onPress.bind(this))
-    
-        // emitter.on('panEnd', this.onMouseUp.bind(this))
-        
-        emitter.on('mouseUp', this.onMouseUp.bind(this))
-
-        // emitter.on('update', this.onUpdate.bind(this))
-
-        // emitter.on('pan')
-
-    }
-
-    onPress(e) {
-
-        if(this.navCircle.state.onProject === false) {
-
-        this.setState({curious: true}, () => {
-
-            this.navCircle.animate(this.state.curious)
-
-            emitter.emit('morphDOLI', 'curious')
-
-            emitter.emit('curious', e)
-
-        })
-
-        } else {
-
-            return
-
-        }
-
-    }
-
-    onMouseDown() {
-
-        this.navCircle.animate(this.state.curious)
-
     }
 
     onMouseMove(e) {
@@ -130,22 +61,6 @@ export default class Navigation extends Component {
             this.mouse.y = e.clientY            
 
         })
-
-    }
-
-    onMouseUp(e) {
-
-        if(this.state.curious) {
-
-        this.setState({curious: false}, () => {
-
-            this.navCircle.animate(this.state.curious)
-            
-            emitter.emit('viewSelected')
-    
-        })
-
-    }
 
     }
 
@@ -169,11 +84,6 @@ export default class Navigation extends Component {
 
     }
 
-    // componentDidUpdate(newProp, newState) {
-
-
-    // }
-
     render() {
 
         return (
@@ -183,11 +93,7 @@ export default class Navigation extends Component {
                 <NavCircle ref = {(el) => {this.navCircle = el}} target = {this.mouse} active = {this.state.interacting}/>
 
                 <ScrollBar />
-
-                {/* <ExitPrompt /> */}
                 
-                {/* <CuriousNavigation ref = {(el) => {this.curiousNav = el}} target = {this.mouse} size = {{x: this.cursorSize.x * 2, y: this.cursorSize.y * 2.0}} offSet = {this.offSet}/> */}
-
             </div>
    
         )

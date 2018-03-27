@@ -41,7 +41,6 @@ void main() {
     pos += finalNoise;
   
     float maxRad = 120.0 * map(life, 0.0, 8.0, 1.25, 1.0);
-    // float maxRad = 100.0;
     lowp float dist = length(pos);
     // float distSt = smoothstep(0.0, maxRad, dist);
     float distSt = step(maxRad, dist);
@@ -57,13 +56,15 @@ void main() {
       
     if(life <= 0.0) {
 
-        // pos = vec3(0.0);
+        pos = vec3(0.0);
 
-        pos = (origPos * 10.0 + mix(1.0, posOffset.x, 0.2)) * fract(origPos.x * 2.5) * 1.15;
+        pos += (origPos * 10.0 + mix(1.0, posOffset.x, 0.2)) * fract(origPos.x * 2.5) * 1.15;
 
-        pos.y += sin(radians(animTime) * 2.0 * PI) * 20.0;
+        pos.x += cos(radians(animTime) * PI) * cos(radians(animTime) * 2.0 * PI) * 20.0;
+
+        pos.y += sin(radians(animTime) * PI) * 20.0;
         
-        pos.z += cos(radians(animTime) * 2.0 * PI) * 20.0;
+        pos.z += cos(radians(animTime)* PI) * sin(radians(animTime) * 2.0 * PI) * 20.0;
          
       }
 

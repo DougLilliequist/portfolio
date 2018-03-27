@@ -86,10 +86,6 @@ void main() {
     
     vec4 currPos = texture2D(currentPos, translation.xy);
 
-    // vec3 lastPos = vec3(0.0);
-
-    // float delta = length(currPos - prevPos);
-
     float life = currPos.w;
 
     life = max(life, 0.0);
@@ -102,65 +98,28 @@ void main() {
 
     mat4 translate = computeTranslation(worldPos.xyz);
 
-    // mat4 translate = computeTranslation(currPos.xyz);
-
     mat4 rotate = computeRotation(vec3(0.0, 0.0, 0.0));
-    // mat4 rotate = computeRotation(vec3(0.0, 0.0, animTime * 2.25));
-
-    // vec3 seekModeScale = vec3(1.0 * life); //temporary name
-    vec3 seekModeScale = vec3(0.15 * life, 0.5 * life, 1.5 * life); //temporary name
-    // vec3 seekModeScale = vec3(0.5 * life, 0.5 * life, 0.25 * life); //temporary name
-    // vec3 seekModeScale = vec3(2.75 * life, 0.5 * life, 0.5 * life); //temporary name
-
-    // vec3 projectScale = vec3(5.0);
-    // vec3 projectScale = vec3(5.0) * range(life, 0.1, 1.0, 10.0, 1.0);
-    vec3 projectScale = vec3(5.0, 5.0, 0.5) * range(life, 0.0, 1.0, 0.25, 1.2);
-    
-    // vec3 projectScale = vec3(5.0) * life;
-    
-    mat4 scale = computeScale(mix(seekModeScale, projectScale, easeTime)); //apply the rectangular scale whenever there is movement
+        
+    mat4 scale = computeScale(vec3(0.15 * life, 0.5 * life, 1.5 * life));
 
     vec3 pos = position.xyz;
-
-  //need to fix this mess as well...
-
-    vec3 dir = normalize(mousePos.xyz - currPos.xyz);
     
-    vec3 dir2 = normalize(currPos.xyz - prevPos.xyz);
-
-    vec3 dir3 = texture2D(direction, translation.xy).xyz;
-
-    // vec3 seekDir = dir2;
-    // vec3 seekDir = mix(dir2, dir3, range(life, 0.0, 8.0, 0.0, 1.0));
-    vec3 seekDir = mix(dir2, dir3, 0.0);
-
-    // vec3 projectDir = normalize(currPos.xyz - prevPos.xyz);
+    vec3 dir = normalize(currPos.xyz - prevPos.xyz);
     
-    vec3 projectDir = mix(dir2, normalize((modelViewMatrix * vec4(vec3(0.0, 0.0, -1.0), 1.0)).xyz - currPos.xyz), life);
-
-    vec3 finalDir = mix(seekDir, projectDir, 0.0);
-
-
-    // vec3 finalDir = mix(dir2, dir3, range(life, 0.0, 5.0, 0.2, 1.0));
-
-    vec3 rotaAxis = normalize(cross(forward, finalDir));
+    vec3 rotaAxis = normalize(cross(forward, dir));
     
-    float angle = angleBetween(forward, finalDir);
+    float angle = angleBetween(forward, dir);
 
     mat4 rotationMatrix = computeAxisRotation(rotaAxis, angle);
 
     // vec3 lookAtOffset = lookAt(pos, rotationMatrix);
 
     // pos += (normalize(lookAtOffset) * length(pos));
-
-    // vec4 finalPos = translate * rotate * scale * vec4(pos, 1.0);
-    // vec4 finalPos = translate * scale * vec4(pos, 1.0);
+    
     vec4 finalPos = translate * rotationMatrix * scale * vec4(pos, 1.0);
     
     gl_Position = projectionMatrix * modelViewMatrix * finalPos;
     
-    // vModelViewMatrix = modelViewMatrix;
-
     vViewPosition = (modelViewMatrix * vec4(pos, 1.0)).xyz;
 
     vViewPosition = vViewPosition * -1.0;

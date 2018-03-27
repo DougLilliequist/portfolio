@@ -26,21 +26,15 @@ export default class Body extends THREE.Object3D {
 
         this.initMesh()
 
-        // this.initProjectQuad()
-
-        this.initEvents()
-
     }
 
     initGeo() {
-
-        //instances goes here
 
         const amnt = config.particleAmntX * config.particleAmntY
 
         this.geo = new THREE.InstancedBufferGeometry()
 
-        const baseGeo = new THREE.BoxBufferGeometry(1, 1, 1) //would be cool to use noise to make morphing blobs when in seek form and change to cubes when in project mode
+        const baseGeo = new THREE.BoxBufferGeometry(1, 1, 1)
 
         this.geo.addAttribute('position', baseGeo.attributes.position)
 
@@ -117,37 +111,24 @@ export default class Body extends THREE.Object3D {
 
         this.geo.attributes.translation.setDynamic(true)
 
-        console.log(this.geo)
-
     }
 
     initMat() {
-
-        const texRes = {
-
-            w: config.particleAmntX,
-            
-            h: config.particleAmntY
-
-        }
         
-
         this.mat = new THREE.RawShaderMaterial({
 
             uniforms: {
 
                 currentPos: {
 
-                    type: 't',
-                
+                    type: 't',             
                     value: null
 
                 },
 
                 previousPos: {
 
-                    type: 't',
-                    
+                    type: 't',  
                     value: null
 
                 },
@@ -155,7 +136,6 @@ export default class Body extends THREE.Object3D {
                 direction: {
 
                     type: 't',
-
                     value: null
 
                 },
@@ -163,7 +143,6 @@ export default class Body extends THREE.Object3D {
                 tex: {
 
                     type: 't',
-                    
                     value: null
 
                 },
@@ -171,7 +150,6 @@ export default class Body extends THREE.Object3D {
                 tex2: {
 
                     type: 't',
-                   
                     value: null
 
                 },
@@ -179,7 +157,6 @@ export default class Body extends THREE.Object3D {
                 prevMousePos: {
 
                     type: 'v3',
-
                     value: new THREE.Vector3()
 
                 },
@@ -187,7 +164,6 @@ export default class Body extends THREE.Object3D {
                 mousePos: {
 
                     type: 'v3',
-                    
                     value: new THREE.Vector3()
 
                 },
@@ -195,7 +171,6 @@ export default class Body extends THREE.Object3D {
                 animTime: {
 
                     type: 'f',
-                    
                     value: null
 
                 },
@@ -218,7 +193,6 @@ export default class Body extends THREE.Object3D {
                 mode: {
 
                     type: 'f',
-
                     value: 0.0
 
                 },
@@ -226,7 +200,6 @@ export default class Body extends THREE.Object3D {
                 rotationEaseTime: {
 
                     type: 'f',
-
                     value: 0.0
 
                 },
@@ -234,7 +207,6 @@ export default class Body extends THREE.Object3D {
                 projectEase: {
 
                     type: 'f',
-
                     value: 0.0
 
                 },
@@ -242,7 +214,6 @@ export default class Body extends THREE.Object3D {
                 resolution: {
 
                     type: 'v2',
-                    // value: new THREE.Vector2(1920, 1080) //change / remove this later
                     value: new THREE.Vector2(config.particleAmntX, config.particleAmntY) //change / remove this later
 
                 }
@@ -255,42 +226,26 @@ export default class Body extends THREE.Object3D {
             
             transparent: true,
             
-            // blending: THREE.AdditiveBlending
-
         })
 
         this.mat.extensions.derivatives = true
         
-        // this.mat.uniforms.tex.value = this.textures[0]
-
         this.mat.needsUpdate = true
 
     }
 
-    //need to clean this mess up...
-
     initMesh() {
 
         this.mesh = new THREE.Mesh(this.geo, this.mat)
+        
         this.mesh.frustumCulled = false
+        
         this.mesh.name = 'DOLI'
+        
         this.mesh.currentMode = ''
-        // this.mesh.rotation.x = Math.PI / -8
+                
         this.add(this.mesh)
 
     }
-
-    initEvents() {
-
-        emitter.on('applyNormal', this.applyNormal.bind(this))
-
-    }
-
-    applyNormal(b) {
-
-        this.mesh.material.uniforms['mode'].value = (b === true) ? 1.0 : 0.0
-
-    }
-
 
 }

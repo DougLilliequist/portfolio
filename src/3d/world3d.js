@@ -1,12 +1,8 @@
-// import {h, Component} from 'preact'
-
 import React, {
     Component
 } from 'react'
 
 import ReactDOM from 'react-dom'
-
-// import className from 'classnames'
 
 import * as THREE from 'three'
 
@@ -16,19 +12,11 @@ import RenderTarget from 'renderTarget'
 
 import renderer from 'renderer'
 
-import Post from './postProcessing/index.js' //rename
-
 import eventEmitter from 'eventEmitter'
 
 const emitter = eventEmitter.emitter
 
-import {
-    TweenLite
-} from 'gsap'
-
-import {
-    threeDtoTwoD
-} from './utils/3dTo2d.js'
+import {TweenLite} from 'gsap'
 
 export default class World3D extends Component {
 
@@ -46,11 +34,7 @@ export default class World3D extends Component {
 
         this.initScene()
 
-        this.initPost()
-
         this.initDoli()
-
-        // this.initNavOrbs()
 
         this.initEvents()
 
@@ -99,29 +83,16 @@ export default class World3D extends Component {
         const rad = Math.PI / 180
 
         const fov = 65 * rad
-
-        // this.camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, .1, 10000)
         
         this.camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, .1, 10000)
 
         this.camera.position.set(0, 0, 850)
-
-        // this.camera.lookAt(this.scene)
 
         this.rtt = new RenderTarget(window.innerWidth, window.innerHeight)
 
         this.renderer = renderer
 
         this.container.appendChild(this.renderer.domElement)
-        // document.body.appendChild(this.renderer.domElement)
-
-    }
-
-    initPost() {
-
-        this.post = new Post(window.innerWidth, window.innerHeight)
-
-        this.post.initPasses(window.innerWidth, window.innerHeight)
 
     }
 
@@ -133,17 +104,7 @@ export default class World3D extends Component {
 
     }
 
-    initNavOrbs() {
-
-        this.navObjs = new NavObjs()
-
-        this.scene.add(this.navObjs)
-
-    }
-
     initEvents() {
-
-        // this.focusing = false
 
         emitter.on('mouseMove', this.onMouseMove.bind(this))
 
@@ -179,8 +140,6 @@ export default class World3D extends Component {
 
     animate() {
 
-        //add a function that checks the distance between the mouse and all navorbs
-        //if the distance is x, call stick and make the circle seek towards orb
 
         this.deltaTime = this.time.getDelta()
 
@@ -190,13 +149,7 @@ export default class World3D extends Component {
 
         this.doli.animate(this.deltaTime, this.mouse.worldPos)
 
-        // this.navObjs.update(this.deltaTime, this.w, this.h, this.mouse.worldPos, this.camera, this.rayCaster)
-
         this.renderer.render(this.scene, this.camera)
-
-        // this.renderer.render(this.scene, this.camera, this.rtt, true)
-
-        // this.post.render({scene: this.scene, camera: this.camera})
 
     }
 

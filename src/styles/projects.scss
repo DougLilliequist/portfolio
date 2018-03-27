@@ -42,6 +42,8 @@
     
     top: 30%;
     
+    font-size: -moz-calc(30px + (48 - 30)*(100vw - 900px) / (1440 - 900));
+
     font-size: -webkit-calc(30px + (48 - 30)*(100vw - 900px) / (1440 - 900));
     
     font-size: calc(30px + (48 - 30)*(100vw - 900px) / (1440 - 900));
@@ -54,18 +56,11 @@
     
     width: max-content;
     
-    // z-index: 5;
 }
 
 .Project .Title h2 {
 
     margin: 0;
-
-    // color: transparent;
-
-    // -webkit-text-stroke: 2px black;
-
-    // fill: none;
 
 }
 
@@ -77,45 +72,58 @@
 
     stroke-dasharray: -100;
 
-    // stroke-dashoffset: -100;
-    // stroke-dasharray:; //I hope this will make the size as a big as the parent container
-
-    // stroke-dashoffset: 0;
-
-    // transform: translate(0px, 0px);
-
 }
 
 .Project .CopyContainer {
 
     width: 100%;
+    
     height: 54vh;
+    
     top: 23%;
+    
     text-align: left;
+    
     position: absolute;
-    z-index: 6;
+    
+    z-index: 3;
+    
     pointer-events: none;
 
 }
 
 .Project .Description {
     
-    // font-family: Arial;
-    // font-weight: 300;
+    font-size: -moz-calc(12px + (17.25 - 12)*(100vw - 900px) / (1440 - 900));
+
     font-size: -webkit-calc(12px + (17.25 - 12)*(100vw - 900px) / (1440 - 900));
+    
     font-size: calc(12px + (17.25 - 12)*(100vw - 900px) / (1440 - 900));
+    
     letter-spacing: 0.05em;
+    
     opacity: 0.0;
+    
     position: absolute;
+    
     right: 15%;
+    
     bottom: 7.5%;
+    
     // width: 22.75%;
+    
     width: fit-content;
+    
     display: flex;
+    
     flex-direction: row-reverse;
+    
     align-items: flex-end;
+    
     justify-content: space-around;
+    
     // justify-content: space-between;
+    
     will-change: opacity;
 
 }
@@ -123,22 +131,35 @@
 .Project .ProjectInfo {
 
     position: absolute;
+    
     display: flex;
+    
     flex-direction: column;
+    
     width: fit-content;
+    
     left: 15.25%;
+    
     top: 48%;
 
 }
 
 .Project .ProjectInfo > * {
 
+    font-size: -moz-calc(12px + (14 - 12)*(100vw - 900px) / (1440 - 900));
+
     font-size: -webkit-calc(12px + (14 - 12)*(100vw - 900px) / (1440 - 900));
+    
     font-size: calc(12px + (14 - 12)*(100vw - 900px) / (1440 - 900));
+    
     letter-spacing: 0.05em;
+    
     will-change: opacity;
+    
     font-style: italic;
+    
     position: relative;
+    
     opacity: 1.0;
 
     margin: 4px;
@@ -155,17 +176,13 @@
 
     overflow: hidden;
 
-    z-index: 5;
+    z-index: 2;
 
 }
 
 
 .Project .ProjectVid video {
-
-    // object-fit: contain;
     
-    object-fit: cover;
-
     opacity: 1.0;
 
     will-change: opacity;
@@ -175,6 +192,51 @@
     height: 100%;
 
 }
+
+// .ProjectVid {
+
+//     position: relative;
+
+//     width: 94.5vh;
+    
+//     height: 54vh;
+
+//     z-index: 5;
+
+// }
+
+// .ProjectVid .VideoContainer {
+
+//     position: absolute;
+
+//     top: 0;
+
+//     left: 0;
+
+//     width: 100%;
+
+//     height: 100%;
+
+//     overflow: hidden;
+
+// }
+
+
+// .ProjectVid video {
+
+//     // object-fit: contain;
+    
+//     object-fit: cover;
+
+//     opacity: 1.0;
+
+//     will-change: opacity;
+
+//     width: 100%;
+
+//     height: 100%;
+
+// }
 
 .LetterBoxContainer {
 
@@ -192,6 +254,8 @@
 
     position: absolute;
     
+    font-size: -moz-calc(10px + (15 - 10)*(100vw - 900px) / (1440 - 900));
+
     font-size: -webkit-calc(10px + (15 - 10)*(100vw - 900px) / (1440 - 900));
     
     font-size: calc(10px + (15 - 10)*(100vw - 900px) / (1440 - 900));
@@ -242,9 +306,7 @@
 
     justify-content: space-between;
 
-    // pointer-events: auto;
-
-    z-index: 5;
+    z-index: 2;
 
 }
 
@@ -253,6 +315,8 @@
     font-family: Arial;
 
     font-weight: 300;
+
+    font-size: -moz-calc(10px + (15 - 10)*(100vw - 900px) / (1440 - 900));
 
     font-size: -webkit-calc(10px + (15 - 10)*(100vw - 900px) / (1440 - 900));
     
@@ -265,24 +329,5 @@
 .ProjectLink p {
 
     margin: 0;
-
-}
-
-.Project .LetterBox1 {
-
-    // width: 100%;
-    // height: 20%;
-    // transform: translate(0%, 0%);
-    fill: rgb(255, 255, 255);
-
-}
-
-.Project .LetterBox2 {
-
-    // width: 100%;
-    // height: 20%;
-    /* position: absolute; */
-    // transform: translate(0%, 80%);
-    fill: rgb(255, 255, 255);
 
 }

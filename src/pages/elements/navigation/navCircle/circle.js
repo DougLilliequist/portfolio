@@ -6,8 +6,6 @@ import {TweenLite, Power4} from 'gsap'
 
 import {map} from 'math'
 
-import {translate} from 'helpers'
-
 import eventEmitter from 'eventEmitter'
 
 const emitter = eventEmitter.emitter

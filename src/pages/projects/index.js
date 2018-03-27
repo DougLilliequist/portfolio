@@ -5,11 +5,11 @@ import React, {
 import ReactDOM from 'react-dom'
 
 import {
-    projectCopy
-} from './projectCopy.js'
+    projectContent
+} from './projectContent.js'
 
 import {
-    TimelineLite, TweenLite, Power4
+    TimelineLite, TweenLite, 
 } from 'gsap'
 
 import GlitchText from '../elements/glitchText.js'
@@ -28,7 +28,7 @@ export default class Project extends Component {
 
         this.props = props
 
-        this.projectCopy = projectCopy
+        this.projectContent = projectContent
 
         this.state = {
 
@@ -95,8 +95,6 @@ export default class Project extends Component {
 
                 ease: Sine.easeInOut,
 
-                // scale: this.state.hovering ? 1.025 : 1.0,
-
                 opacity: this.state.hovering ? 1.0 : 0.7
 
             })
@@ -160,7 +158,7 @@ export default class Project extends Component {
             
                 <div className = "CopyContainer" ref = {(container) => this.copyContainer = container}>
 
-                    <div className = "ProjectNumb" ref = {(numb) => {this.projectNumb = numb}}><p>{'( PROJECT : ' + this.projectCopy[this.props.project].number + ' )'}</p>
+                    <div className = "ProjectNumb" ref = {(numb) => {this.projectNumb = numb}}><p>{'( PROJECT : ' + this.projectContent[this.props.project].number + ' )'}</p>
             
             <svg className = "LineContainer" ref = {(container) => this.numbLine = container} style = {{position: 'relative', width: '2.5vw', height: '2px', marginRight: '1em'}}>
 
@@ -170,11 +168,11 @@ export default class Project extends Component {
 
             </div>
 
-                {/* <div className = "Title" ref = {(title) => this.title = title}><h2>{this.projectCopy[this.props.project].title}</h2></div> */}
+                {/* <div className = "Title" ref = {(title) => this.title = title}><h2>{this.projectContent[this.props.project].title}</h2></div> */}
                 
-                <div className = "Title" ref = {(title) => this.title = title}><h2><GlitchText text = {this.projectCopy[this.props.project].title} glitch = {this.state.viewingProject} delay = {0.0} speed = {0.01 / (this.projectCopy[this.props.project].title.length * 0.1)}/></h2></div>
+                <div className = "Title" ref = {(title) => this.title = title}><h2><GlitchText text = {this.projectContent[this.props.project].title} glitch = {this.state.viewingProject} delay = {0.3} speed = {0.01 / (this.projectContent[this.props.project].title.length * 0.1)}/></h2></div>
                 
-                <div className = "Description" ref = {(desc) => this.desc = desc}><p style = {{margin: 0}}>{this.projectCopy[this.props.project].description}</p>
+                <div className = "Description" ref = {(desc) => this.desc = desc}><p style = {{margin: 0}}>{this.projectContent[this.props.project].description}</p>
                 
                 <svg className = "LineContainer" ref = {(container) => this.descLine = container} style = {{position: 'relative', width: '2.5vw', height: '2px', marginRight:'1em'}}>
 
@@ -186,17 +184,11 @@ export default class Project extends Component {
                 
                 <div className = "ProjectInfo" ref = {(container) => this.projectInfo = container}>
 
-                <div className = "Context" ref = {(el) => this.ctx = el}><b style = {{fontStyle: 'normal'}}>Context: </b>{this.projectCopy[this.props.project].context}<b style = {{fontStyle: 'normal'}}></b></div>
+                <div className = "Context" ref = {(el) => this.ctx = el}><b style = {{fontStyle: 'normal'}}>Context: </b>{this.projectContent[this.props.project].context}<b style = {{fontStyle: 'normal'}}></b></div>
                 
-                <div className = "Role" ref = {(el) => this.role = el}><b style = {{fontStyle: 'normal'}}>Role: </b>{this.projectCopy[this.props.project].role}<b style = {{fontStyle: 'normal'}}></b></div>                
+                <div className = "Role" ref = {(el) => this.role = el}><b style = {{fontStyle: 'normal'}}>Role: </b>{this.projectContent[this.props.project].role}<b style = {{fontStyle: 'normal'}}></b></div>                
                 
-                <div className = "Tech" ref = {(el) => this.tech = el}><b style = {{fontStyle: 'normal'}}>Tech: </b>{this.projectCopy[this.props.project].tech}<b style = {{fontStyle: 'normal'}}></b></div>
-
-                {/* <div className = "Context" ref = {(el) => this.ctx = el}><b style = {{fontStyle: 'normal'}}>Context: </b><GlitchText text = {this.projectCopy[this.props.project].context} glitch = {this.state.viewingProject} delay = {0.15} speed = {0.01 / (this.projectCopy[this.props.project].context.length * 0.5)}/><b style = {{fontStyle: 'normal'}}></b></div> */}
-                
-                {/* <div className = "Role" ref = {(el) => this.role = el}><b style = {{fontStyle: 'normal'}}>Role: </b><GlitchText text = {this.projectCopy[this.props.project].role} glitch = {this.state.viewingProject} delay = {0.3} speed = {0.01 / (this.projectCopy[this.props.project].role.length * 0.5)}/><b style = {{fontStyle: 'normal'}}></b></div>                 */}
-                
-                {/* <div className = "Tech" ref = {(el) => this.tech = el}><b style = {{fontStyle: 'normal'}}>Tech: </b><GlitchText text = {this.projectCopy[this.props.project].tech} glitch = {this.state.viewingProject} delay = {0.4} speed = {0.01 / (this.projectCopy[this.props.project].tech.length * 0.5)}/><b style = {{fontStyle: 'normal'}}></b></div> */}
+                <div className = "Tech" ref = {(el) => this.tech = el}><b style = {{fontStyle: 'normal'}}>Tech: </b>{this.projectContent[this.props.project].tech}<b style = {{fontStyle: 'normal'}}></b></div>
 
                  {/* <svg className = "LineContainer" ref = {(container) => this.projectLine = container} style = {{position: 'relative', width: '2.5vw', height: '100%', marginRight: '2em'}}>
 
@@ -212,9 +204,9 @@ export default class Project extends Component {
 
                            <div className = "ProjectLink" ref = {(el) => this.link = el} onMouseEnter = {this.hintClick} onMouseLeave = {this.hintClick}>
                            
-                           {this.projectCopy[this.props.project].link === ' ' ? <div className = "Link"><p ref = {(text) => this.linkText = text}><GlitchText text = {'[ there_is_no_link ]'} glitch = {this.state.revealLink} delay = {0.4} speed = {0.01} /></p></div> : 
+                           {this.projectContent[this.props.project].link === ' ' ? <div className = "Link"><GlitchText ref = {(text) => this.linkText = text} text = {'[ there_is_no_link ]'} glitch = {this.state.revealLink} delay = {0.4} speed = {0.01} /></div> : 
                            
-                           <a className = "Link" href = {this.projectCopy[this.props.project].link} target = "_blank"><p ref = {(text) => this.linkText = text}><GlitchText text = {'[ VIEW PROJECT ]'} glitch = {this.state.revealLink} delay = {0.4} speed = {0.01} /></p></a>
+                           <a className = "Link" href = {this.projectContent[this.props.project].link} target = "_blank"><GlitchText ref = {(text) => this.linkText = text} text = {'[ VIEW PROJECT ]'} glitch = {this.state.revealLink} delay = {0.4} speed = {0.01} /></a>
 
                            }
         
@@ -223,7 +215,7 @@ export default class Project extends Component {
 
                     <video ref = {(vid) => this.vid = vid} autoPlay = {true} loop = {true} crossOrigin = {'Anonymous'}>
 
-                        <source src = {this.projectCopy[this.props.project].vid} type = {'video/mp4'} />
+                        <source src = {this.projectContent[this.props.project].vid} type = {'video/mp4'} />
 
                     </video>
 
@@ -231,13 +223,13 @@ export default class Project extends Component {
 
                 <div className = 'LetterBoxContainer' ref = {(container) => this.letterBoxContainer = container}>
 
-                <svg ref = {(container) => this.letterBox = container} style = {{position: 'absolute', width: '100%', height: '20%', top: '0%', left: '0%', zIndex: '5'}}>
+                <svg ref = {(container) => this.letterBox = container} style = {{position: 'absolute', width: '100%', height: '20%', top: '0%', left: '0%', zIndex: '2'}}>
 
                     <rect className = "LetterBox1" ref = {(el) => this.ltrBox1 = el} width = {'100%'} height = {'100%'} style ={{position: 'absolute', fill: 'rgba(255, 255, 255)', pointerEvents: 'none'}}/>
 
                 </svg>
 
-                <svg ref ={(container) => this.letterBox2 = container} style = {{position: 'absolute', width: '100%', height: '20%', bottom: '0%', left: '0%', zIndex: '5'}}>
+                <svg ref ={(container) => this.letterBox2 = container} style = {{position: 'absolute', width: '100%', height: '20%', bottom: '0%', left: '0%', zIndex: '2'}}>
 
                     <rect className = "LetterBox2" ref = {(el) => this.ltrBox2 = el} width = {'100%'} height = {'100%'} style ={{position: 'absolute', fill: 'rgba(255, 255, 255)', pointerEvents: 'none'}}/>
 

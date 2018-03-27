@@ -1,4 +1,3 @@
-// uniform sampler2D separation;
 uniform sampler2D seek;
 uniform sampler2D velocity;
 uniform sampler2D positions;
@@ -23,12 +22,6 @@ void main() {
     lowp vec3 pos = texture2D(positions, uv).xyz;
 
     float life = texture2D(positions, uv).w;
-
-    // sepForce *= 1.0;
-
-    // seekForce *= 1.0;
-
-    // acc += seekForce;
 
     vel += acc.xyz;
 

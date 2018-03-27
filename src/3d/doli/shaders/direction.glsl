@@ -18,27 +18,9 @@ void main() {
 
     float life = texture2D(currentPos, uv).w;
 
-    // float lifeStep = max()
-
-    // float lifeStep = 1.0 - step(0.0, life);
-
-    // float lifeStep = 1.0 - smoothstep(0.0, 1.0, life);
-
-    // float lifeStep = smoothstep(0.0, 1.0, life);
-
-    // direction = mix(vec3(0.0), normalize(mousePos - prevMousePos), lifeStep);
-
-    // direction = lifeStep * normalize(mousePos - prevMousePos);
-
-    // if(life <= 0.0) {
-
         direction = normalize(mousePos - prevMousePos);
 
         direction *= 1.0 - smoothstep(0.0, 8.0, life);
-
-    // }
-
-
 
     gl_FragColor = vec4(direction, 1.0);
 

@@ -1,12 +1,8 @@
-// import {h, Component} from 'preact'
-
 import React, {Component} from 'react'
 
 import ReactDOM from 'react-dom'
 
-import LandingPageScroll from '../elements/scroll/landingPageScroll.js'
-
-import ReactRevealText from 'react-reveal-text'
+import LandingPageScroll from './landingPageScroll.js'
 
 import Events from './events.js'
 
@@ -19,8 +15,6 @@ import World3D from '../../3d/world3d.js'
 import eventEmitter from 'eventEmitter'
 
 const emitter = eventEmitter.emitter
-
-// import TransitionGroup from 'react-transition-group/TransitionGroup'
 
 export default class LandingPage extends Component {
 
@@ -37,13 +31,19 @@ export default class LandingPage extends Component {
 
         this.copy = {
 
-            // greeting: ['Hello', 'Hi', 'Hej'],
+            greeting: ['Hello', 'Hi', 'Hej'],
+
+            intro: '[ My name is Douglas Lilliequist, ',
+
+            whoAmI: 'I\'m a junior creative developer and an Hyper Island alumni',
+            
+            whatIWant: 'who likes to make interactive, engaging and beautiful experiences ]'
             
             // title: '[ My name is Douglas Lilliequist, \n ' +
             // 'and I\'m a junior creative developer and an Hyper Island alumni who likes to make interactive and beautiful experiences ]',
-            title: 'DOUGLAS LILLIEQUIST',
+            // title: 'DOUGLAS LILLIEQUIST',
 
-            intro: '[ Junior Creative Developer / Hyper Island alumni]'
+            // intro: '[ Junior Creative Developer / Hyper Island alumni]'
 
         }
 
@@ -69,13 +69,15 @@ export default class LandingPage extends Component {
                             
                 <div className = "Title">
 
-                <h1><GlitchText text = {this.copy.title} glitch = {this.state.revealCopy} delay = {1.5} speed = {0.01 / (this.copy.title.length * 0.1)} /></h1>
+                <h2><GlitchText text = {this.copy.greeting[Math.floor(Math.random() * Math.floor(3))]} glitch = {this.state.revealCopy} delay = {1.5} speed = {0.01 / (this.copy.greeting.length * 0.1)} /></h2>
 
                 </div>
                 
                 <div className = "Intro">
 
                 <GlitchText text = {this.copy.intro} glitch = {this.state.revealCopy} delay = {1.8} speed = {0.01 / (this.copy.intro.length * 1.5)}/>
+                <GlitchText text = {this.copy.whoAmI} glitch = {this.state.revealCopy} delay = {2.1} speed = {0.01 / (this.copy.whoAmI.length * 1.5)}/>
+                <GlitchText text = {this.copy.whatIWant} glitch = {this.state.revealCopy} delay = {2.4} speed = {0.01 / (this.copy.whatIWant.length * 1.5)}/>
                 
                 </div>
 
