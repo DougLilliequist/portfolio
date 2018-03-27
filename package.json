@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "budo app.js --live -- -t sassify -t [ babelify --presets [ es2015 react ] ] -t glslify -t aliasify",
+    "build": "browserify ./app.js -g [envify --NODE_ENV production] -g uglifyify -t sassify -t [ babelify --presets [ es2015 react ] ] -t glslify -t aliasify | uglifyjs --compress --mangle > ./src/dist/js/bundle.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Douglas Lilliequist",
@@ -37,8 +38,6 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-jss": "^8.2.1",
-    "react-reveal-text": "^0.1.1",
-    "react-transition-group": "^1.2.1",
     "sassify": "^4.0.1",
     "three": "^0.89.0"
   },

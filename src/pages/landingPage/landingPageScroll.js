@@ -174,7 +174,6 @@ export default class LandingPageScroll extends Component {
 
             <div className = "Scroll">
                 
-                {/* replace with react-reveal text */}
                 <div className = "ScrollHint" ref = {(el) => this.cta = el}>scroll</div> 
                 
                 <svg style = {{width: '100%', height: '2px'}}> 
