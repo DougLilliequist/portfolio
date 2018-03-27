@@ -22,7 +22,7 @@ export const projectContent = {
         role: 'developer (Front-End)',
         context: 'Client Project',
         link: 'https://30ans.redcrossmuseum.ch/vr/',
-        vid: './src/media/tbntproj.mp4'
+        vid: './src/media/tbntprojv2.mp4'
 
     },
 
