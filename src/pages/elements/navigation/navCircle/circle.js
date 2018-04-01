@@ -26,7 +26,9 @@ export default class NavCircle extends Component {
 
             onProject: false,
 
-            interacting: false
+            interacting: false,
+
+            color: 'dark'
 
         }
 
@@ -54,7 +56,7 @@ export default class NavCircle extends Component {
 
         this.radius = 0
 
-        this.ease = 0.25
+        this.ease = 0.15
 
         this.update = this.onUpdate.bind(this)
 
@@ -65,6 +67,8 @@ export default class NavCircle extends Component {
     componentDidMount() {
 
         emitter.on('hintClick', this.onClickable.bind(this)) //rename
+
+        emitter.on('updateCursor', this.updateCursor.bind(this))
 
         // emitter.on('stick', this.onFocus.bind(this)) //rename
 
@@ -80,7 +84,7 @@ export default class NavCircle extends Component {
 
         this.h = this.canvas.height = window.innerHeight
         
-        emitter.on('update', this.onUpdate.bind(this))
+        // emitter.on('update', this.onUpdate.bind(this))
         
         emitter.on('resizing', this.onResize.bind(this))
         
@@ -94,9 +98,23 @@ export default class NavCircle extends Component {
 
             ease: Power4.easeInOut,
 
-            radius: b === true ? 20 : 15
+            radius: b.state === true ? 20 : 15
 
         })
+
+        this.setState((prevState) => ({
+
+            color: b.state === true ? b.color : 'dark'
+
+        }))
+
+    }
+
+    updateCursor() {
+
+        if(this.animte) this.animate.kill()
+
+        this.animte = TweenLite.delayedCall(0.001, this.update)
 
     }
 
@@ -112,21 +130,20 @@ export default class NavCircle extends Component {
         
         this.pos.y += (this.target.y - this.pos.y) * this.ease
 
-        // if(Math.abs(this.pos.x) < 0.1 && Math.abs(this.pos.y) < 0.1) {
+        if(Math.abs(this.pos.x) < 0.1 && Math.abs(this.pos.y) < 0.1) {
 
-        //     console.log('too close')
 
-        //     if(this.animate) this.animate.kill()
+            if(this.animate) this.animate.kill()
 
-        //     return
+            return
 
-        // } else {
+        } else {
 
         //     console.log(this.pos.x)
 
-        //     this.animate = TweenLite.delayedCall(0.001, this.update)
+            this.animate = TweenLite.delayedCall(0.001, this.update)
 
-        // }
+        }
 
     }
 
@@ -144,11 +161,11 @@ export default class NavCircle extends Component {
 
             // onStart: () => this.animate = TweenLite.delayedCall(0.001, this.update)
 
-            // onComplete: () => {
+            onComplete: () => {
 
-            //     emitter.on('update', this.onUpdate.bind(this))
+                this.animate = TweenLite.delayedCall(0.001, this.update)
 
-            // }
+            }
 
         })
 
@@ -163,9 +180,9 @@ export default class NavCircle extends Component {
 
         this.ctx.arc(this.pos.x, this.pos.y, this.radius, 0, Math.PI * 2, false)
 
-        this.ctx.lineWidth = 0.5
+        this.ctx.lineWidth = 1.2
 
-        this.ctx.strokeStyle = '#000000'
+        this.ctx.strokeStyle = this.state.color === 'bright' ? '#ffffff' : '#000000'
 
         this.ctx.stroke()
 

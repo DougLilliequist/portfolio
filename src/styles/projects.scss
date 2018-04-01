@@ -40,7 +40,7 @@
 
     font-family: Arial;
     
-    top: 30%;
+    top: 15%;
     
     font-size: -moz-calc(30px + (48 - 30)*(100vw - 900px) / (1440 - 900));
 
@@ -78,9 +78,9 @@
 
     width: 100%;
     
-    height: 54vh;
+    height: 80vh;
     
-    top: 23%;
+    // top: 23%;
     
     text-align: left;
     
@@ -108,7 +108,7 @@
     
     right: 15%;
     
-    bottom: 7.5%;
+    top: 75%;
     
     // width: 22.75%;
     
@@ -136,11 +136,11 @@
     
     flex-direction: column;
     
-    width: fit-content;
+    width: 28.5%;
     
     left: 15.25%;
     
-    top: 48%;
+    top: 75%;
 
 }
 
@@ -292,11 +292,11 @@
 
     opacity: 0;
 
-    right: 10.0%;
+    right: 15.0%;
 
-    bottom: 27.5%;
+    top: 80%;
 
-    width: 25%;
+    width: fit-content;
 
     display: flex;
 

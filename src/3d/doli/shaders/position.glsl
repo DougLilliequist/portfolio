@@ -24,9 +24,9 @@ const float PI = 3.141592657;
 void main() {
     
     vec2 uv = gl_FragCoord.xy / resolution.xy;
-    vec3 vel = texture2D(velocity, uv).rgb;
-    vec3 pos = texture2D(positions, uv).rgb;
-    vec3 origPos = texture2D(originPos, uv).rgb;
+    vec3 vel = texture2D(velocity, uv).xyz;
+    vec3 pos = texture2D(positions, uv).xyz;
+    vec3 origPos = texture2D(originPos, uv).xyz;
     vec3 posOffset = texture2D(offSets, uv).xyz;
     float life = texture2D(positions, uv).w;
   
@@ -34,6 +34,7 @@ void main() {
 
     vec3 dreamCurl = curlNoise(pos * 0.01 * (mix(1.0, 0.5 * posOffset.x + 0.15, 0.3) * 0.41) + animTime * 0.1); //dream state
     
+    // lowp vec3 dreamNoise = dreamCurl * 0.8 * posOffset.z * map(life, 0.0, 8.0, 1.0, 0.1 * posOffset.z + 0.5) * (3.0 + 1.0);
     lowp vec3 dreamNoise = dreamCurl * 0.8 * map(life, 0.0, 8.0, 1.0, 0.1) * (1.5 + 1.0);
 
     vec3 finalNoise = dreamNoise; //rename
@@ -44,15 +45,17 @@ void main() {
     lowp float dist = length(pos);
     // float distSt = smoothstep(0.0, maxRad, dist);
     float distSt = step(maxRad, dist);
-    float force = distSt * ((dist - maxRad) * 0.1);
+    float force = distSt * ((dist - maxRad) * 0.1 * 5.0);
 
     pos += normalize(vec3(0.0) - pos) * force;
 
     lowp float dist2 = length(mousePos - pos);
     float dist2St = 1.0 - smoothstep(30.0, 70.0, dist2);
-    float force2 = dist2St * ((dist2 - 70.0) * 0.1);
+    float force2 = dist2St * ((dist2 - 70.0) * 0.1 * 5.0);
     
     pos += normalize(mousePos - pos) * force2;
+
+    pos += vel;
       
     if(life <= 0.0) {
 

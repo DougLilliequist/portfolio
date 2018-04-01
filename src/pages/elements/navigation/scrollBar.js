@@ -32,7 +32,7 @@ export default class ScrollBar extends Component {
 
         this.ctx = this.canvasEl.getContext('2d')
 
-        this.w = this.canvas.width = 5
+        this.w = this.canvas.width = 3.5
         
         this.h = this.canvas.height = window.innerHeight
 
@@ -112,7 +112,7 @@ export default class ScrollBar extends Component {
 
     onResize() {
 
-        this.w = this.canvas.width = 5
+        this.w = this.canvas.width = 3.5
 
         this.h = this.canvas.height = window.innerHeight
 

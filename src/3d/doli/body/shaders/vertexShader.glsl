@@ -15,13 +15,14 @@ uniform vec3 prevMousePos;
 uniform vec3 mousePos;
 
 uniform sampler2D currentPos;
-uniform sampler2D previousPos;
+uniform sampler2D targetPos;
 uniform sampler2D direction;
 uniform sampler2D state;
 
 uniform float size;
 uniform float easeTime;
 uniform float rotationEaseTime;
+uniform float percent;
 uniform float animTime;
 
 varying vec3 vPosition;
@@ -82,15 +83,17 @@ vec3 lookAt(vec3 pos, mat4 m) {
 
 void main() {
 
-    vec4 prevPos = texture2D(previousPos, translation.xy);
+    vec4 posCurrent = texture2D(currentPos, translation.xy);
     
-    vec4 currPos = texture2D(currentPos, translation.xy);
+    vec4 posTarget = texture2D(targetPos, translation.xy);
 
-    float life = currPos.w;
+    float life = posTarget.w;
 
     life = max(life, 0.0);
+
+    vec4 _pos = mix(posCurrent, posTarget, percent);
     
-    vec4 worldPos = modelMatrix * currPos;
+    vec4 worldPos = modelMatrix * _pos;
     
     vNormal = normal;
 
@@ -104,7 +107,7 @@ void main() {
 
     vec3 pos = position.xyz;
     
-    vec3 dir = normalize(currPos.xyz - prevPos.xyz);
+    vec3 dir = normalize(posTarget.xyz - posCurrent.xyz);
     
     vec3 rotaAxis = normalize(cross(forward, dir));
     

@@ -126,7 +126,7 @@ export default class Body extends THREE.Object3D {
 
                 },
 
-                previousPos: {
+                targetPos: {
 
                     type: 't',  
                     value: null
@@ -165,6 +165,13 @@ export default class Body extends THREE.Object3D {
 
                     type: 'v3',
                     value: new THREE.Vector3()
+
+                },
+
+                percent: {
+
+                    type: 'f',
+                    value: 0
 
                 },
 

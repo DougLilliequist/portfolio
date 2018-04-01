@@ -11,6 +11,8 @@ import {
     TweenLite
 } from 'gsap'
 
+import {config} from './config.js'
+
 import eventEmitter from 'eventEmitter'
 
 const emitter = eventEmitter.emitter
@@ -39,6 +41,12 @@ export default class DOLI extends THREE.Object3D {
 
         this.activityCoef = 0.0
 
+        this.skipCount = config.skipCount
+
+        this.skipCounter = 0
+
+        this.percent = 0
+
         this.prevPos = new THREE.Vector3(0.0, 0.0, 0.0)
 
         this.currPos = new THREE.Vector3(0.0, 0.0, 0.0)
@@ -46,6 +54,8 @@ export default class DOLI extends THREE.Object3D {
         this.isScrolling = false
 
         this.scrollDirection = 0.0
+
+
 
     }
 
@@ -85,11 +95,23 @@ export default class DOLI extends THREE.Object3D {
 
         this.activityCoef -= (this.activityCoef > 0.0 && this.isInteracting) ? 0.25 : 0.0;
 
-        this.soul.animate(deltaTime, mousePos, this.activityCoef, this.scrollDirection)
+        this.skipCounter ++
 
-        this.body.mesh.material.uniforms.previousPos.value = this.soul.position.rtt2
+        if(this.skipCounter % this.skipCount === 0) {
 
-        this.body.mesh.material.uniforms.currentPos.value = this.soul.position.rtt
+            this.skipCounter = 0
+
+            this.soul.animate(deltaTime, mousePos, this.activityCoef, this.scrollDirection)
+
+        }
+
+        this.percent = this.skipCounter / this.skipCount
+
+        this.body.mesh.material.uniforms['currentPos'].value = this.soul.position.rtt2
+        
+        this.body.mesh.material.uniforms['targetPos'].value = this.soul.position.rtt
+
+        this.body.mesh.material.uniforms['percent'].value = this.percent
 
         this.prevPos.copy(this.currPos)
 

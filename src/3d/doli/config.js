@@ -11,9 +11,11 @@ export const config = {
     // particleAmntY: 32
     // particleAmntY: 128
     // particleAmntY: 48
-    particleAmntY: 64
+    particleAmntY: 64,
     // particleAmntY: 256
     // particleAmntY: 512
     // particleAmntY: 1024
+
+    skipCount: 3
 
 }

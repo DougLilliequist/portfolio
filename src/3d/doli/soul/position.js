@@ -161,15 +161,11 @@ export default class Position extends FBO {
 
         renderer.autoClearColor = false
 
-        //feeling a need to understand this bit
-
         let tmp = this.rtt
 
         this.rtt = this.rtt2
 
         this.rtt2 = tmp
-
-        ////////////////////////////////////////
 
         this.renderQuad.material = this.mat
 
@@ -179,14 +175,9 @@ export default class Position extends FBO {
 
         this.renderQuad.material.uniforms.transitionTime.value = props.transition
 
-        // this.renderQuad.material.uniforms.velocity.value = props.vel
+        this.renderQuad.material.uniforms.velocity.value = props.vel
 
-        this.renderQuad.material.uniforms.positions.value = this.rtt2 //what I do know, is that the quad will read from the second rendertarget
-        //and the result will be rendered to the target rendertarget (did I just answer my own question?)
-
-        //From what I understand, I'm basically reading from the previous render target
-        //then use the said values and write new values on it which in turn, will be rendererd on the main
-        //render target and have the displayed on screen
+        this.renderQuad.material.uniforms.positions.value = this.rtt2
 
         this.renderQuad.material.uniforms.offSets.value = this.offSets
 

@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "budo app.js --live -- -t sassify -t [ babelify --presets [ es2015 react ] ] -t glslify -t aliasify",
-    "build": "browserify ./app.js -g [envify --NODE_ENV production] -g uglifyify -t sassify -t [ babelify --presets [ es2015 react ] ] -t glslify -t aliasify | uglifyjs --compress --mangle > ./src/dist/js/bundle.js",
+    "build": "browserify ./app.js -g [envify --NODE_ENV production] -g uglifyify -t sassify -t [ babelify --presets [ es2015 react ] ] -t glslify -t aliasify | uglifyjs --compress --mangle > ./src/dist/bundle.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Douglas Lilliequist",

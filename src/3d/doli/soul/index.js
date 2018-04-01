@@ -36,7 +36,7 @@ export default class Soul {
 
         // this.velocity.update({mouse: mousePos, pos: this.position.rtt, offSet: this.position.offSets, time: deltaTime})
 
-        this.position.update({mouse: mousePos, time: deltaTime, vel: this.velocity.rtt, transition: this.transitionTime})
+        this.position.update({mouse: mousePos, time: deltaTime, vel: this.velocity.rtt2, transition: this.transitionTime})
 
     }
 

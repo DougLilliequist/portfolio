@@ -151,7 +151,7 @@ export default class Velocity extends FBO {
 
         this.renderQuad.material.uniforms.positions.value = props.pos
 
-        this.renderQuad.material.uniforms.offSets.value = this.offSets
+        this.renderQuad.material.uniforms.offSets.value = props.offSets
 
         this.renderQuad.material.uniforms.velocity.value = this.rtt2
 
