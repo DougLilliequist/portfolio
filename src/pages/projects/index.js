@@ -55,6 +55,8 @@ export default class Project extends Component {
         // this.events.enable()
 
         this.initAnim()
+
+        this.vid.play()
         
     }
 
@@ -205,10 +207,11 @@ export default class Project extends Component {
 
                 <div className = "ProjectVid" ref = {(video) => this.projectVid = video} onMouseEnter = {this.hintClick} onMouseLeave = {this.hintClick}>
                 
-                <a href = {this.projectContent[this.props.project].link} target = "_blank" style = {{cursor: 'none', pointerEvents: this.projectContent[this.props.project].link === ' ' ? 'none' : 'auto'}}>
+                <a href = {this.projectContent[this.props.project].link} target = "_blank" style = {{pointerEvents: this.projectContent[this.props.project].link === ' ' ? 'none' : 'auto'}}>
                     
                     <video ref = {(vid) => this.vid = vid} autoPlay = {true} loop = {true} crossOrigin = {'Anonymous'}>
 
+                        <source src = {this.projectContent[this.props.project].vid} type = {'video/webm'} />
                         <source src = {this.projectContent[this.props.project].vid} type = {'video/mp4'} />
 
                     </video>
@@ -221,13 +224,13 @@ export default class Project extends Component {
 
                 <svg ref = {(container) => this.letterBox = container} style = {{position: 'absolute', width: '100%', height: '20%', top: '0%', left: '0%', zIndex: '2'}}>
 
-                    <rect className = "LetterBox1" ref = {(el) => this.ltrBox1 = el} width = {'100%'} height = {'100%'} style ={{position: 'absolute', fill: 'rgba(255, 255, 255)', pointerEvents: 'none'}}/>
+                    <rect className = "LetterBox1" ref = {(el) => this.ltrBox1 = el} width = {'100%'} height = {'100%'} style ={{position: 'absolute', fill: 'rgba(255, 255, 255, 1)', pointerEvents: 'none'}}/>
 
                 </svg>
 
                 <svg ref ={(container) => this.letterBox2 = container} style = {{position: 'absolute', width: '100%', height: '20%', bottom: '0%', left: '0%', zIndex: '2'}}>
 
-                    <rect className = "LetterBox2" ref = {(el) => this.ltrBox2 = el} width = {'100%'} height = {'100%'} style ={{position: 'absolute', fill: 'rgba(255, 255, 255)', pointerEvents: 'none'}}/>
+                    <rect className = "LetterBox2" ref = {(el) => this.ltrBox2 = el} width = {'100%'} height = {'100%'} style ={{position: 'absolute', fill: 'rgba(255, 255, 255, 1)', pointerEvents: 'none'}}/>
 
                 </svg>
 

@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom'
 
 import {TweenLite} from 'gsap'
 
-import NavCircle from './navCircle/circle.js'
+import NavCircle from './navCircle/circlev2.js'
 
 import ScrollBar from './scrollBar.js'
 

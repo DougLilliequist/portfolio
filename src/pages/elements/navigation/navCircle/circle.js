@@ -56,7 +56,7 @@ export default class NavCircle extends Component {
 
         this.radius = 0
 
-        this.ease = 0.15
+        this.ease = 0.05
 
         this.update = this.onUpdate.bind(this)
 
@@ -68,7 +68,7 @@ export default class NavCircle extends Component {
 
         emitter.on('hintClick', this.onClickable.bind(this)) //rename
 
-        emitter.on('updateCursor', this.updateCursor.bind(this))
+        // emitter.on('updateCursor', this.updateCursor.bind(this))
 
         // emitter.on('stick', this.onFocus.bind(this)) //rename
 
@@ -114,7 +114,7 @@ export default class NavCircle extends Component {
 
         if(this.animte) this.animate.kill()
 
-        this.animte = TweenLite.delayedCall(0.001, this.update)
+        this.animate = TweenLite.delayedCall(0.001, this.update)
 
     }
 
@@ -130,16 +130,13 @@ export default class NavCircle extends Component {
         
         this.pos.y += (this.target.y - this.pos.y) * this.ease
 
-        if(Math.abs(this.pos.x) < 0.1 && Math.abs(this.pos.y) < 0.1) {
-
+        if(Math.abs(this.pos.x) < 0.5 && Math.abs(this.pos.y) < 0.5) {
 
             if(this.animate) this.animate.kill()
 
             return
 
         } else {
-
-        //     console.log(this.pos.x)
 
             this.animate = TweenLite.delayedCall(0.001, this.update)
 

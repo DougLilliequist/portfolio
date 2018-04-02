@@ -42,9 +42,11 @@
 
     stroke-width: 3.5px;
 
-    stroke-dasharray: 180;
+    stroke-dasharray: 90;
     
-    stroke-dashoffset: 180;
+    stroke-dashoffset: 270;
+
+    // opacity: 0;
 
 }
 
@@ -228,7 +230,7 @@
 
     text-decoration: none;
 
-    cursor: none;
+    // cursor: none;
 
     opacity: 0.0;
 
@@ -250,7 +252,7 @@
 
     text-decoration: none;
 
-    cursor: none;
+    cursor: pointer;
 
     opacity: 0.0;
 

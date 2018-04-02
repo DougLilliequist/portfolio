@@ -1,16 +1,17 @@
 export const projectContent = {
 
-    doli: {
-        
+    fireFlies: {
+
         number: '005',
-        title: 'DOLI',
-        description: 'Interactive GPGPU particles',
-        tech: 'WebGL(THREE.js) / instancing / GPGPU simulation',
-        role: 'developer (Front-End), concept creator, designer',
-        context: 'Personal Project',
-        link: 'https://doli91.github.io/doliv2/',
-        vid: './src/media/doli.mp4',
-        cursorColor: 'bright'
+        title: 'Emerald Fireflies',
+        description: 'Fancy and mesmerizing flocking particles',
+        tech: 'WebGL(THREE.js) / GLSL / GPGPU simulation',
+        role: 'developer(Front-end), concept creator, designer',
+        context: 'personal project',
+        link: 'https://doli91.github.io/FireFlies/',
+        vid: './src/media/emeraldfireflies.mp4',
+        cursorColor: 'bright',
+        note: '( does not work on IntelHD GPU\'s )'
 
     },
 
@@ -24,21 +25,23 @@ export const projectContent = {
         context: 'Client Project',
         link: 'https://30ans.redcrossmuseum.ch/vr/',
         vid: './src/media/tbntprojv2.mp4',
-        cursorColor: 'dark'
+        cursorColor: 'dark',
+        note: ' '
 
     },
 
-    fireFlies: {
-
+    doli: {
+        
         number: '003',
-        title: 'Emerald Fireflies',
-        description: 'Fancy and mesmerizing flocking particles',
-        tech: 'WebGL(THREE.js) / GLSL / GPGPU simulation',
-        role: 'developer(Front-end), concept creator, designer',
-        context: 'personal project',
-        link: 'https://doli91.github.io/FireFlies/',
-        vid: './src/media/emeraldfireflies.mp4',
-        cursorColor: 'bright'
+        title: 'DOLI',
+        description: 'Interactive GPGPU powered instances',
+        tech: 'WebGL(THREE.js) / instancing / GPGPU simulation',
+        role: 'developer (Front-End), concept creator, designer',
+        context: 'Personal Project',
+        link: 'https://doli91.github.io/doliv2/',
+        vid: './src/media/doli.mp4',
+        cursorColor: 'bright',
+        note: ''
 
     },
 
@@ -52,7 +55,8 @@ export const projectContent = {
         context: 'R&D Project / Internship @ B-Reel London',
         link: ' ',
         vid: './src/media/intrnshpproj.mp4',
-        cursorColor: 'bright'
+        cursorColor: 'bright',
+        note: ''
 
     },
 
@@ -66,7 +70,8 @@ export const projectContent = {
         context: 'Team Project, Hyper Island',
         link: ' ',
         vid: './src/media/gdnghtswthrtweb.mp4',
-        cursorColor: 'bright'
+        cursorColor: 'bright',
+        note: ''
 
     }
 

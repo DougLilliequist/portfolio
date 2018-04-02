@@ -96,7 +96,7 @@ export default class NavCircle extends Component {
 
             ease: Power4.easeInOut,
 
-            radius: b.state === true ? 20 : 15
+            radius: b.state === true ? 25 : 15
 
         })
 
@@ -119,22 +119,6 @@ export default class NavCircle extends Component {
         this.pos.x += (this.target.x - this.pos.x) * this.ease
         
         this.pos.y += (this.target.y - this.pos.y) * this.ease
-
-        // if(Math.abs(this.pos.x) < 0.1 && Math.abs(this.pos.y) < 0.1) {
-
-        //     console.log('too close')
-
-        //     if(this.animate) this.animate.kill()
-
-        //     return
-
-        // } else {
-
-        //     console.log(this.pos.x)
-
-        //     this.animate = TweenLite.delayedCall(0.001, this.update)
-
-        // }
 
     }
 
@@ -171,7 +155,7 @@ export default class NavCircle extends Component {
 
         this.ctx.arc(this.pos.x, this.pos.y, this.radius, 0, Math.PI * 2, false)
 
-        this.ctx.lineWidth = 1.8
+        this.ctx.lineWidth = 1.5
 
         this.ctx.strokeStyle = this.state.color === 'bright' ? '#ffffff' : '#000000'
         // this.ctx.strokeStyle = '#000000'

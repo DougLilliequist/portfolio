@@ -86,7 +86,7 @@ export default class ContactLink extends Component {
 
             if(this.props.enable) {
 
-            emitter.emit('hintClick', this.state.hovered)
+            emitter.emit('hintClick', {state: this.state.hovered})
 
             this.animate()
 

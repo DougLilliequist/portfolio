@@ -40,7 +40,7 @@ export default class ViewLoader extends Component {
 
         this.animSpeed = 0.001
 
-        this.ease = 0.08
+        this.ease = 0.05
 
         this.update = this.onUpdate.bind(this)
 
@@ -86,7 +86,7 @@ export default class ViewLoader extends Component {
 
             this.counter += 0.001
 
-            this.pos.y += (this.offSet - this.pos.y) * Math.sin(0.3 * Math.PI) * this.ease
+            this.pos.y += (this.offSet - this.pos.y) * Math.sin(0.5 * Math.PI) * this.ease
 
             if(this.pos.y / window.innerHeight > 0.1) {
 
@@ -153,9 +153,9 @@ export default class ViewLoader extends Component {
             <div className = "Loader" ref = {(container) => this.container = container}>
 
                 <LandingPage ref = {(view) => {this.currentView = view}} />
-                <Project ref = {(view) => {this.currentView = view}} project = 'doli' />
-                <Project ref = {(view) => {this.currentView = view}} project = 'redCrossWebVR' />
                 <Project ref = {(view) => {this.currentView = view}} project = 'fireFlies' /> 
+                <Project ref = {(view) => {this.currentView = view}} project = 'redCrossWebVR' />
+                <Project ref = {(view) => {this.currentView = view}} project = 'doli' />
                 <Project ref = {(view) => {this.currentView = view}} project = 'internshipProject' />
                 <Project ref = {(view) => {this.currentView = view}} project = 'hyperInstallation' />
             
