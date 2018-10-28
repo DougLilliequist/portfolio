@@ -1,38 +1,8 @@
 export const projectContent = {
 
-    fireFlies: {
-
-        number: '005',
-        title: 'Emerald Fireflies',
-        description: 'Fancy and mesmerizing flocking particles',
-        tech: 'WebGL(THREE.js) / GLSL / GPGPU simulation',
-        role: 'developer(Front-end), concept creator, designer',
-        context: 'personal project',
-        link: 'https://doli91.github.io/FireFlies/',
-        vid: './src/media/emeraldfireflies.mp4',
-        cursorColor: 'bright',
-        note: '( does not work on IntelHD GPU\'s )'
-
-    },
-
-    redCrossWebVR: {
-        
-        number: '004',
-        title: 'We\'re All Human',
-        description: 'WebVR experience built in collaboration with TBNT',
-        tech: 'WebVR / WebGL(THREE.js) / GLSL',
-        role: 'developer (Front-End)',
-        context: 'Client Project',
-        link: 'https://30ans.redcrossmuseum.ch/vr/',
-        vid: './src/media/tbntprojv2.mp4',
-        cursorColor: 'dark',
-        note: ' '
-
-    },
-
     doli: {
         
-        number: '003',
+        number: '001',
         title: 'DOLI',
         description: 'Interactive GPGPU powered instances',
         tech: 'WebGL(THREE.js) / instancing / GPGPU simulation',
@@ -62,7 +32,7 @@ export const projectContent = {
 
     hyperInstallation: {
 
-        number: '001',
+        number: '003',
         title: 'Good Night Sweet Heart',
         description: 'Art Puzzle Installation',
         tech: 'Arduino / Processing / Resolume',
@@ -72,6 +42,21 @@ export const projectContent = {
         vid: './src/media/gdnghtswthrtweb.mp4',
         cursorColor: 'bright',
         note: ''
+
+    },
+
+    redCrossWebVR: {
+        
+        number: '004',
+        title: 'We\'re All Human',
+        description: 'WebVR experience built in collaboration with TBNT',
+        tech: 'WebVR / WebGL(THREE.js) / GLSL',
+        role: 'developer (Front-End)',
+        context: 'Client Project',
+        link: 'https://30ans.redcrossmuseum.ch/vr/',
+        vid: './src/media/tbntprojv2.mp4',
+        cursorColor: 'dark',
+        note: ' '
 
     }
 

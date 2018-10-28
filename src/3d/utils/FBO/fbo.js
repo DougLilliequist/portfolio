@@ -114,6 +114,8 @@ export default class FBO {
 
             console.error('No simulation data found')
 
+            return
+
         } else {
 
             this.renderQuad.material.uniforms.tex.value = data

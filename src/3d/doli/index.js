@@ -55,8 +55,6 @@ export default class DOLI extends THREE.Object3D {
 
         this.scrollDirection = 0.0
 
-
-
     }
 
     initSoul() {
