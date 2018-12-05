@@ -58,6 +58,6 @@ export const projectContent = {
         cursorColor: 'bright',
         note: ''
 
-    },
+    }
 
 }

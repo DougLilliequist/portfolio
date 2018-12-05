@@ -30,6 +30,9 @@ export default class Project extends Component {
 
         this.projectContent = projectContent
 
+
+        console.log(this.projectContent);
+
         this.state = {
 
             mounting: false,
@@ -224,13 +227,13 @@ export default class Project extends Component {
 
                 <svg ref = {(container) => this.letterBox = container} style = {{position: 'absolute', width: '100%', height: '20%', top: '0%', left: '0%', zIndex: '2'}}>
 
-                    <rect className = "LetterBox1" ref = {(el) => this.ltrBox1 = el} width = {'100%'} height = {'100%'} style ={{position: 'absolute', fill: 'rgba(255, 255, 255, 1)', pointerEvents: 'none'}}/>
+                    <rect className = "LetterBox1" ref = {(el) => this.ltrBox1 = el} width = {'100%'} height = {'100%'} style ={{position: 'absolute', fill: 'rgba(251, 251, 251, 1)', pointerEvents: 'none'}}/>
 
                 </svg>
 
                 <svg ref ={(container) => this.letterBox2 = container} style = {{position: 'absolute', width: '100%', height: '20%', bottom: '0%', left: '0%', zIndex: '2'}}>
 
-                    <rect className = "LetterBox2" ref = {(el) => this.ltrBox2 = el} width = {'100%'} height = {'100%'} style ={{position: 'absolute', fill: 'rgba(255, 255, 255, 1)', pointerEvents: 'none'}}/>
+                    <rect className = "LetterBox2" ref = {(el) => this.ltrBox2 = el} width = {'100%'} height = {'100%'} style ={{position: 'absolute', fill: 'rgba(251, 251, 251, 1)', pointerEvents: 'none'}}/>
 
                 </svg>
 
