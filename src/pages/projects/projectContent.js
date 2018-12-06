@@ -15,9 +15,24 @@ export const projectContent = {
 
     },
 
-    doli: {
+    akiraLights: {
         
         number: '002',
+        title: 'Akira Lights v1.0',
+        description: 'Interactive lights inspired from Otomo Katsuhiro\'s AKIRA',
+        tech: 'WebGL(THREE.js) / Single Geometry / CPU Flocking',
+        role: 'developer, concept creator',
+        context: 'Experiment',
+        link: 'https://doli91.github.io/AkiraLights/',
+        vid: './src/media/akiralights.mp4',
+        cursorColor: 'bright',
+        note: ''
+
+    },
+
+    doli: {
+        
+        number: '003',
         title: 'DOLI',
         description: 'Interactive GPGPU powered instances',
         tech: 'WebGL(THREE.js) / instancing / GPGPU simulation',
@@ -32,7 +47,7 @@ export const projectContent = {
 
     internshipProject: {
 
-        number: '003',
+        number: '004',
         title: 'YOLO + WebGL',
         description: 'RealTime animations based on detection data from YOLO',
         tech: 'WebGL(THREE.js) / OpenFrameworks / YOLO / Node.js / sockets.io',
@@ -47,7 +62,7 @@ export const projectContent = {
 
     hyperInstallation: {
 
-        number: '004',
+        number: '005',
         title: 'Good Night Sweet Heart',
         description: 'Art Puzzle Installation',
         tech: 'Arduino / Processing / Resolume',

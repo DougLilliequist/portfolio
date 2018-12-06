@@ -26,6 +26,8 @@ export default class ViewLoader extends Component {
             
         }
 
+        this.projectCount = 5.0;
+
         this.pos = {}
 
         this.pos.x = 0
@@ -50,7 +52,7 @@ export default class ViewLoader extends Component {
 
         this.initEvents()
 
-        this.scrollMax = ReactDOM.findDOMNode(this.currentView).getBoundingClientRect().height * 4.0
+        this.scrollMax = ReactDOM.findDOMNode(this.currentView).getBoundingClientRect().height * this.projectCount
 
     }
 
@@ -132,7 +134,7 @@ export default class ViewLoader extends Component {
 
         this.counter = 0
 
-        this.scrollMax = ReactDOM.findDOMNode(this.currentView).getBoundingClientRect().height * 4.0
+        this.scrollMax = ReactDOM.findDOMNode(this.currentView).getBoundingClientRect().height * this.projectCount
 
         emitter.emit('updateScrollBar', map(this.offSet, 0, this.scrollMax, 0, window.innerHeight))
 
@@ -154,6 +156,7 @@ export default class ViewLoader extends Component {
 
                 <LandingPage ref = {(view) => {this.currentView = view}} />
                 <Project ref = {(view) => {this.currentView = view}} project = 'needaHand' />
+                <Project ref = {(view) => {this.currentView = view}} project = 'akiraLights' />
                 <Project ref = {(view) => {this.currentView = view}} project = 'doli' />
                 <Project ref = {(view) => {this.currentView = view}} project = 'internshipProject' />
                 <Project ref = {(view) => {this.currentView = view}} project = 'hyperInstallation' />
