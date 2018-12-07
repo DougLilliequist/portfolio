@@ -26,7 +26,7 @@ export default class ViewLoader extends Component {
             
         }
 
-        this.projectCount = 5.0;
+        this.projectCount = 6.0;
 
         this.pos = {}
 
@@ -157,6 +157,7 @@ export default class ViewLoader extends Component {
                 <LandingPage ref = {(view) => {this.currentView = view}} />
                 <Project ref = {(view) => {this.currentView = view}} project = 'needaHand' />
                 <Project ref = {(view) => {this.currentView = view}} project = 'akiraLights' />
+                <Project ref = {(view) => {this.currentView = view}} project = 'wormHole' />
                 <Project ref = {(view) => {this.currentView = view}} project = 'doli' />
                 <Project ref = {(view) => {this.currentView = view}} project = 'internshipProject' />
                 <Project ref = {(view) => {this.currentView = view}} project = 'hyperInstallation' />

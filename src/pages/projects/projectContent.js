@@ -5,7 +5,7 @@ export const projectContent = {
         number: '001',
         title: 'Need A Hand?',
         description: 'Interactive, displacing mesh',
-        tech: 'WebGL(THREE.js) / Computed triangles from mesh data',
+        tech: 'WebGL(THREE.js) / GLSL /Computed triangles from mesh data',
         role: 'developer, concept creator',
         context: 'Experiment',
         link: 'https://doli91.github.io/needAHand/',
@@ -20,7 +20,7 @@ export const projectContent = {
         number: '002',
         title: 'Akira Lights v1.0',
         description: 'Interactive lights inspired from Otomo Katsuhiro\'s AKIRA',
-        tech: 'WebGL(THREE.js) / Single Geometry / CPU Flocking',
+        tech: 'WebGL(THREE.js) / GLSL / Single Geometry / CPU Flocking',
         role: 'developer, concept creator',
         context: 'Experiment',
         link: 'https://doli91.github.io/AkiraLights/',
@@ -30,12 +30,27 @@ export const projectContent = {
 
     },
 
-    doli: {
+    wormHole: {
         
         number: '003',
+        title: 'Wormhole',
+        description: 'Space-time distortion with shaders!',
+        tech: 'WebGL(THREE.js) / GLSL / Feedback textures',
+        role: 'developer, concept creator',
+        context: 'Codevember Project',
+        link: 'https://doli91.github.io/Codevember2018_day13/',
+        vid: './src/media/wormhole.mp4',
+        cursorColor: 'bright',
+        note: ''
+
+    },
+
+    doli: {
+        
+        number: '004',
         title: 'DOLI',
         description: 'Interactive GPGPU powered instances',
-        tech: 'WebGL(THREE.js) / instancing / GPGPU simulation',
+        tech: 'WebGL(THREE.js) / GLSL / instancing / GPGPU simulation',
         role: 'developer, concept creator, designer',
         context: 'Personal Project',
         link: 'https://doli91.github.io/doliv2/',
@@ -47,7 +62,7 @@ export const projectContent = {
 
     internshipProject: {
 
-        number: '004',
+        number: '005',
         title: 'YOLO + WebGL',
         description: 'RealTime animations based on detection data from YOLO',
         tech: 'WebGL(THREE.js) / OpenFrameworks / YOLO / Node.js / sockets.io',
@@ -62,7 +77,7 @@ export const projectContent = {
 
     hyperInstallation: {
 
-        number: '005',
+        number: '006',
         title: 'Good Night Sweet Heart',
         description: 'Art Puzzle Installation',
         tech: 'Arduino / Processing / Resolume',

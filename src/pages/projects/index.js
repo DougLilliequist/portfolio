@@ -30,9 +30,6 @@ export default class Project extends Component {
 
         this.projectContent = projectContent
 
-
-        console.log(this.projectContent);
-
         this.state = {
 
             mounting: false,
