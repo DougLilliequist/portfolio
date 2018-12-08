@@ -24,7 +24,7 @@ export const projectContent = {
         role: 'developer, concept creator',
         context: 'Experiment',
         link: 'https://doli91.github.io/AkiraLights/',
-        vid: './src/media/akiralights.mp4',
+        vid: 'https://s3.eu-west-3.amazonaws.com/douglaslilliequist/akiralights.mp4',
         cursorColor: 'bright',
         note: ''
 
