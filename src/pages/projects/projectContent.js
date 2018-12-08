@@ -9,7 +9,7 @@ export const projectContent = {
         role: 'developer, concept creator',
         context: 'Experiment',
         link: 'https://doli91.github.io/needAHand/',
-        vid: './src/media/needahand.mp4',
+        vid: 'https://s3.eu-west-3.amazonaws.com/douglaslilliequist/needahand.mp4',
         cursorColor: 'dark',
         note: ''
 
@@ -39,7 +39,7 @@ export const projectContent = {
         role: 'developer, concept creator',
         context: 'Codevember Project',
         link: 'https://doli91.github.io/Codevember2018_day13/',
-        vid: './src/media/wormhole.mp4',
+        vid: 'https://s3.eu-west-3.amazonaws.com/douglaslilliequist/wormhole.mp4',
         cursorColor: 'bright',
         note: ''
 
@@ -54,7 +54,7 @@ export const projectContent = {
         role: 'developer, concept creator, designer',
         context: 'Personal Project',
         link: 'https://doli91.github.io/doliv2/',
-        vid: './src/media/doli.mp4',
+        vid: 'https://s3.eu-west-3.amazonaws.com/douglaslilliequist/doli.mp4',
         cursorColor: 'bright',
         note: ''
 
@@ -69,7 +69,7 @@ export const projectContent = {
         role: 'developer(OpenFrameworks, assisting Front-End (added the drawing lines))',
         context: 'R&D Project / Internship @ B-Reel London',
         link: ' ',
-        vid: './src/media/intrnshpproj.mp4',
+        vid: 'https://s3.eu-west-3.amazonaws.com/douglaslilliequist/intrnshpproj.mp4',
         cursorColor: 'bright',
         note: ''
 
@@ -84,7 +84,7 @@ export const projectContent = {
         role: 'developer, designer',
         context: 'Team Project, Hyper Island',
         link: ' ',
-        vid: './src/media/gdnghtswthrtweb.mp4',
+        vid: 'https://s3.eu-west-3.amazonaws.com/douglaslilliequist/gdnghtswthrtweb.mp4',
         cursorColor: 'bright',
         note: ''
 
