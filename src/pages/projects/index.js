@@ -209,9 +209,9 @@ export default class Project extends Component {
                 
                 <a href = {this.projectContent[this.props.project].link} target = "_blank" style = {{pointerEvents: this.projectContent[this.props.project].link === ' ' ? 'none' : 'auto'}}>
                     
-                    <video ref = {(vid) => this.vid = vid} autoPlay = {true} loop = {true} muted = {true} crossOrigin = {'Anonymous'}>
+                    <video ref = {(vid) => this.vid = vid} preload = {'auto'} autoPlay = {true} loop = {true} muted = {true} crossOrigin = {'anonymous'}>
 
-                        <source src = {this.projectContent[this.props.project].vid} type = {'video/webm'} />
+                        {/* <source src = {this.projectContent[this.props.project].vid} type = {'video/webm'} /> */}
                         <source src = {this.projectContent[this.props.project].vid} type = {'video/mp4'} />
 
                     </video>
