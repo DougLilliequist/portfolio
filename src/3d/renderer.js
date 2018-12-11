@@ -10,6 +10,8 @@ renderer.setSize(window.innerWidth, window.innerHeight)
 
 renderer.domElement.style.position = 'absolute'
 
+renderer.domElement.style.zIndex = '-2'
+
 renderer.domElement.style.width = '100%'
 
 renderer.domElement.style.height = '100%'
