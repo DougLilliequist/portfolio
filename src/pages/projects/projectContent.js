@@ -1,8 +1,23 @@
 export const projectContent = {
 
-    sken: {
+    letsGetPhysical: {
         
         number: '001',
+        title: 'Let\'s Get Physical',
+        description: 'Interactive + floor projected lines',
+        tech: 'Unity3D / Custom GPGPU ribbons / Blob Detection',
+        role: 'developer',
+        context: 'Installation / Client Project',
+        link: 'https://yipp.nl/projects/61-lets_get_physical/',
+        vid: 'https://s3.eu-west-3.amazonaws.com/douglaslilliequist/11secvid_yippheader.mp4',
+        cursorColor: 'bright',
+        note: ''
+
+    },
+
+    sken: {
+        
+        number: '002',
         title: 'SKEN',
         description: 'Flocking Ribbons',
         tech: 'WebGL(THREE.js) / GLSL / GPGPU / Flocking / Tri Strips',
@@ -17,7 +32,7 @@ export const projectContent = {
 
     needaHand: {
         
-        number: '002',
+        number: '003',
         title: 'Need A Hand?',
         description: 'Interactive, displacing mesh',
         tech: 'WebGL(THREE.js) / GLSL /Computed triangles from mesh data',
@@ -26,21 +41,6 @@ export const projectContent = {
         link: 'https://doli91.github.io/needAHand/',
         vid: 'https://s3.eu-west-3.amazonaws.com/douglaslilliequist/needahand.mp4',
         cursorColor: 'dark',
-        note: ''
-
-    },
-
-    akiraLights: {
-        
-        number: '003',
-        title: 'Akira Lights v1.0',
-        description: 'Interactive lights inspired from Otomo Katsuhiro\'s AKIRA',
-        tech: 'WebGL(THREE.js) / GLSL / Single Geometry / Tri Strips / CPU Flocking',
-        role: 'developer, concept creator',
-        context: 'Experiment',
-        link: 'https://doli91.github.io/AkiraLights/',
-        vid: 'https://s3.eu-west-3.amazonaws.com/douglaslilliequist/akiralights.mp4',
-        cursorColor: 'bright',
         note: ''
 
     },
