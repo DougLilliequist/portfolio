@@ -23,7 +23,7 @@ export const projectContent = {
         tech: 'WebGL(THREE.js) / GLSL / GPGPU / Flocking / Tri Strips',
         role: 'developer, concept creator',
         context: 'Experiment / Solidifying flocking',
-        link: 'https://doli91.github.io/SKEN/',
+        link: 'https://douglilliequist.github.io/SKEN/',
         vid: 'https://s3.eu-west-3.amazonaws.com/douglaslilliequist/sken.mp4',
         cursorColor: 'bright',
         note: ''
@@ -38,7 +38,7 @@ export const projectContent = {
         tech: 'WebGL(THREE.js) / GLSL /Computed triangles from mesh data',
         role: 'developer, concept creator',
         context: 'Experiment',
-        link: 'https://doli91.github.io/needAHand/',
+        link: 'https://douglilliequist.github.io/needAHand/',
         vid: 'https://s3.eu-west-3.amazonaws.com/douglaslilliequist/needahand.mp4',
         cursorColor: 'dark',
         note: ''
@@ -53,7 +53,7 @@ export const projectContent = {
         tech: 'WebGL(THREE.js) / GLSL / Feedback textures',
         role: 'developer, concept creator',
         context: 'Codevember Project',
-        link: 'https://doli91.github.io/Codevember2018_day13/',
+        link: 'https://douglilliequist.github.io/Codevember2018_day13/',
         vid: 'https://s3.eu-west-3.amazonaws.com/douglaslilliequist/wormhole.mp4',
         cursorColor: 'bright',
         note: ''
@@ -68,7 +68,7 @@ export const projectContent = {
         tech: 'WebGL(THREE.js) / GLSL / instancing / GPGPU',
         role: 'developer, concept creator, designer',
         context: 'Personal Project',
-        link: 'https://doli91.github.io/doliv2/',
+        link: 'https://douglilliequist.github.io/doliv2/',
         vid: 'https://s3.eu-west-3.amazonaws.com/douglaslilliequist/doli.mp4',
         cursorColor: 'bright',
         note: ''
