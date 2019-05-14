@@ -157,10 +157,10 @@ export default class ViewLoader extends Component {
                 <LandingPage ref = {(view) => {this.currentView = view}} />
                 <Project ref = {(view) => {this.currentView = view}} project = 'letsGetPhysical' />
                 <Project ref = {(view) => {this.currentView = view}} project = 'sken' />
+                <Project ref = {(view) => {this.currentView = view}} project = 'internshipProject' />
                 <Project ref = {(view) => {this.currentView = view}} project = 'needaHand' />
                 <Project ref = {(view) => {this.currentView = view}} project = 'wormHole' />
                 <Project ref = {(view) => {this.currentView = view}} project = 'doli' />
-                <Project ref = {(view) => {this.currentView = view}} project = 'internshipProject' />
                 <Project ref = {(view) => {this.currentView = view}} project = 'hyperInstallation' />
             
             </div>
